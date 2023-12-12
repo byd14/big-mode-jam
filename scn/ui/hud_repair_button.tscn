@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://nvqqig5qp78s"]
+
+[ext_resource type="Script" path="res://scn/ui/hud_repair_button.gd" id="1_1l3oe"]
+[ext_resource type="AudioStream" uid="uid://d2mbvloqeadma" path="res://assets/audio/switch.ogg" id="1_nxoom"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1l3ah"]
+
+[node name="HUDRepairButton" type="CheckButton" node_paths=PackedStringArray("sfx_switch")]
+offset_right = 44.0
+offset_bottom = 24.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1l3ah")
+button_pressed = true
+script = ExtResource("1_1l3oe")
+sfx_switch = NodePath("SFXSwitch")
+
+[node name="SFXSwitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_nxoom")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

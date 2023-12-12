@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6yyre5u12edt"]
+
+[ext_resource type="Script" path="res://scn/note.gd" id="1_mbu42"]
+[ext_resource type="Texture2D" uid="uid://dbw7y2lbibfyy" path="res://assets/note.png" id="1_olijf"]
+[ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="2_25t23"]
+[ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="3_fwcgl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4e34x"]
+radius = 24.0
+
+[node name="Note" type="Node2D" node_paths=PackedStringArray("interactable", "sprite")]
+script = ExtResource("1_mbu42")
+interactable = NodePath("InteractableArea2D")
+sprite = NodePath("PlaneSprite2D")
+
+[node name="PlaneSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.01)
+texture = ExtResource("1_olijf")
+offset = Vector2(0, -16)
+script = ExtResource("2_25t23")
+offset_3d = Vector2(0, -12)
+
+[node name="InteractableArea2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_fwcgl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
+shape = SubResource("CircleShape2D_4e34x")

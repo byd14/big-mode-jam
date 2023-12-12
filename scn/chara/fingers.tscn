@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://n6nkadtw1o6x"]
+
+[ext_resource type="Texture2D" uid="uid://bewm2qm4qs1vh" path="res://assets/hand.png" id="1_117ug"]
+[ext_resource type="Script" path="res://scn/fingers.gd" id="1_mrpll"]
+[ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="3_du6yc"]
+[ext_resource type="Script" path="res://src/photo_sensative.gd" id="4_34jey"]
+
+[sub_resource type="Curve" id="Curve_55mek"]
+_data = [Vector2(0, 0.3), 0.0, 0.0, 0, 0, Vector2(0.916667, 1), 1.4, 0.0, 0, 0, Vector2(1, 0.284211), -24.7262, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_2fmpt"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.782918)
+colors = PackedColorArray(0, 0, 0, 0, 0.290196, 0.235294, 0.356863, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esyeb"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_el5hy"]
+radius = 5.0
+
+[node name="Fingers" type="Node2D" node_paths=PackedStringArray("line", "sprite", "photo_sensative", "hitbox")]
+script = ExtResource("1_mrpll")
+line = NodePath("Line2D")
+sprite = NodePath("Sprite2D")
+photo_sensative = NodePath("Sprite2D/PhotoSensative")
+hitbox = NodePath("Sprite2D/Hitbox")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0)
+width = 16.0
+width_curve = SubResource("Curve_55mek")
+default_color = Color(0.290196, 0.235294, 0.356863, 1)
+gradient = SubResource("Gradient_2fmpt")
+joint_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_117ug")
+script = ExtResource("3_du6yc")
+billboard = false
+on_floor = true
+
+[node name="PhotoSensative" type="Area2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_34jey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/PhotoSensative"]
+shape = SubResource("CircleShape2D_esyeb")
+
+[node name="Hitbox" type="Area2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
+shape = SubResource("CircleShape2D_el5hy")
+
+[connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]

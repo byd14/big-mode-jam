@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxsc08fvqpop0"]
+
+[ext_resource type="Script" path="res://scn/film_pickup.gd" id="1_gixix"]
+[ext_resource type="Texture2D" uid="uid://dsxkododqyxhm" path="res://assets/film.png" id="2_a3jfr"]
+[ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="3_3yhl2"]
+[ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="4_1okdu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_68jvi"]
+radius = 14.0
+
+[node name="FilmPickup" type="Node2D" node_paths=PackedStringArray("interactable", "sprite")]
+script = ExtResource("1_gixix")
+interactable = NodePath("InteractableArea2D")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a3jfr")
+offset = Vector2(0, -16)
+script = ExtResource("3_3yhl2")
+offset_3d = Vector2(0, -12)
+
+[node name="InteractableArea2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_1okdu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
+shape = SubResource("CircleShape2D_68jvi")

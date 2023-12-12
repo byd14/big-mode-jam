@@ -1,0 +1,118 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2wqv18uqak6c"]
+
+[ext_resource type="Texture2D" uid="uid://dt8gfsu71klgq" path="res://assets/ui/thorn_paper.png" id="1_l5glr"]
+[ext_resource type="Script" path="res://scn/ui/hud_checklist.gd" id="1_ll8gs"]
+[ext_resource type="AudioStream" uid="uid://c1gjd1yi05ib6" path="res://assets/audio/checklist_ui_appear.wav" id="3_3l68y"]
+[ext_resource type="AudioStream" uid="uid://cluk8txkwyreg" path="res://assets/audio/checklist_ui_dissappear.wav" id="4_86d3o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_of3k0"]
+size = Vector2(198, 46)
+
+[node name="HUDChecklist" type="Control" node_paths=PackedStringArray("paper", "sfx_appear", "sfx_disappear")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ll8gs")
+paper = NodePath("Sprite2D")
+unfold_offset = 192
+sfx_appear = NodePath("SFXAppear")
+sfx_disappear = NodePath("SFXDisappear")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l5glr")
+offset = Vector2(0, -32)
+region_enabled = true
+region_rect = Rect2(0, 0, 192, 32)
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -193.0
+offset_top = -16.0
+offset_right = 1.0
+offset_bottom = 192.0
+grow_horizontal = 2
+color = Color(0.811765, 0.835294, 0.839216, 1)
+
+[node name="Checklist" type="Label" parent="Sprite2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -12.5
+offset_right = -76.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "checklist"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D"]
+offset_left = -34.0
+offset_top = 33.0
+offset_right = 6.0
+offset_bottom = 73.0
+
+[node name="elevator" type="Label" parent="Sprite2D/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.333333)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "elevator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="box" type="Label" parent="Sprite2D/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.333333)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "box	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="box2" type="Label" parent="Sprite2D/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.333333)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "box	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="box3" type="Label" parent="Sprite2D/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.333333)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "box	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="box4" type="Label" parent="Sprite2D/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.333333)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "box	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MouseTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseTrigger"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_of3k0")
+
+[node name="SFXAppear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3l68y")
+
+[node name="SFXDisappear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_86d3o")
+
+[connection signal="mouse_entered" from="MouseTrigger" to="." method="_on_mouse_trigger_mouse_entered"]
+[connection signal="mouse_exited" from="MouseTrigger" to="." method="_on_mouse_trigger_mouse_exited"]

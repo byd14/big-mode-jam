@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8p8jwwt7prxx"]
+
+[ext_resource type="Script" path="res://scn/3dworld/photobooth.gd" id="1_rlufd"]
+[ext_resource type="PackedScene" uid="uid://de4df25j0upi0" path="res://scn/3dworld/operator.tscn" id="2_biqlj"]
+[ext_resource type="MeshLibrary" uid="uid://dlo2y6xd47o8e" path="res://assets/hotel_meshlib.tres" id="2_guseo"]
+[ext_resource type="TileSet" uid="uid://c3tqtciyf2m20" path="res://assets/hotel_tileset.tres" id="2_pvdx6"]
+
+[sub_resource type="Environment" id="Environment_7ysfa"]
+background_mode = 1
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtu55"]
+albedo_color = Color(0.278431, 0.321569, 0.376471, 1)
+uv1_world_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_chd0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2m0s"]
+albedo_color = Color(0.298039, 0.309804, 0.266667, 1)
+
+[node name="Photobooth" type="Node3D" node_paths=PackedStringArray("gridmap", "operator", "environment", "shadow_viewport", "shadow_plane", "floor_decals")]
+script = ExtResource("1_rlufd")
+gridmap = NodePath("GridMap")
+operator = NodePath("Operator")
+environment = NodePath("WorldEnvironment")
+shadow_viewport = NodePath("SubViewport")
+shadow_plane = NodePath("ShadowPlane")
+floor_decals = NodePath("SubViewport/FloorDecals")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(2048, 2048)
+
+[node name="FloorDecals" type="TileMap" parent="SubViewport"]
+tile_set = ExtResource("2_pvdx6")
+cell_quadrant_size = 32
+format = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7ysfa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 32, 0, 32)
+material_override = SubResource("StandardMaterial3D_vtu55")
+mesh = SubResource("PlaneMesh_chd0b")
+
+[node name="ShadowPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 32, 0.001, 32)
+visible = false
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_chd0b")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(32, 0, 0, 0, -32, 4.83187e-06, 0, -4.83187e-06, -32, 32, 3, 32)
+material_override = SubResource("StandardMaterial3D_v2m0s")
+mesh = SubResource("PlaneMesh_chd0b")
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh_library = ExtResource("2_guseo")
+cell_size = Vector3(1, 1, 1)
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Operator" parent="." instance=ExtResource("2_biqlj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.25, 16)

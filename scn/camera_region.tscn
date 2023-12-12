@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkr5pvgsjcpth"]
+
+[ext_resource type="Script" path="res://scn/camera_region.gd" id="1_8scfb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjg1f"]
+resource_local_to_scene = true
+size = Vector2(416, 320)
+
+[node name="CameraRegion" type="Area2D" node_paths=PackedStringArray("collision_shape", "camera")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_8scfb")
+width = 13
+height = 10
+collision_shape = NodePath("CollisionShape2D")
+camera = NodePath("Camera2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mjg1f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(3, 3)
+editor_draw_screen = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

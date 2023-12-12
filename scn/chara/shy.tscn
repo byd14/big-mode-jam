@@ -1,0 +1,209 @@
+[gd_scene load_steps=29 format=3 uid="uid://g24vxn1myffg"]
+
+[ext_resource type="Script" path="res://scn/chara/shy.gd" id="1_ksytj"]
+[ext_resource type="Shader" path="res://src/shaders/box_blur.gdshader" id="2_hb054"]
+[ext_resource type="Script" path="res://src/sprites/ghost_sprite_2d.gd" id="3_oonrr"]
+[ext_resource type="Script" path="res://src/velocity_component.gd" id="4_bt16t"]
+[ext_resource type="Script" path="res://src/photo_sensative.gd" id="5_0ciw8"]
+[ext_resource type="AudioStream" uid="uid://dvl1u706k86jd" path="res://assets/audio/shy_scream2.wav" id="6_hoebi"]
+[ext_resource type="Texture2D" uid="uid://2a10gk7n86ne" path="res://assets/shy.png" id="7_bpsqg"]
+[ext_resource type="Texture2D" uid="uid://c84ojdyg00qn" path="res://assets/radial_gradient.tres" id="8_6ykbx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xlqlj"]
+shader = ExtResource("2_hb054")
+shader_parameter/strength = 3
+shader_parameter/alpha = 0.25
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b04kv"]
+size = Vector2(24, 9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kqn4e"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lqhxn"]
+radius = 13.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8navs"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nern8"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(1536, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv5cb"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(1664, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc4ho"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(1792, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrsvp"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpays"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4rsw"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1rnf"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j4it"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1b2h"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sof2r"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om60h"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x60t5"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0xil"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0acbi"]
+atlas = ExtResource("7_bpsqg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8e60n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8navs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nern8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv5cb")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_kc4ho")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrsvp")
+}],
+"loop": true,
+"name": &"calm",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpays")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4rsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1rnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j4it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1b2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sof2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om60h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x60t5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0xil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0acbi")
+}],
+"loop": false,
+"name": &"scream",
+"speed": 2.0
+}]
+
+[node name="Shy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "animation", "hitbox", "sfx_scream") groups=["danger", "photo"]]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_ksytj")
+sprite = NodePath("GhostSprite2D")
+velocity_component = NodePath("VelocityComponent")
+animation = NodePath("AnimatedSprite2D")
+hitbox = NodePath("Hitbox")
+sfx_scream = NodePath("SFXScream")
+
+[node name="GhostSprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("animation")]
+material = SubResource("ShaderMaterial_xlqlj")
+scale = Vector2(0.25, 0.25)
+offset = Vector2(0, -64)
+script = ExtResource("3_oonrr")
+animation = NodePath("../AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_b04kv")
+
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("4_bt16t")
+
+[node name="PhotoSensative" type="Area2D" parent="."]
+position = Vector2(0, -5)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("5_0ciw8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoSensative"]
+shape = SubResource("CircleShape2D_kqn4e")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -5)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_lqhxn")
+
+[node name="SFXScream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hoebi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_8e60n")
+animation = &"scream"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("8_6ykbx")
+texture_scale = 3.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

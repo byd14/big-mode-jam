@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxoehhu136neh"]
+
+[ext_resource type="Script" path="res://scn/3dworld/ghost_sprite_3d.gd" id="1_5swtw"]
+[ext_resource type="Texture2D" uid="uid://2a10gk7n86ne" path="res://assets/shy.png" id="1_07yv3"]
+
+[node name="GhostSprite3D" type="Sprite3D" node_paths=PackedStringArray("blur_copy_1", "blur_copy_2")]
+offset = Vector2(0, 128)
+modulate = Color(1, 1, 1, 0.247059)
+texture = ExtResource("1_07yv3")
+script = ExtResource("1_5swtw")
+blur_copy_1 = NodePath("BlurCopy")
+blur_copy_2 = NodePath("BlurCopy2")
+
+[node name="BlurCopy" type="Sprite3D" parent="."]
+offset = Vector2(0, 128)
+modulate = Color(1, 1, 1, 0.247059)
+shaded = true
+
+[node name="BlurCopy2" type="Sprite3D" parent="."]
+offset = Vector2(0, 128)
+modulate = Color(1, 1, 1, 0.247059)
+shaded = true

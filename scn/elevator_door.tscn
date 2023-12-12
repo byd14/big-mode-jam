@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://bs5u8tpxreo1l"]
+
+[ext_resource type="Texture2D" uid="uid://bxw42vre3vr6r" path="res://assets/elevator_door.png" id="1_8pujd"]
+[ext_resource type="Script" path="res://scn/elevator_door.gd" id="1_vgrvv"]
+[ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="2_jy1ri"]
+[ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="3_jauo5"]
+[ext_resource type="Script" path="res://src/checklist_goal.gd" id="4_uun0c"]
+[ext_resource type="Script" path="res://src/photo_sensative.gd" id="5_twdxb"]
+[ext_resource type="PackedScene" uid="uid://bl7xeddtglyst" path="res://scn/elevator_panel_interaction.tscn" id="6_wy227"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2yvr"]
+size = Vector2(64, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bfxcp"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tg6th"]
+radius = 32.0
+
+[node name="ElevatorDoor" type="StaticBody2D" node_paths=PackedStringArray("interactable")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_vgrvv")
+interactable = NodePath("InteractableArea2D")
+
+[node name="PlaneSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8pujd")
+offset = Vector2(0, -32)
+script = ExtResource("2_jy1ri")
+orientation = "UP"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_d2yvr")
+
+[node name="InteractableArea2D" type="Area2D" parent="." node_paths=PackedStringArray("interaction_scene")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_jauo5")
+text = "out of power"
+interaction_scene = NodePath("../ElevatorPanelInteraction")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_bfxcp")
+
+[node name="PhotoSensative" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("5_twdxb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoSensative"]
+shape = SubResource("CircleShape2D_tg6th")
+
+[node name="ChecklistGoal" type="Node" parent="PhotoSensative"]
+script = ExtResource("4_uun0c")
+goal_name = "elevator"
+
+[node name="ElevatorPanelInteraction" parent="." instance=ExtResource("6_wy227")]
+visible = false

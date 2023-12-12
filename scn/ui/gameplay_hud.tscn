@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh5g4jhprh272"]
+
+[ext_resource type="Script" path="res://scn/ui/gameplay_hud.gd" id="1_fcgru"]
+[ext_resource type="PackedScene" uid="uid://mifubuocmgcn" path="res://scn/ui/hud_camera.tscn" id="2_f1ti5"]
+[ext_resource type="Shader" path="res://src/shaders/night_vision.gdshader" id="2_uqojd"]
+[ext_resource type="PackedScene" uid="uid://c2wqv18uqak6c" path="res://scn/ui/hud_checklist.tscn" id="4_irael"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7u4t"]
+shader = ExtResource("2_uqojd")
+
+[node name="GameplayHUD" type="CanvasLayer" node_paths=PackedStringArray("stamina_bar", "vision_overlay", "film_amount", "dialog_popup", "dialog_label", "checklist")]
+script = ExtResource("1_fcgru")
+stamina_bar = NodePath("ProgressBar")
+vision_overlay = NodePath("ColorRect")
+film_amount = NodePath("FilmAmount")
+dialog_popup = NodePath("DialogPopup")
+dialog_label = NodePath("DialogPopup/DialogLabel")
+checklist = NodePath("HUDChecklist")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_n7u4t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 272.0
+offset_bottom = 48.0
+rounded = true
+
+[node name="HUDCamera" parent="." instance=ExtResource("2_f1ti5")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 152.0
+offset_right = 152.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="FilmAmount" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -117.0
+offset_bottom = 65.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "film: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="DialogPopup" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(64, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -77.0
+offset_right = 197.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.235294)
+
+[node name="DialogLabel" type="Label" parent="DialogPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HUDChecklist" parent="." instance=ExtResource("4_irael")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -146.0
+offset_right = -146.0
+grow_horizontal = 0
+grow_vertical = 0

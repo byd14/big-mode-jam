@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://blr6nqewqslhn"]
+
+[ext_resource type="Texture2D" uid="uid://bxf05ej61snl8" path="res://assets/lever.png" id="1_klxnp"]
+[ext_resource type="Script" path="res://scn/tutorial_lever.gd" id="1_upkoh"]
+[ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="2_fjk72"]
+[ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="4_0ykc8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnj82"]
+radius = 16.0
+
+[node name="TutorialLever" type="Node2D" node_paths=PackedStringArray("sprite", "interactable")]
+script = ExtResource("1_upkoh")
+sprite = NodePath("PlaneSprite2D")
+interactable = NodePath("InteractableArea2D")
+
+[node name="PlaneSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 0.01)
+texture = ExtResource("1_klxnp")
+script = ExtResource("2_fjk72")
+billboard = false
+
+[node name="InteractableArea2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_0ykc8")
+dialog = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
+shape = SubResource("CircleShape2D_tnj82")

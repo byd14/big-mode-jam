@@ -1,0 +1,143 @@
+[gd_scene load_steps=16 format=3 uid="uid://mifubuocmgcn"]
+
+[ext_resource type="Script" path="res://scn/ui/hud_camera.gd" id="1_pgm6k"]
+[ext_resource type="Texture2D" uid="uid://62215tpsweim" path="res://assets/ui/mode_select_wheel.png" id="2_fs5e4"]
+[ext_resource type="AudioStream" uid="uid://bpxrwhrp4kg7p" path="res://assets/audio/break_sfx.mp3" id="2_wh4s6"]
+[ext_resource type="AudioStream" uid="uid://dd2jq7m28fh1q" path="res://assets/audio/change_camera_mode_long.wav" id="3_4hkg2"]
+[ext_resource type="Texture2D" uid="uid://xbqhayu4tc4f" path="res://assets/ui/mode_on.png" id="3_jhb5m"]
+[ext_resource type="Texture2D" uid="uid://bfjg56tc6hbsl" path="res://assets/ui/mode_off.png" id="4_cwpve"]
+[ext_resource type="AudioStream" uid="uid://b4klck073x6kc" path="res://assets/audio/change_camera_mode_simple.wav" id="4_efqy6"]
+[ext_resource type="Texture2D" uid="uid://dhngt2bbfy41p" path="res://assets/ui/recharge_wheel_base.png" id="5_cs6q4"]
+[ext_resource type="Texture2D" uid="uid://b7s2tbsnj5tjf" path="res://assets/ui/recharge_wheel_handle.png" id="6_rwope"]
+[ext_resource type="PackedScene" uid="uid://nvqqig5qp78s" path="res://scn/ui/hud_repair_button.tscn" id="7_b8uh0"]
+[ext_resource type="AudioStream" uid="uid://cjg8kk0y6565f" path="res://assets/audio/crank_tick.wav" id="11_oneg6"]
+[ext_resource type="AudioStream" uid="uid://cot3fbh2mrpjs" path="res://assets/audio/crank_ui_appear.wav" id="12_6wt0a"]
+[ext_resource type="AudioStream" uid="uid://chva6ddj46f7t" path="res://assets/audio/crank_ui_dissappear.wav" id="13_8yqhk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ks236"]
+radius = 95.021
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_simty"]
+size = Vector2(273, 211)
+
+[node name="HUDCamera" type="Control" node_paths=PackedStringArray("mode_wheel", "battery_status", "camera_body", "handle_sprite", "enter_shape", "exit_shape", "sfx_break", "sfx_vision_on", "sfx_vision_off", "sfx_crank", "sfx_appear", "sfx_disappear")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pgm6k")
+mode_wheel = NodePath("CameraBody/ModeWheel")
+battery_status = NodePath("CameraBody/BatteryStatus")
+camera_body = NodePath("CameraBody")
+handle_sprite = NodePath("CameraBody/RechargeWheel/RechargeHandle")
+enter_shape = NodePath("MouseTrigger/enter")
+exit_shape = NodePath("MouseTrigger/exit")
+sfx_break = NodePath("SFXBreak")
+sfx_vision_on = NodePath("SFXOn")
+sfx_vision_off = NodePath("SFXOff")
+sfx_crank = NodePath("SFXCrank")
+sfx_appear = NodePath("SFXAppear")
+sfx_disappear = NodePath("SFXDisappear")
+unfold_offset = -192.0
+
+[node name="CameraBody" type="Node2D" parent="."]
+
+[node name="ModeWheel" type="Sprite2D" parent="CameraBody"]
+texture = ExtResource("2_fs5e4")
+
+[node name="ModeOn" type="Sprite2D" parent="CameraBody/ModeWheel"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_jhb5m")
+offset = Vector2(0, 64)
+
+[node name="ModeOff" type="Sprite2D" parent="CameraBody/ModeWheel"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_cwpve")
+offset = Vector2(0, -64)
+
+[node name="BatteryStatus" type="Label" parent="CameraBody"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CameraBody"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -103.0
+offset_right = 153.0
+offset_bottom = 192.0
+grow_horizontal = 2
+color = Color(0.247059, 0.270588, 0.282353, 1)
+
+[node name="RechargeWheel" type="Sprite2D" parent="CameraBody"]
+position = Vector2(0, 96)
+texture = ExtResource("5_cs6q4")
+
+[node name="RechargeHandle" type="Sprite2D" parent="CameraBody/RechargeWheel"]
+texture = ExtResource("6_rwope")
+
+[node name="HUDRepairButton" parent="CameraBody" instance=ExtResource("7_b8uh0")]
+offset_left = 85.0
+offset_top = 30.0
+offset_right = 129.0
+offset_bottom = 54.0
+
+[node name="HUDRepairButton2" parent="CameraBody" node_paths=PackedStringArray("sfx_switch") instance=ExtResource("7_b8uh0")]
+offset_left = 85.0
+offset_top = 78.0
+offset_right = 129.0
+offset_bottom = 102.0
+sfx_switch = NodePath("../HUDRepairButton/SFXSwitch")
+
+[node name="HUDRepairButton3" parent="CameraBody" node_paths=PackedStringArray("sfx_switch") instance=ExtResource("7_b8uh0")]
+offset_left = 85.0
+offset_top = 126.0
+offset_right = 129.0
+offset_bottom = 150.0
+sfx_switch = NodePath("../HUDRepairButton/SFXSwitch")
+
+[node name="MouseTrigger" type="Area2D" parent="."]
+
+[node name="enter" type="CollisionShape2D" parent="MouseTrigger"]
+shape = SubResource("CircleShape2D_ks236")
+
+[node name="exit" type="CollisionShape2D" parent="MouseTrigger"]
+position = Vector2(26, -100)
+shape = SubResource("RectangleShape2D_simty")
+disabled = true
+
+[node name="SFXBreak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wh4s6")
+
+[node name="SFXOn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4hkg2")
+
+[node name="SFXOff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_efqy6")
+
+[node name="SFXCrank" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_oneg6")
+volume_db = -6.0
+pitch_scale = 1.1
+
+[node name="SFXAppear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_6wt0a")
+
+[node name="SFXDisappear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_8yqhk")
+
+[connection signal="mouse_entered" from="MouseTrigger" to="." method="_on_mouse_trigger_mouse_entered"]
+[connection signal="mouse_exited" from="MouseTrigger" to="." method="_on_mouse_trigger_mouse_exited"]
