@@ -11,7 +11,7 @@ const STEP_DELAY := 40
 @export var interact_area : Area2D
 @export var camera_hitbox : Area2D
 @export var sfx_danger : AudioStreamPlayer
-@export var sfx_step : AudioStreamPlayer
+@export var sfx_step : AudioStreamPlayer2D
 @export var step_sounds : Array[AudioStream]
 @export var film := 5
 
@@ -28,7 +28,6 @@ var x_facing := 1
 var battery := 100.0
 var battery_degen := 0.0
 var battery_degen_nv := 0.0
-var step_timer := 5
 var hud_active := 0
 
 func _ready():
@@ -76,14 +75,6 @@ func _physics_process(_delta):
 
 	animation_state()
 
-func request_step_sound():
-	if step_timer > 0:
-		step_timer -= 1
-	else:
-		sfx_step.stream = step_sounds.pick_random()
-		sfx_step.pitch_scale = randf_range(0.9, 1.1)
-		sfx_step.play()
-		step_timer = randi_range(STEP_DELAY, STEP_DELAY + 6) - (20 if sprint else 0)
 
 func switch_state(new_state : Callable):
 	velocity_component.stop()
@@ -111,7 +102,6 @@ func normal_state():
 	else:
 		if input.x != 0:
 			x_facing = sign(input.x)
-		request_step_sound()
 		velocity_component.accelerate(input)
 
 	sprite.scale.x = x_facing
@@ -173,6 +163,18 @@ func animation_state():
 				anim += "up" if input.y < 0 else "down"
 	sprite.play(anim)
 
+
+# Footstep stuff
 func _on_animated_sprite_2d_frame_changed():
-#	if sprite.animation == ""
-	pass # Replace with function body.
+	# I'm sure there's a more concise way to do this, but it works and isn't *too* crazy
+	if ("walk" in sprite.animation and (sprite.frame == 1 or sprite.frame == 3)) or ("run" in sprite.animation and (sprite.frame == 3 or sprite.frame == 7)):
+		footstep_sound()
+
+func _on_animated_sprite_2d_animation_changed():
+	if sprite.animation == "idle":
+		footstep_sound()
+
+func footstep_sound():
+	sfx_step.stream = step_sounds.pick_random()
+	sfx_step.pitch_scale = randf_range(0.9, 1.1)
+	sfx_step.play()
