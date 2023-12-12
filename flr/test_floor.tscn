@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://btvmw33ubc3y3"]
+[gd_scene load_steps=18 format=3 uid="uid://btvmw33ubc3y3"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_rxv07"]
 [ext_resource type="TileSet" uid="uid://djooxrb3jpnav" path="res://assets/void_tileset.tres" id="2_5eaog"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://src/actions/ga_spawn_enemy.gd" id="15_xm85y"]
 [ext_resource type="Script" path="res://src/actions/ga_debug_print.gd" id="16_t0tb1"]
 [ext_resource type="Script" path="res://src/actions/ga_switch_visibility.gd" id="17_gr5pp"]
+[ext_resource type="Texture2D" uid="uid://djlbe0wamtxho" path="res://assets/door_closed.png" id="17_jk3ki"]
 [ext_resource type="Script" path="res://src/actions/ga_flip_gamedata.gd" id="18_jh7fn"]
 [ext_resource type="Script" path="res://src/actions/ga_elevator_encounter.gd" id="19_a1baq"]
 
@@ -53,6 +54,10 @@ position = Vector2(512, 736)
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="DoorClosed" type="Sprite2D" parent="YSort"]
+position = Vector2(864, 768)
+texture = ExtResource("17_jk3ki")
+
 [node name="Note" parent="YSort" instance=ExtResource("6_ukj7c")]
 position = Vector2(512, 816)
 text = "hold RMB to scope then press LMB to photo"
@@ -71,6 +76,11 @@ position = Vector2(512, 776)
 
 [node name="FilmPickup" parent="YSort" instance=ExtResource("7_hx43m")]
 position = Vector2(864, 704)
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource("3_u0jy3")
+format = 2
+layer_0/tile_data = PackedInt32Array(1441818, 524288, 0, 1441819, 524288, 0)
 
 [node name="UnstableLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -92,6 +102,7 @@ grow_vertical = 2
 color = Color(0.0313726, 0.0392157, 0.0588235, 1)
 
 [node name="Cameras" type="Node2D" parent="."]
+visible = false
 
 [node name="CameraRegion" parent="Cameras" node_paths=PackedStringArray("enter_actions") instance=ExtResource("5_oig44")]
 position = Vector2(511, 802)

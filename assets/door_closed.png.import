@@ -2,26 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cful5l0elak2v"
-path="res://.godot/imported/finished props.png-6c9f93f139006b4ae2c694adf0a79334.ctex"
+uid="uid://djlbe0wamtxho"
+path="res://.godot/imported/door_closed.png-1f2623e0acb7de3e4c25613003d35c10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/finished props.png"
-dest_files=["res://.godot/imported/finished props.png-6c9f93f139006b4ae2c694adf0a79334.ctex"]
+source_file="res://assets/door_closed.png"
+dest_files=["res://.godot/imported/door_closed.png-1f2623e0acb7de3e4c25613003d35c10.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

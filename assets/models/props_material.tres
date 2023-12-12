@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bwewb245d7x3d"]
+
+[ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="1_eio6k"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_eio6k")
+texture_filter = 0
