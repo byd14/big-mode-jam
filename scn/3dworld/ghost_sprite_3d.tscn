@@ -13,10 +13,10 @@ blur_copy_2 = NodePath("BlurCopy2")
 
 [node name="BlurCopy" type="Sprite3D" parent="."]
 offset = Vector2(0, 128)
-modulate = Color(1, 1, 1, 0.247059)
+modulate = Color(1, 1, 1, 0.909804)
 shaded = true
 
 [node name="BlurCopy2" type="Sprite3D" parent="."]
 offset = Vector2(0, 128)
-modulate = Color(1, 1, 1, 0.247059)
+modulate = Color(1, 1, 1, 0.909804)
 shaded = true

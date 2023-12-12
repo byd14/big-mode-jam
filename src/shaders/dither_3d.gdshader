@@ -63,9 +63,9 @@ void fragment() {
 	ivec3 c = ivec3(round(color * 255.0));
 	
 	// Apply the dithering.
-	if (dithering) {
-		c += ivec3(dithering_pattern(uv));
-	}
+//	if (dithering) {
+	c += ivec3(dithering_pattern(uv));
+//	}
 	
 	// Truncate from 8 bits to color_depth bits.
 	c >>= (8 - color_depth);

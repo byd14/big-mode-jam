@@ -93,7 +93,7 @@ _data = {
 }
 
 [node name="Operator" type="Camera3D" node_paths=PackedStringArray("light", "animation_player", "focus_slider", "sfx_error")]
-fov = 70.0
+fov = 65.0
 script = ExtResource("1_wsnd1")
 light = NodePath("SpotLight3D")
 animation_player = NodePath("AnimationPlayer")

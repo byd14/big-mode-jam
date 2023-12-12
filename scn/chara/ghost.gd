@@ -31,10 +31,11 @@ func _physics_process(_delta):
 		velocity_component.process_collision(collision)
 
 func on_photo():
-	var distance_normalized = position.distance_to(Observer.floor_scene.phil.position) / 100
+	var distance_normalized = minf(position.distance_to(Observer.floor_scene.phil.position) / 100, 1)
 	var focus = absf(Observer.photobooth.operator.focus_slider.value / 100 - sprite.focal_length)
-	if distance_normalized > 1:
-		focus += 0.2
+	focus += pow(distance_normalized, 3) * Observer.CAMERA_FOCUS_TOLERANCE
+	# if distance_normalized > 1:
+	# 	focus += 0.2
 	if focus < Observer.CAMERA_FOCUS_TOLERANCE:
 		light.energy = 1
 		hp -= 1

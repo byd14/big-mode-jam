@@ -9,7 +9,7 @@
 background_mode = 1
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
-fog_density = 0.35
+fog_density = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtu55"]
 albedo_color = Color(0.278431, 0.321569, 0.376471, 1)

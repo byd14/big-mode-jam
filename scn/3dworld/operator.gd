@@ -46,7 +46,7 @@ func to_normal_state():
 	Observer.current_region.camera.enabled = true
 	animation_player.play("RESET")
 	input_active = false
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	Observer.floor_scene.visible = true
 	get_tree().root.remove_child(Observer.camera_scene)
 	phil.switch_state(phil.normal_state)

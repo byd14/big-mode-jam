@@ -15,10 +15,11 @@ func _ready():
 func _physics_process(_delta):
 	blur_copy_1.texture = texture
 	blur_copy_2.texture = texture
-	var distance_normalized = original_sprite.global_position.distance_to(Observer.phil.position) / 100
+	var distance_normalized = minf(original_sprite.global_position.distance_to(Observer.phil.position) / 100, 1)
 	var focus_difference = absf(Observer.photobooth.operator.focus_slider.value / 100 - focal_length)
-	if distance_normalized > 1:
-		focus_difference += 0.2
+	focus_difference += pow(distance_normalized, 3) * Observer.CAMERA_FOCUS_TOLERANCE
+	# if distance_normalized > 1:
+	# 	focus_difference += 0.2
 	if focus_difference < Observer.CAMERA_FOCUS_TOLERANCE:
 		modulate.a = 1
 	else:

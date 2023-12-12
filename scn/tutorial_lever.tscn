@@ -17,7 +17,6 @@ interactable = NodePath("InteractableArea2D")
 position = Vector2(0, 0.01)
 texture = ExtResource("1_klxnp")
 script = ExtResource("2_fjk72")
-billboard = false
 
 [node name="InteractableArea2D" type="Area2D" parent="."]
 collision_layer = 2

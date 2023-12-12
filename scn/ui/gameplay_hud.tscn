@@ -1,23 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh5g4jhprh272"]
+[gd_scene load_steps=9 format=3 uid="uid://dh5g4jhprh272"]
 
 [ext_resource type="Script" path="res://scn/ui/gameplay_hud.gd" id="1_fcgru"]
 [ext_resource type="PackedScene" uid="uid://mifubuocmgcn" path="res://scn/ui/hud_camera.tscn" id="2_f1ti5"]
 [ext_resource type="Shader" path="res://src/shaders/night_vision.gdshader" id="2_uqojd"]
+[ext_resource type="Shader" path="res://src/shaders/crt.gdshader" id="3_qrru0"]
 [ext_resource type="PackedScene" uid="uid://c2wqv18uqak6c" path="res://scn/ui/hud_checklist.tscn" id="4_irael"]
+[ext_resource type="Texture2D" uid="uid://b3dsbtappncu5" path="res://assets/ui/crosshair.png" id="5_rltyd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n7u4t"]
 shader = ExtResource("2_uqojd")
 
-[node name="GameplayHUD" type="CanvasLayer" node_paths=PackedStringArray("stamina_bar", "vision_overlay", "film_amount", "dialog_popup", "dialog_label", "checklist")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dv7p1"]
+shader = ExtResource("3_qrru0")
+shader_parameter/crt_curve = 0.02
+shader_parameter/crt_scan_line_color = 0.07
+shader_parameter/aperture_grille_rate = 0.5
+shader_parameter/rf_switch_esque_blur = 0.55
+shader_parameter/white_noise_rate = 0.1
+
+[node name="GameplayHUD" type="CanvasLayer" node_paths=PackedStringArray("stamina_bar", "vision_overlay", "film_amount", "dialog_popup", "dialog_label", "checklist", "cursor")]
 script = ExtResource("1_fcgru")
 stamina_bar = NodePath("ProgressBar")
-vision_overlay = NodePath("ColorRect")
+vision_overlay = NodePath("NightVision")
 film_amount = NodePath("FilmAmount")
 dialog_popup = NodePath("DialogPopup")
 dialog_label = NodePath("DialogPopup/DialogLabel")
 checklist = NodePath("HUDChecklist")
+cursor = NodePath("MouseCursor")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="NightVision" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_n7u4t")
 anchors_preset = 15
@@ -88,6 +99,23 @@ anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 offset_left = -146.0
+offset_top = -32.0
 offset_right = -146.0
+offset_bottom = -32.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="MouseCursor" type="Sprite2D" parent="."]
+texture = ExtResource("5_rltyd")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+rect = Rect2(0, 0, 960, 768)
+
+[node name="CRT" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dv7p1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

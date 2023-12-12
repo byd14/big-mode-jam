@@ -5,9 +5,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mcidg"]
 shader = ExtResource("1_cojij")
-shader_parameter/color_depth = 5
+shader_parameter/color_depth = 4
 shader_parameter/dithering = true
-shader_parameter/resolution_scale = 4
+shader_parameter/resolution_scale = 6
 
 [node name="CameraView" type="SubViewportContainer"]
 material = SubResource("ShaderMaterial_mcidg")
