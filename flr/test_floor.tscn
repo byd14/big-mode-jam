@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://btvmw33ubc3y3"]
+[gd_scene load_steps=22 format=3 uid="uid://btvmw33ubc3y3"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_rxv07"]
 [ext_resource type="TileSet" uid="uid://djooxrb3jpnav" path="res://assets/void_tileset.tres" id="2_5eaog"]
@@ -9,8 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://c6yyre5u12edt" path="res://scn/note.tscn" id="6_ukj7c"]
 [ext_resource type="PackedScene" uid="uid://cxsc08fvqpop0" path="res://scn/film_pickup.tscn" id="7_hx43m"]
 [ext_resource type="PackedScene" uid="uid://bs5u8tpxreo1l" path="res://scn/elevator_door.tscn" id="8_ij0aq"]
+[ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="10_wr6xg"]
 [ext_resource type="Texture2D" uid="uid://c84ojdyg00qn" path="res://assets/radial_gradient.tres" id="11_1flpo"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="11_12ymw"]
+[ext_resource type="PackedScene" uid="uid://cdopo83kdf8bm" path="res://assets/models/boiler.glb" id="12_44iyj"]
 [ext_resource type="Script" path="res://src/unstable_light_2d.gd" id="12_vjm0p"]
+[ext_resource type="PackedScene" uid="uid://b5bntvw8iyt4n" path="res://assets/models/bed.glb" id="13_wqys2"]
 [ext_resource type="Script" path="res://src/actions/ga_spawn_enemy.gd" id="15_xm85y"]
 [ext_resource type="Script" path="res://src/actions/ga_debug_print.gd" id="16_t0tb1"]
 [ext_resource type="PackedScene" uid="uid://b555r65cuovaq" path="res://scn/colored_door.tscn" id="17_6wacp"]
@@ -75,6 +79,24 @@ position = Vector2(512, 768)
 
 [node name="FilmPickup" parent="YSort" instance=ExtResource("7_hx43m")]
 position = Vector2(864, 704)
+
+[node name="PropSprite2D" type="Sprite2D" parent="YSort"]
+position = Vector2(464, 744)
+texture = ExtResource("10_wr6xg")
+offset = Vector2(0, -20)
+hframes = 11
+frame = 1
+script = ExtResource("11_12ymw")
+model = ExtResource("12_44iyj")
+
+[node name="PropSprite2D2" type="Sprite2D" parent="YSort"]
+position = Vector2(464, 824)
+texture = ExtResource("10_wr6xg")
+hframes = 11
+vframes = 2
+frame = 14
+script = ExtResource("11_12ymw")
+model = ExtResource("13_wqys2")
 
 [node name="Foreground" type="TileMap" parent="."]
 tile_set = ExtResource("3_u0jy3")
