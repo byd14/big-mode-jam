@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://btvmw33ubc3y3"]
+[gd_scene load_steps=17 format=3 uid="uid://btvmw33ubc3y3"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_rxv07"]
 [ext_resource type="TileSet" uid="uid://djooxrb3jpnav" path="res://assets/void_tileset.tres" id="2_5eaog"]
@@ -14,23 +14,16 @@
 [ext_resource type="Script" path="res://src/actions/ga_spawn_enemy.gd" id="15_xm85y"]
 [ext_resource type="Script" path="res://src/actions/ga_debug_print.gd" id="16_t0tb1"]
 [ext_resource type="Script" path="res://src/actions/ga_switch_visibility.gd" id="17_gr5pp"]
-[ext_resource type="PackedScene" uid="uid://g24vxn1myffg" path="res://scn/chara/shy.tscn" id="17_hxq7c"]
 [ext_resource type="Script" path="res://src/actions/ga_flip_gamedata.gd" id="18_jh7fn"]
 [ext_resource type="Script" path="res://src/actions/ga_elevator_encounter.gd" id="19_a1baq"]
 
-[node name="TestFloor" type="Node2D" node_paths=PackedStringArray("darkness", "tilemap", "floor_decals", "phil", "y_sort")]
+[node name="TestFloor" type="Node2D" node_paths=PackedStringArray("darkness_buffer", "tilemap", "floor_decals", "phil", "y_sort")]
 script = ExtResource("1_rxv07")
-darkness = NodePath("CanvasModulate")
+darkness_buffer = NodePath("BackBufferCopy")
 tilemap = NodePath("TileMap")
 floor_decals = NodePath("FloorDecals")
 phil = NodePath("YSort/Phil")
 y_sort = NodePath("YSort")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-offset_right = 1024.0
-offset_bottom = 1024.0
-color = Color(0.278431, 0.321569, 0.376471, 1)
 
 [node name="FloorDecals" type="TileMap" parent="."]
 tile_set = ExtResource("3_u0jy3")
@@ -70,31 +63,14 @@ text = "adjust focus when scoping to deal damage"
 actions = [NodePath("../../GameActions/AfterNoteSpawn")]
 
 [node name="Note3" parent="YSort" instance=ExtResource("6_ukj7c")]
-position = Vector2(736, 576)
+position = Vector2(864, 576)
 text = "hover camera and grab handle to recharge"
 
 [node name="Phil" parent="YSort" instance=ExtResource("2_sypow")]
 position = Vector2(512, 776)
 
-[node name="CameraRegion" parent="." node_paths=PackedStringArray("enter_actions") instance=ExtResource("5_oig44")]
-position = Vector2(511, 802)
-width = 10
-height = 8
-enter_actions = [NodePath("../GameActions/GAElevatorEncounter")]
-
-[node name="CameraRegion2" parent="." instance=ExtResource("5_oig44")]
+[node name="FilmPickup" parent="YSort" instance=ExtResource("7_hx43m")]
 position = Vector2(864, 704)
-width = 10
-height = 14
-
-[node name="CameraRegion3" parent="." instance=ExtResource("5_oig44")]
-position = Vector2(464, 320)
-height = 8
-
-[node name="CameraRegion4" parent="." instance=ExtResource("5_oig44")]
-position = Vector2(864, 320)
-width = 10
-height = 8
 
 [node name="UnstableLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -104,9 +80,38 @@ texture_scale = 4.6
 script = ExtResource("12_vjm0p")
 maximum_distance = 828
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0, 0, 0, 1)
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+rect = Rect2(0, 0, 0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="BackBufferCopy"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0313726, 0.0392157, 0.0588235, 1)
+
+[node name="Cameras" type="Node2D" parent="."]
+
+[node name="CameraRegion" parent="Cameras" node_paths=PackedStringArray("enter_actions") instance=ExtResource("5_oig44")]
+position = Vector2(511, 802)
+width = 10
+height = 8
+enter_actions = [NodePath("../../GameActions/GAElevatorEncounter")]
+
+[node name="CameraRegion2" parent="Cameras" instance=ExtResource("5_oig44")]
+position = Vector2(864, 704)
+width = 10
+height = 14
+
+[node name="CameraRegion3" parent="Cameras" instance=ExtResource("5_oig44")]
+position = Vector2(464, 320)
+height = 8
+
+[node name="CameraRegion4" parent="Cameras" instance=ExtResource("5_oig44")]
+position = Vector2(864, 320)
+width = 10
+height = 8
 
 [node name="GameActions" type="Node" parent="."]
 
@@ -130,9 +135,3 @@ keys = Array[String](["elevator_power"])
 [node name="GAElevatorEncounter" type="Node" parent="GameActions"]
 script = ExtResource("19_a1baq")
 position = Vector2(512, 816)
-
-[node name="FilmPickup" parent="." instance=ExtResource("7_hx43m")]
-position = Vector2(864, 704)
-
-[node name="Shy" parent="." instance=ExtResource("17_hxq7c")]
-position = Vector2(528, 872)

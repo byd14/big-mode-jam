@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs08rfgetvnit"]
+
+[ext_resource type="Texture2D" uid="uid://cf85bwc8iqwro" path="res://icon.svg" id="1_a6e2b"]
+[ext_resource type="Shader" path="res://src/shaders/mask.gdshader" id="2_1agep"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnt8j"]
+shader = ExtResource("2_1agep")
+shader_parameter/alpha = 1.0
+
+[sub_resource type="Gradient" id="Gradient_car6e"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b73pp"]
+gradient = SubResource("Gradient_car6e")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(154, 115)
+texture = ExtResource("1_a6e2b")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+rect = Rect2(0, 0, 960, 768)
+
+[node name="ColorRect" type="ColorRect" parent="BackBufferCopy"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackBufferCopy"]
+material = SubResource("ShaderMaterial_jnt8j")
+position = Vector2(138, 234)
+scale = Vector2(4, 4)
+texture = SubResource("GradientTexture2D_b73pp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BackBufferCopy"]
+material = SubResource("ShaderMaterial_jnt8j")
+position = Vector2(227, 165)
+scale = Vector2(4, 4)
+texture = SubResource("GradientTexture2D_b73pp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(279, 191)
+zoom = Vector2(3, 3)

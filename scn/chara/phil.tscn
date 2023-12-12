@@ -375,7 +375,7 @@ step_sounds = Array[AudioStream]([ExtResource("2_npw2l"), ExtResource("3_8hdai")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8mohf")
-animation = &"run_side"
+animation = &"idle"
 centered = false
 offset = Vector2(-16, -32)
 
@@ -418,5 +418,4 @@ autoplay = true
 [node name="SFXStep" type="AudioStreamPlayer" parent="."]
 volume_db = -22.0
 
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="CameraHitbox" to="." method="_on_camera_hitbox_area_entered"]

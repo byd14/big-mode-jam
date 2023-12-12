@@ -3,7 +3,7 @@ class_name Floor2D extends Node2D
 const GHOST_SCENE := preload("res://scn/chara/ghost.tscn")
 const SHY_SCENE := preload("res://scn/chara/shy.tscn")
 
-@export var darkness : CanvasModulate
+@export var darkness_buffer : BackBufferCopy
 @export var tilemap : TileMap
 @export var floor_decals : TileMap
 @export var phil : Phil
@@ -29,6 +29,8 @@ func _ready():
 	Observer.hud_scene = Observer.GAMEPLAY_HUD.instantiate()
 	Observer.phil = phil
 
+	darkness_buffer.rect = Rect2(Vector2.ZERO, tilemap.get_used_rect().size * tilemap.cell_quadrant_size)
+
 	get_tree().root.call_deferred("add_child", Observer.hud_scene)
 
 	Observer.photobooth = Observer.camera_scene.get_node("SubViewport/Photobooth")
@@ -53,8 +55,6 @@ func _ready():
 	var floor_decals_3d := Observer.photobooth.floor_decals
 	for cell in floor_decals.get_used_cells(0):
 		floor_decals_3d.set_cell(0, cell, floor_decals.get_cell_source_id(0, cell), floor_decals.get_cell_atlas_coords(0, cell))
-
-	darkness.visible = true
 
 	Observer.floor_is_ready = true
 	Observer.floor_ready.emit()

@@ -21,9 +21,9 @@ size = Vector2(20, 18)
 [sub_resource type="CircleShape2D" id="CircleShape2D_v338s"]
 radius = 14.0
 
-[node name="TestFloor" type="Node2D" node_paths=PackedStringArray("darkness", "tilemap", "floor_decals", "phil", "y_sort", "start_region")]
+[node name="TestFloor" type="Node2D" node_paths=PackedStringArray("darkness_buffer", "tilemap", "floor_decals", "phil", "y_sort", "start_region")]
 script = ExtResource("1_wsmm0")
-darkness = NodePath("CanvasModulate")
+darkness_buffer = NodePath("BackBufferCopy")
 tilemap = NodePath("TileMap")
 floor_decals = NodePath("FloorDecals")
 phil = NodePath("YSort/Phil")
@@ -172,6 +172,13 @@ height = 9
 position = Vector2(1216, 640)
 width = 10
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0, 0, 0, 1)
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+rect = Rect2(0, 0, 0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="BackBufferCopy"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0313726, 0.0392157, 0.0588235, 1)

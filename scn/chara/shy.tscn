@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://g24vxn1myffg"]
+[gd_scene load_steps=28 format=3 uid="uid://g24vxn1myffg"]
 
 [ext_resource type="Script" path="res://scn/chara/shy.gd" id="1_ksytj"]
 [ext_resource type="Shader" path="res://src/shaders/box_blur.gdshader" id="2_hb054"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://src/photo_sensative.gd" id="5_0ciw8"]
 [ext_resource type="AudioStream" uid="uid://dvl1u706k86jd" path="res://assets/audio/shy_scream2.wav" id="6_hoebi"]
 [ext_resource type="Texture2D" uid="uid://2a10gk7n86ne" path="res://assets/shy.png" id="7_bpsqg"]
-[ext_resource type="Texture2D" uid="uid://c84ojdyg00qn" path="res://assets/radial_gradient.tres" id="8_6ykbx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xlqlj"]
 shader = ExtResource("2_hb054")
@@ -200,10 +199,6 @@ stream = ExtResource("6_hoebi")
 visible = false
 sprite_frames = SubResource("SpriteFrames_8e60n")
 animation = &"scream"
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-texture = ExtResource("8_6ykbx")
-texture_scale = 3.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

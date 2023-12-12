@@ -78,7 +78,7 @@ func delete_nodes():
 
 func save_game():
 	var file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	file.store_var({"film" : phil.film, "battery" : phil.battery, "deleted_nodes" : deleted_nodes, "goals" : completed_goals})
+	file.store_var({"film" : phil.film, "deleted_nodes" : deleted_nodes, "goals" : completed_goals})
 
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
@@ -90,4 +90,3 @@ func load_game():
 	deleted_nodes = save_data["deleted_nodes"]
 	completed_goals = save_data["goals"]
 	phil.film = save_data["film"]
-	phil.battery = save_data["battery"]

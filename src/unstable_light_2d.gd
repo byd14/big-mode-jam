@@ -1,11 +1,25 @@
 class_name UnstableLight2D extends PointLight2D
 
+const MASK_SHADER := preload("res://src/shaders/mask.gdshader")
+const RADIAL_MASK := preload("res://assets/radial_gradient_alpha.tres")
+
 @export var base_flicker := 0.989
 @export var maximum_distance := 180
 
+var mask : Sprite2D
 var normalized_distance := 1.0
 
+func _ready():
+	visible = false
+	if Observer.floor_is_ready:
+		create_mask()
+	else: 
+		await Observer.floor_ready
+		create_mask()
+
 func _physics_process(_delta):
+	mask.global_position = global_position
+	mask.visible = enabled
 	var closest := INF
 	for node in get_tree().get_nodes_in_group(Observer.GROUP_DANGER):
 		var distance := (node as Node2D).global_position.distance_to(global_position)
@@ -17,3 +31,14 @@ func _physics_process(_delta):
 		normalized_distance = 1
 
 	enabled = randf() < base_flicker - (1 - normalized_distance) * 0.45
+
+func create_mask():
+	mask = Sprite2D.new()
+	mask.global_position = global_position
+	mask.texture = RADIAL_MASK
+	mask.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	mask.scale.x = texture_scale
+	mask.scale.y = texture_scale
+	mask.material = ShaderMaterial.new()
+	(mask.material as ShaderMaterial).shader = MASK_SHADER
+	Observer.floor_scene.darkness_buffer.add_child(mask)
