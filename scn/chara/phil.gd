@@ -172,3 +172,7 @@ func animation_state():
 			else:
 				anim += "up" if input.y < 0 else "down"
 	sprite.play(anim)
+
+func _on_animated_sprite_2d_frame_changed():
+#	if sprite.animation == ""
+	pass # Replace with function body.
