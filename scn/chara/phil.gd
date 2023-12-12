@@ -77,6 +77,10 @@ func _physics_process(_delta):
 
 
 func switch_state(new_state : Callable):
+	if new_state == dialog_state:
+		hud_active += 1
+	elif state == dialog_state:
+		hud_active -= 1
 	velocity_component.stop()
 	sprint = false
 	state = new_state
