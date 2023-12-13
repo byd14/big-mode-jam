@@ -37,7 +37,7 @@ shape = SubResource("RectangleShape2D_d2yvr")
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_jauo5")
-text = "out of power"
+dialog = false
 interaction_scene = NodePath("../ElevatorPanelInteraction")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]

@@ -44,7 +44,7 @@ func gather_input():
 			if Input.is_action_just_pressed("interact"):
 				for area in interact_area.get_overlapping_areas():
 					if area is InteractableArea2D:
-						if area.dialog:
+						if area.interaction_scene:
 							switch_state(dialog_state)
 						area.on_interact()
 						break

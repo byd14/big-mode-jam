@@ -27,8 +27,9 @@ func _physics_process(_delta):
 	else:
 		cursor.texture = CROSSHAIR
 	stamina_bar.value = phil.stamina
-	cursor.position = get_viewport().get_mouse_position()
+	cursor.position = get_viewport().get_mouse_position().clamp(Vector2.ZERO, vision_overlay.size)
 	hud_notification.modulate.a = lerpf(hud_notification.modulate.a, 0, 0.05)
+	dialog_popup.modulate.a = lerpf(dialog_popup.modulate.a, 0, 0.05)
 
 func on_vision_switched(new_vision : bool):
 	vision_overlay.visible = new_vision

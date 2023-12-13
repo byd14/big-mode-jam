@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://b555r65cuovaq"]
+
+[ext_resource type="Script" path="res://scn/props/colored_door.gd" id="1_36vvg"]
+[ext_resource type="Texture2D" uid="uid://c47u0lfl3il2p" path="res://assets/doors_new.png" id="2_e0ifj"]
+[ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="3_50fxa"]
+[ext_resource type="AudioStream" uid="uid://wkj8q6lsj2d3" path="res://assets/audio/door_close.wav" id="4_mf47b"]
+[ext_resource type="AudioStream" uid="uid://biptn2y73kmlh" path="res://assets/audio/door_open.wav" id="5_j256w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ceby"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v8tb"]
+size = Vector2(15, 95.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cql0a"]
+radius = 25.02
+
+[node name="ColoredDoor" type="StaticBody2D" node_paths=PackedStringArray("interactable", "sprite", "door_collision", "sfx_closed", "sfx_open")]
+script = ExtResource("1_36vvg")
+interactable = NodePath("InteractableArea2D")
+sprite = NodePath("Sprite2D")
+door_collision = NodePath("CollisionShape2D")
+sfx_closed = NodePath("SFXClosed")
+sfx_open = NodePath("SFXOpen")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("2_e0ifj")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_1ceby")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-24.5, -48)
+shape = SubResource("RectangleShape2D_7v8tb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(24.5, -48)
+shape = SubResource("RectangleShape2D_7v8tb")
+
+[node name="InteractableArea2D" type="Area2D" parent="."]
+position = Vector2(0, -9)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_50fxa")
+text = "door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
+shape = SubResource("CircleShape2D_cql0a")
+
+[node name="SFXClosed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mf47b")
+volume_db = -9.0
+
+[node name="SFXOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_j256w")
+volume_db = -3.0

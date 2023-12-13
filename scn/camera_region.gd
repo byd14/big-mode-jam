@@ -6,8 +6,6 @@ class_name CameraRegion extends Area2D
 @export var collision_shape : CollisionShape2D
 @export var camera : Camera2D
 
-@export var enter_actions : Array[GameAction] = [] 
-
 var phil : Phil
 
 func _ready():
@@ -39,5 +37,3 @@ func _on_body_entered(body):
 		camera.enabled = true
 		phil = body
 		Observer.current_region = self
-		for action in enter_actions:
-			action.activate()

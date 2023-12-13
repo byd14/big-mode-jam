@@ -20,13 +20,15 @@ var current_region : CameraRegion
 var current_interaction : Control
 var floor_is_ready := false
 
-var game_data : Dictionary = {"elevator_power" : true, "elevator_encounter" : true}
+var tutorial_competed := false
+var keys : Array = ["RED"]
+var doors_opened : Array
 var completed_goals : Array
 var deleted_nodes : Array
 
-
 func create_dialog(text : String):
-	hud_scene.dialog_popup.visible = true
+	# hud_scene.dialog_popup.visible = true
+	hud_scene.dialog_popup.modulate.a = 120
 	hud_scene.dialog_label.text = text
 
 func create_interaction(scene : Control):
@@ -34,7 +36,7 @@ func create_interaction(scene : Control):
 	current_interaction = scene
 
 func cancel_interaction():
-	hud_scene.dialog_popup.visible = false
+	# hud_scene.dialog_popup.visible = false
 	if current_interaction != null:
 		hud_scene.remove_child(current_interaction)
 		current_interaction = null
@@ -78,7 +80,14 @@ func delete_nodes():
 
 func save_game():
 	var file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	file.store_var({"film" : phil.film, "deleted_nodes" : deleted_nodes, "goals" : completed_goals})
+	file.store_var({
+		"film" : phil.film,
+		"deleted_nodes" : deleted_nodes,
+		"goals" : completed_goals,
+		"keys" : keys,
+		"doors" : doors_opened,
+		"tutorial" : tutorial_competed	
+	})
 
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
@@ -87,6 +96,9 @@ func load_game():
 	var file = FileAccess.open("user://savegame.save", FileAccess.READ)
 	var save_data = file.get_var()
 
+	phil.film = save_data["film"]
 	deleted_nodes = save_data["deleted_nodes"]
 	completed_goals = save_data["goals"]
-	phil.film = save_data["film"]
+	keys = save_data["keys"]
+	doors_opened = save_data["doors"]
+	tutorial_competed = save_data["tutorial"]

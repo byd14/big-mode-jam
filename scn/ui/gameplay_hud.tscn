@@ -69,7 +69,6 @@ text = "notification"
 uppercase = true
 
 [node name="DialogPopup" type="ColorRect" parent="."]
-visible = false
 custom_minimum_size = Vector2(64, 0)
 anchors_preset = 7
 anchor_left = 0.5
@@ -82,7 +81,7 @@ offset_right = 197.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.0784314, 0.0784314, 0.0784314, 0.235294)
+color = Color(0.0313726, 0.0588235, 0.0431373, 1)
 
 [node name="DialogLabel" type="Label" parent="DialogPopup"]
 layout_mode = 1

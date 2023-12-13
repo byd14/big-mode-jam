@@ -7,10 +7,10 @@ func _ready():
 	pressed.connect(on_pressed)
 
 func on_pressed():
-	if !Observer.game_data.has("elevator_power") or Observer.game_data["elevator_power"] == false:
-		return
+	if Observer.floor_scene.scene_file_path == "res://flr/entry_floor.tscn":
+		Observer.tutorial_competed = true
 	match floor_number:
 		1:
-			Observer.set_level(load("res://flr/test_floor.tscn"))
+			Observer.set_level(load("res://flr/entry_floor.tscn"))
 		2:
 			Observer.set_level(load("res://flr/floor_1.tscn"))
