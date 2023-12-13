@@ -8,8 +8,7 @@ extends Area2D
 
 func _on_area_entered(area):
 	if area.is_in_group("interact_area"):
-		print(area)
-		
+
 		var reverb := AudioServer.get_bus_effect(1, 0)
 		reverb.wet = reverb_wet
 		reverb.room_size = reverb_size
