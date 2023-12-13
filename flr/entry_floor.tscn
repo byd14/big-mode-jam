@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dt7kjgrfjcys7"]
+[gd_scene load_steps=17 format=3 uid="uid://hqbw5j3dyr33"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_ermai"]
 [ext_resource type="TileSet" uid="uid://c3tqtciyf2m20" path="res://assets/hotel_tileset.tres" id="2_37vqc"]
@@ -7,10 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://bs5u8tpxreo1l" path="res://scn/elevator_door.tscn" id="5_wi8gp"]
 [ext_resource type="PackedScene" uid="uid://b555r65cuovaq" path="res://scn/props/colored_door.tscn" id="6_yxr00"]
 [ext_resource type="PackedScene" uid="uid://dh5pbml8vpunq" path="res://scn/chara/phil.tscn" id="8_an061"]
-[ext_resource type="PackedScene" uid="uid://b1pjqr1h6em68" path="res://scn/key_pickup.tscn" id="11_qt26b"]
+[ext_resource type="PackedScene" path="res://scn/key_pickup.tscn" id="11_qt26b"]
+[ext_resource type="Script" path="res://scn/reverb_region.gd" id="12_yrqok"]
 [ext_resource type="Texture2D" uid="uid://c84ojdyg00qn" path="res://assets/radial_gradient.tres" id="14_p5y8w"]
 [ext_resource type="Script" path="res://src/unstable_light_2d.gd" id="15_xerqs"]
 [ext_resource type="PackedScene" uid="uid://dkr5pvgsjcpth" path="res://scn/camera_region.tscn" id="16_rtors"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mbng"]
+size = Vector2(370, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqt3d"]
+size = Vector2(66, 107)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05axd"]
+size = Vector2(163, 262)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7t0q8"]
+size = Vector2(237, 264)
 
 [node name="TestFloor" type="Node2D" node_paths=PackedStringArray("darkness_buffer", "tilemap", "floor_decals", "phil", "y_sort")]
 script = ExtResource("1_ermai")
@@ -103,3 +116,63 @@ height = 8
 position = Vector2(864, 320)
 width = 10
 height = 8
+
+[node name="ReverbRegions" type="Node" parent="."]
+
+[node name="Area2D" type="Area2D" parent="ReverbRegions"]
+position = Vector2(751, 837)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_yrqok")
+reverb_wet = 0.15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReverbRegions/Area2D"]
+position = Vector2(27, -4.5)
+shape = SubResource("RectangleShape2D_8mbng")
+debug_color = Color(0.0980392, 0.647059, 0.152941, 0.419608)
+
+[node name="Area2D2" type="Area2D" parent="ReverbRegions"]
+position = Vector2(518, 910)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_yrqok")
+reverb_wet = 0.1
+reverb_size = 0.16
+reverb_delay = 30
+reverb_damping = 0.385
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReverbRegions/Area2D2"]
+position = Vector2(-6, 21)
+shape = SubResource("RectangleShape2D_eqt3d")
+debug_color = Color(0.0980392, 0.647059, 0.152941, 0.419608)
+
+[node name="Area2D3" type="Area2D" parent="ReverbRegions"]
+position = Vector2(515, 757)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_yrqok")
+reverb_size = 0.4
+reverb_damping = 0.745
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReverbRegions/Area2D3"]
+position = Vector2(13.5, 13)
+shape = SubResource("RectangleShape2D_05axd")
+debug_color = Color(0.0980392, 0.647059, 0.152941, 0.419608)
+
+[node name="Area2D4" type="Area2D" parent="ReverbRegions"]
+position = Vector2(861, 613)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_yrqok")
+reverb_size = 0.6
+reverb_delay = 125
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReverbRegions/Area2D4"]
+position = Vector2(-16.5, 24)
+shape = SubResource("RectangleShape2D_7t0q8")
+debug_color = Color(0.0980392, 0.647059, 0.152941, 0.419608)
+
+[connection signal="area_entered" from="ReverbRegions/Area2D" to="ReverbRegions/Area2D" method="_on_area_entered"]
+[connection signal="area_entered" from="ReverbRegions/Area2D2" to="ReverbRegions/Area2D2" method="_on_area_entered"]
+[connection signal="area_entered" from="ReverbRegions/Area2D3" to="ReverbRegions/Area2D3" method="_on_area_entered"]
+[connection signal="area_entered" from="ReverbRegions/Area2D4" to="ReverbRegions/Area2D4" method="_on_area_entered"]

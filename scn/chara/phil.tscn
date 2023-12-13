@@ -389,7 +389,7 @@ texture = ExtResource("14_8ikrq")
 texture_scale = 2.65
 script = ExtResource("15_hdjlg")
 
-[node name="InteractArea" type="Area2D" parent="."]
+[node name="InteractArea" type="Area2D" parent="." groups=["interact_area"]]
 collision_layer = 2
 collision_mask = 2
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://g24vxn1myffg"]
+[gd_scene load_steps=31 format=3 uid="uid://g24vxn1myffg"]
 
 [ext_resource type="Script" path="res://scn/chara/shy.gd" id="1_ksytj"]
 [ext_resource type="Shader" path="res://src/shaders/box_blur.gdshader" id="2_hb054"]
@@ -6,7 +6,10 @@
 [ext_resource type="Script" path="res://src/velocity_component.gd" id="4_bt16t"]
 [ext_resource type="Script" path="res://src/photo_sensative.gd" id="5_0ciw8"]
 [ext_resource type="AudioStream" uid="uid://dvl1u706k86jd" path="res://assets/audio/shy_scream2.wav" id="6_hoebi"]
+[ext_resource type="Script" path="res://scn/chara/sporadic_sound_emitter.gd" id="7_8tp22"]
 [ext_resource type="Texture2D" uid="uid://2a10gk7n86ne" path="res://assets/shy.png" id="7_bpsqg"]
+[ext_resource type="AudioStream" uid="uid://du2fls40vpj21" path="res://assets/audio/shy_idle_1.wav" id="8_mv1a0"]
+[ext_resource type="AudioStream" uid="uid://nb632ad5dafa" path="res://assets/audio/shy_idle_2.wav" id="9_63lva"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xlqlj"]
 shader = ExtResource("2_hb054")
@@ -150,7 +153,7 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="Shy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "animation", "hitbox", "sfx_scream") groups=["danger", "photo"]]
+[node name="Shy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "animation", "hitbox") groups=["danger", "photo"]]
 collision_layer = 0
 collision_mask = 0
 motion_mode = 1
@@ -159,7 +162,6 @@ sprite = NodePath("GhostSprite2D")
 velocity_component = NodePath("VelocityComponent")
 animation = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox")
-sfx_scream = NodePath("SFXScream")
 
 [node name="GhostSprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("animation")]
 material = SubResource("ShaderMaterial_xlqlj")
@@ -192,9 +194,16 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_lqhxn")
 
-[node name="SFXScream" type="AudioStreamPlayer" parent="."]
+[node name="SFXScream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_hoebi")
+attenuation = 0.00306478
 bus = &"Diegetic"
+
+[node name="SFXIdle" type="AudioStreamPlayer2D" parent="."]
+volume_db = -8.0
+bus = &"Diegetic"
+script = ExtResource("7_8tp22")
+sounds = Array[AudioStream]([ExtResource("8_mv1a0"), ExtResource("9_63lva")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false

@@ -9,7 +9,7 @@ const WALK_ATTACK := 0.1
 @export var light : PointLight2D
 @export var animation : AnimatedSprite2D
 @export var hitbox : Area2D
-@export var sfx_attack : AudioStreamPlayer
+@export var sfx_attack : AudioStreamPlayer2D
 
 var state := normal_state
 var hp := 2

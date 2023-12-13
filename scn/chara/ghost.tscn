@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://41qlrkskqwrd"]
+[gd_scene load_steps=37 format=3 uid="uid://41qlrkskqwrd"]
 
 [ext_resource type="Script" path="res://scn/chara/ghost.gd" id="1_8reug"]
 [ext_resource type="Shader" path="res://src/shaders/box_blur.gdshader" id="2_nhods"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://src/photo_sensative.gd" id="6_q1b2v"]
 [ext_resource type="Texture2D" uid="uid://ci1e04qchvlj3" path="res://assets/ghost.png" id="7_kcb2h"]
 [ext_resource type="AudioStream" uid="uid://b2wdqdfv6nq0v" path="res://assets/audio/ghost_attack.wav" id="8_5ysw7"]
+[ext_resource type="Script" path="res://scn/chara/sporadic_sound_emitter.gd" id="9_ic612"]
+[ext_resource type="AudioStream" uid="uid://deqjn0h75xruv" path="res://assets/audio/ghost_idle_1.wav" id="10_i2i0b"]
+[ext_resource type="AudioStream" uid="uid://dupdsjya5ae8p" path="res://assets/audio/ghost_idle_2.wav" id="11_p6524"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xlqlj"]
 shader = ExtResource("2_nhods")
@@ -240,10 +243,16 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_yw0at")
 animation = &"attack"
 
-[node name="SFXAttack" type="AudioStreamPlayer" parent="."]
+[node name="SFXAttack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_5ysw7")
 volume_db = -5.0
 bus = &"Diegetic"
+
+[node name="SFXIdle" type="AudioStreamPlayer2D" parent="."]
+volume_db = -8.0
+bus = &"Diegetic"
+script = ExtResource("9_ic612")
+sounds = Array[AudioStream]([ExtResource("10_i2i0b"), ExtResource("11_p6524")])
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

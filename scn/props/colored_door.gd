@@ -9,9 +9,9 @@ const BLUE_DOOR_3D := preload("res://assets/models/door_b.glb")
 @export var interactable : InteractableArea2D
 @export var sprite : Sprite2D
 @export var door_collision : CollisionShape2D
-@export var sfx_closed : AudioStreamPlayer
-@export var sfx_open : AudioStreamPlayer
 @export var door_3d : PropSprite2D
+@export var sfx_closed : AudioStreamPlayer2D
+@export var sfx_open : AudioStreamPlayer2D
 
 var closed := true
 

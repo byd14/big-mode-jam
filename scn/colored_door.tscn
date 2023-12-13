@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd60xnib837kq"]
+
+[ext_resource type="Texture2D" uid="uid://djlbe0wamtxho" path="res://assets/door_closed.png" id="1_2o31n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ceby"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v8tb"]
+size = Vector2(16, 32)
+
+[node name="ColoredDoor" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_2o31n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_1ceby")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-24, -16.5)
+shape = SubResource("RectangleShape2D_7v8tb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(24, -16)
+shape = SubResource("RectangleShape2D_7v8tb")

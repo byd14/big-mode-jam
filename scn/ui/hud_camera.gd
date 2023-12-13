@@ -11,6 +11,7 @@ class_name HUDCamera extends Control
 @export var sfx_vision_on : AudioStreamPlayer
 @export var sfx_vision_off : AudioStreamPlayer
 @export var sfx_crank : AudioStreamPlayer
+@export var sfx_beep : AudioStreamPlayer
 @export var sfx_appear : AudioStreamPlayer
 @export var sfx_disappear : AudioStreamPlayer
 
@@ -24,6 +25,7 @@ var mouse_previous := Vector2()
 var toggles : Array[CheckButton]
 var phil : Phil
 var sfx_crank_delay := 0.1
+var sfx_beep_played := true
 
 func _ready():
 	Observer.vision_switched.connect(on_vision_change)
@@ -55,11 +57,16 @@ func _physics_process(_delta):
 				if angle_difference > 0:
 					if phil.battery < 99:
 						handle_durability = maxf(0, handle_durability - pow(angle_difference / PI, 1.5) / 0.05)
+						sfx_beep_played = false
 					sfx_crank_delay -= angle_difference
 					if sfx_crank_delay <= 0:
 						sfx_crank.pitch_scale = 1 + (phil.battery / 100) * 0.2
 						sfx_crank.play()
 						sfx_crank_delay = 0.8
+						if phil.battery > 99 and sfx_beep_played == false:
+							sfx_beep.play()
+							sfx_beep_played = true
+							
 		else:
 			if phil.battery > 1:
 				handle_sprite.rotate(-PI / 420)
