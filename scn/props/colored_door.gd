@@ -7,8 +7,8 @@ const BLUE_DOOR := preload("res://assets/doors_new_blue.png")
 @export var interactable : InteractableArea2D
 @export var sprite : Sprite2D
 @export var door_collision : CollisionShape2D
-@export var sfx_closed : AudioStreamPlayer
-@export var sfx_open : AudioStreamPlayer
+@export var sfx_closed : AudioStreamPlayer2D
+@export var sfx_open : AudioStreamPlayer2D
 
 var closed := true
 

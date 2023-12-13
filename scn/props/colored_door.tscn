@@ -50,10 +50,12 @@ text = "door"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
 shape = SubResource("CircleShape2D_cql0a")
 
-[node name="SFXClosed" type="AudioStreamPlayer" parent="."]
+[node name="SFXClosed" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_mf47b")
 volume_db = -9.0
+bus = &"Diegetic"
 
-[node name="SFXOpen" type="AudioStreamPlayer" parent="."]
+[node name="SFXOpen" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_j256w")
 volume_db = -3.0
+bus = &"Diegetic"

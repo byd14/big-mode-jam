@@ -85,25 +85,25 @@ offset = Vector2(38, -34)
 stream = ExtResource("13_8yqhk")
 
 [node name="HUDRepairButton" parent="CameraBody" instance=ExtResource("7_b8uh0")]
-offset_left = 115.0
-offset_top = 5.0
-offset_right = 180.0
-offset_bottom = 34.0
+offset_left = 112.0
+offset_top = 8.0
+offset_right = 177.0
+offset_bottom = 37.0
 theme = ExtResource("8_y21id")
 
 [node name="HUDRepairButton2" parent="CameraBody" node_paths=PackedStringArray("sfx_switch") instance=ExtResource("7_b8uh0")]
-offset_left = 115.0
-offset_top = 53.0
-offset_right = 180.0
-offset_bottom = 82.0
+offset_left = 112.0
+offset_top = 56.0
+offset_right = 177.0
+offset_bottom = 85.0
 theme = ExtResource("8_y21id")
 sfx_switch = NodePath("../HUDRepairButton/SFXSwitch")
 
 [node name="HUDRepairButton3" parent="CameraBody" node_paths=PackedStringArray("sfx_switch") instance=ExtResource("7_b8uh0")]
-offset_left = 115.0
-offset_top = 101.0
-offset_right = 180.0
-offset_bottom = 130.0
+offset_left = 112.0
+offset_top = 104.0
+offset_right = 177.0
+offset_bottom = 133.0
 theme = ExtResource("8_y21id")
 sfx_switch = NodePath("../HUDRepairButton/SFXSwitch")
 
