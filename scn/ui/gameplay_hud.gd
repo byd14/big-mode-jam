@@ -6,7 +6,7 @@ const HAND := preload("res://assets/ui/hand_cursor.png")
 @export var stamina_bar : ProgressBar
 @export var vision_overlay : ColorRect
 @export var dialog_popup : Control
-@export var dialog_label : Label
+@export var dialog_label : RichTextLabel
 @export var checklist : HUDChecklist
 @export var cursor : Sprite2D
 @export var hud_notification : Label

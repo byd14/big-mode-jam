@@ -64,9 +64,7 @@ func _ready():
 		start_region.body_exited.connect(start_floor)
 
 	if scene_file_path == "res://flr/entry_floor.tscn":
-		print("asddd")
 		if Observer.tutorial_competed:
-			print("123133")
 			phil.position.y -= 256
 
 	set_physics_process(false)

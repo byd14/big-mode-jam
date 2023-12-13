@@ -14,8 +14,10 @@ const BLUE_DOOR_3D := preload("res://assets/models/door_b.glb")
 @export var sfx_open : AudioStreamPlayer2D
 
 var closed := true
+var color_start : String
 
 func _ready():
+	color_start = "[color=" + color.to_lower() + "]"
 	if color != "RED":
 		sprite.texture = GREEN_DOOR if color == "GREEN" else BLUE_DOOR
 		door_3d.model = GREEN_DOOR_3D if color == "GREEN" else BLUE_DOOR_3D
@@ -27,15 +29,12 @@ func _ready():
 				if Observer.keys.has(color):
 					Observer.doors_opened.push_back(color)
 					sfx_open.play()
-					interactable.text = "door " + color + " opened"
+					# interactable.text = "a " + color_start + color + "[/color] door is opened"
+					interactable.text = ""
 					open()
 				else:
-					interactable.text = "need " + color + " key to open"
+					interactable.text = "need a " + color_start + color + "[/color] key to open"
 					sfx_closed.play()
-
-	await door_3d.ready
-	for child in door_3d.copy_3d.get_children():
-		print(child)
 
 func open():
 	interactable.queue_free()

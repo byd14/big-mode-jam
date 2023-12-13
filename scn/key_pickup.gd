@@ -8,16 +8,19 @@ const BLUE_KEY := preload("res://assets/key_blue.png")
 @export var interactable : InteractableArea2D
 @export var sprite : Sprite2D
 
+var color_start : String
+
 func _ready():
 	if Observer.keys.has(color):
 		queue_free()
 		return
 
+	color_start = "[color=" + color.to_lower() + "]"
 	if color != "RED":
 		sprite.texture = GREEN_KEY if color == "GREEN" else BLUE_KEY
 
 	interactable.on_interact_callback = func():
 		AudioManager.play(sound, -9)
 		Observer.keys.push_back(color)
-		interactable.text = "acquired " + color + " key"
+		interactable.text = "acquired " + color_start + color + "[/color] key"
 		queue_free()

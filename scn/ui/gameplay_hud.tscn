@@ -23,7 +23,7 @@ script = ExtResource("1_fcgru")
 stamina_bar = NodePath("ProgressBar")
 vision_overlay = NodePath("NightVision")
 dialog_popup = NodePath("DialogPopup")
-dialog_label = NodePath("DialogPopup/DialogLabel")
+dialog_label = NodePath("DialogPopup/RichTextLabel")
 checklist = NodePath("HUDChecklist")
 cursor = NodePath("MouseCursor")
 hud_notification = NodePath("Notification")
@@ -76,24 +76,26 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -197.0
-offset_top = -77.0
+offset_top = -141.0
 offset_right = 197.0
-offset_bottom = -16.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-color = Color(0.0313726, 0.0588235, 0.0431373, 1)
+color = Color(0.0313726, 0.0588235, 0.0431373, 0)
 
-[node name="DialogLabel" type="Label" parent="DialogPopup"]
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogPopup"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+bbcode_enabled = true
+text = "	
+[center]{text}[/center]"
+scroll_active = false
 
 [node name="HUDChecklist" parent="." instance=ExtResource("4_irael")]
 anchors_preset = 3

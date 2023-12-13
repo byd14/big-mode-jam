@@ -27,16 +27,14 @@ var completed_goals : Array
 var deleted_nodes : Array
 
 func create_dialog(text : String):
-	# hud_scene.dialog_popup.visible = true
 	hud_scene.dialog_popup.modulate.a = 120
-	hud_scene.dialog_label.text = text
+	hud_scene.dialog_label.text = "[center]" + text
 
 func create_interaction(scene : Control):
 	hud_scene.add_child(scene)
 	current_interaction = scene
 
 func cancel_interaction():
-	# hud_scene.dialog_popup.visible = false
 	if current_interaction != null:
 		hud_scene.remove_child(current_interaction)
 		current_interaction = null
