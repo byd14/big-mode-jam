@@ -1,17 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://mifubuocmgcn"]
+[gd_scene load_steps=17 format=3 uid="uid://mifubuocmgcn"]
 
 [ext_resource type="Script" path="res://scn/ui/hud_camera.gd" id="1_pgm6k"]
 [ext_resource type="Texture2D" uid="uid://dfwg84llnanc3" path="res://assets/ui/camera-bodyI.png" id="2_j4ulj"]
 [ext_resource type="AudioStream" uid="uid://bpxrwhrp4kg7p" path="res://assets/audio/break_sfx.mp3" id="2_wh4s6"]
 [ext_resource type="Texture2D" uid="uid://bnkcpb6jvoc2c" path="res://assets/ui/battery-indicator.png" id="3_0evm8"]
-[ext_resource type="AudioStream" uid="uid://dd2jq7m28fh1q" path="res://assets/audio/change_camera_mode_long.wav" id="3_4hkg2"]
-[ext_resource type="AudioStream" uid="uid://b4klck073x6kc" path="res://assets/audio/change_camera_mode_simple.wav" id="4_efqy6"]
 [ext_resource type="Texture2D" uid="uid://w1hs35be0l1v" path="res://assets/ui/camera-diaI.png" id="6_awl48"]
 [ext_resource type="PackedScene" uid="uid://nvqqig5qp78s" path="res://scn/ui/hud_repair_button.tscn" id="7_b8uh0"]
 [ext_resource type="Texture2D" uid="uid://cmmktt21663vp" path="res://assets/ui/camera-handIe.png" id="7_e11ch"]
 [ext_resource type="Theme" uid="uid://ddrbhgvy6r5sy" path="res://assets/ui_theme.tres" id="8_y21id"]
+[ext_resource type="AudioStream" uid="uid://cj6b6wmxb4ryq" path="res://assets/audio/camera_equip.wav" id="10_d4csw"]
+[ext_resource type="AudioStream" uid="uid://c50qc677435hj" path="res://assets/audio/camera_unequip.wav" id="11_hrs23"]
 [ext_resource type="AudioStream" uid="uid://cjg8kk0y6565f" path="res://assets/audio/crank_tick.wav" id="11_oneg6"]
 [ext_resource type="AudioStream" uid="uid://cot3fbh2mrpjs" path="res://assets/audio/crank_ui_appear.wav" id="12_6wt0a"]
+[ext_resource type="AudioStream" uid="uid://3rsoqo2wxynt" path="res://assets/audio/camera_battery_beep.wav" id="13_1m42m"]
 [ext_resource type="AudioStream" uid="uid://chva6ddj46f7t" path="res://assets/audio/crank_ui_dissappear.wav" id="13_8yqhk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ks236"]
@@ -20,7 +21,7 @@ radius = 104.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_simty"]
 size = Vector2(376, 269.5)
 
-[node name="HUDCamera" type="Control" node_paths=PackedStringArray("battery_status", "camera_body", "handle_sprite", "film_amount", "enter_shape", "exit_shape", "sfx_break", "sfx_vision_on", "sfx_vision_off", "sfx_crank", "sfx_appear", "sfx_disappear")]
+[node name="HUDCamera" type="Control" node_paths=PackedStringArray("battery_status", "camera_body", "handle_sprite", "film_amount", "enter_shape", "exit_shape", "sfx_break", "sfx_vision_on", "sfx_vision_off", "sfx_crank", "sfx_beep", "sfx_appear", "sfx_disappear")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,6 +39,7 @@ sfx_break = NodePath("SFXBreak")
 sfx_vision_on = NodePath("SFXOn")
 sfx_vision_off = NodePath("SFXOff")
 sfx_crank = NodePath("SFXCrank")
+sfx_beep = NodePath("SFXBeep")
 sfx_appear = NodePath("SFXAppear")
 sfx_disappear = NodePath("CameraBody/SFXDisappear")
 unfold_offset = -208.0
@@ -124,15 +126,21 @@ stream = ExtResource("2_wh4s6")
 bus = &"Diegetic"
 
 [node name="SFXOn" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_4hkg2")
+stream = ExtResource("10_d4csw")
 bus = &"UI"
 
 [node name="SFXOff" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_efqy6")
+stream = ExtResource("11_hrs23")
 bus = &"UI"
 
 [node name="SFXCrank" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_oneg6")
+volume_db = -6.0
+pitch_scale = 1.1
+bus = &"Diegetic"
+
+[node name="SFXBeep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_1m42m")
 volume_db = -6.0
 pitch_scale = 1.1
 bus = &"Diegetic"

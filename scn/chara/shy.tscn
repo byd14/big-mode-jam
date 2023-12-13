@@ -153,7 +153,7 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="Shy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "animation", "hitbox", "sfx_scream") groups=["danger", "photo"]]
+[node name="Shy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "animation", "hitbox") groups=["danger", "photo"]]
 collision_layer = 0
 collision_mask = 0
 motion_mode = 1
@@ -162,7 +162,6 @@ sprite = NodePath("GhostSprite2D")
 velocity_component = NodePath("VelocityComponent")
 animation = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox")
-sfx_scream = NodePath("")
 
 [node name="GhostSprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("animation")]
 material = SubResource("ShaderMaterial_xlqlj")
@@ -204,8 +203,6 @@ bus = &"Diegetic"
 volume_db = -8.0
 bus = &"Diegetic"
 script = ExtResource("7_8tp22")
-min_interval = 7.0
-max_interval = 25.0
 sounds = Array[AudioStream]([ExtResource("8_mv1a0"), ExtResource("9_63lva")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,7 +1,7 @@
 extends AudioStreamPlayer2D
 
-@export var min_interval := 5.0
-@export var max_interval := 15.0
+@export var min_interval := 7.0
+@export var max_interval := 25.0
 @export var sounds : Array[AudioStream]
 
 var interval
