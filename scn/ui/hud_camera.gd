@@ -71,10 +71,7 @@ func _physics_process(_delta):
 				exit_shape.set_deferred("disabled", true)
 
 		if handle_durability <= 1 and handle_durability >= 0:
-			handle_durability = -1
-			sfx_break.play(0.36)
-			for toggle in toggles:
-				toggles.pick_random().button_pressed = false
+			break_handle()
 
 	if phil.battery <= 50:
 		battery_status.frame = 0 if sin(Time.get_ticks_msec() / 100.0) > 0 else 1
@@ -95,6 +92,11 @@ func on_vision_change(vision : bool):
 	else:
 		sfx_vision_off.play()
 
+func break_handle():
+	handle_durability = -1
+	sfx_break.play(0.36)
+	for toggle in toggles:
+		toggles.pick_random().button_pressed = false
 
 func _on_mouse_trigger_mouse_entered():
 	if folded:
@@ -104,7 +106,6 @@ func _on_mouse_trigger_mouse_entered():
 	folded = false
 	enter_shape.set_deferred("disabled", true)
 	exit_shape.set_deferred("disabled", false)
-
 
 func _on_mouse_trigger_mouse_exited():
 	should_fold = true

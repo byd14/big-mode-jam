@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c41cr5qj7ns0l"
-path.s3tc="res://.godot/imported/doors_new_green.png-bf6b3409caaff949acf53ba2ed825a2f.s3tc.ctex"
+uid="uid://cfp8sqy2rpgt4"
+path.s3tc="res://.godot/imported/door_frame_texture.png-4b99ae5e2a0b7b90836da9b3207cbe81.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/doors_new_green.png"
-dest_files=["res://.godot/imported/doors_new_green.png-bf6b3409caaff949acf53ba2ed825a2f.s3tc.ctex"]
+source_file="res://assets/models/door_frame_texture.png"
+dest_files=["res://.godot/imported/door_frame_texture.png-4b99ae5e2a0b7b90836da9b3207cbe81.s3tc.ctex"]
 
 [params]
 

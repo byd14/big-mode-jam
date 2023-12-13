@@ -81,6 +81,7 @@ offset_right = 197.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 color = Color(0.0313726, 0.0588235, 0.0431373, 1)
 
 [node name="DialogLabel" type="Label" parent="DialogPopup"]
