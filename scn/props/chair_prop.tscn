@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://by7mmuca4x8qk"]
+
+[ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="1_p03rt"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_vqgd7"]
+[ext_resource type="PackedScene" uid="uid://cme5lie58bumy" path="res://assets/models/chair.glb" id="3_wbtcy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vid6"]
+radius = 7.0
+
+[node name="ChairProp" type="StaticBody2D"]
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p03rt")
+offset = Vector2(0, -8)
+hframes = 11
+vframes = 2
+frame = 2
+script = ExtResource("2_vqgd7")
+model = ExtResource("3_wbtcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0vid6")

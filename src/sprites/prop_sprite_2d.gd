@@ -10,3 +10,8 @@ func _ready():
 	copy_3d.position.x = global_position.x / 32
 	copy_3d.position.z = global_position.y / 32
 	Observer.photobooth.add_child(copy_3d)
+
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		if is_instance_valid(copy_3d):
+			copy_3d.queue_free()

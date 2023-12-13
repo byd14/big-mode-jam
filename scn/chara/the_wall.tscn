@@ -1,15 +1,87 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3i33y5rjj48h"]
+[gd_scene load_steps=13 format=3 uid="uid://b3i33y5rjj48h"]
 
+[ext_resource type="Script" path="res://scn/chara/the_wall.gd" id="1_6ialk"]
 [ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="1_t2jne"]
+[ext_resource type="Texture2D" uid="uid://citus30c54rf5" path="res://assets/wall.png" id="2_84vbi"]
+[ext_resource type="Script" path="res://src/photo_sensative.gd" id="4_2wxsg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6fjrl"]
 size = Vector2(128, 16)
 
-[node name="TheWall" type="StaticBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lfod"]
+atlas = ExtResource("2_84vbi")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq47o"]
+atlas = ExtResource("2_84vbi")
+region = Rect2(256, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwsjs"]
+atlas = ExtResource("2_84vbi")
+region = Rect2(512, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j4sk"]
+atlas = ExtResource("2_84vbi")
+region = Rect2(768, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nymk4"]
+atlas = ExtResource("2_84vbi")
+region = Rect2(1024, 0, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tg4ox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lfod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq47o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwsjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j4sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nymk4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o3vf"]
+size = Vector2(144, 32)
+
+[node name="TheWall" type="StaticBody2D" node_paths=PackedStringArray("sprite", "animation")]
+script = ExtResource("1_6ialk")
+sprite = NodePath("PlaneSprite2D")
+animation = NodePath("AnimatedSprite2D")
 
 [node name="PlaneSprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+offset = Vector2(0, -64)
 script = ExtResource("1_t2jne")
+pixel_size = 0.02
+orientation = "UP"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_6fjrl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_tg4ox")
+animation = &"idle"
+
+[node name="PhotoSensative" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_2wxsg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoSensative"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_0o3vf")
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

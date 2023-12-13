@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsv2t4wa8028q"]
+
+[ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="1_afh56"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_i22gl"]
+[ext_resource type="PackedScene" uid="uid://cmqndfihyoov4" path="res://assets/models/cooler.glb" id="3_dnie0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vid6"]
+radius = 7.0
+
+[node name="CoolerProp" type="StaticBody2D"]
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_afh56")
+offset = Vector2(0, -4)
+hframes = 11
+vframes = 2
+frame = 13
+script = ExtResource("2_i22gl")
+model = ExtResource("3_dnie0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0vid6")

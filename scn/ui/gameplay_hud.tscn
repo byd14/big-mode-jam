@@ -18,7 +18,7 @@ shader_parameter/aperture_grille_rate = 0.5
 shader_parameter/rf_switch_esque_blur = 0.55
 shader_parameter/white_noise_rate = 0.1
 
-[node name="GameplayHUD" type="CanvasLayer" node_paths=PackedStringArray("stamina_bar", "vision_overlay", "dialog_popup", "dialog_label", "checklist", "cursor", "hud_notification")]
+[node name="GameplayHUD" type="CanvasLayer" node_paths=PackedStringArray("stamina_bar", "vision_overlay", "dialog_popup", "dialog_label", "checklist", "cursor", "hud_notification", "hud_camera")]
 script = ExtResource("1_fcgru")
 stamina_bar = NodePath("ProgressBar")
 vision_overlay = NodePath("NightVision")
@@ -27,6 +27,7 @@ dialog_label = NodePath("DialogPopup/RichTextLabel")
 checklist = NodePath("HUDChecklist")
 cursor = NodePath("MouseCursor")
 hud_notification = NodePath("Notification")
+hud_camera = NodePath("HUDCamera")
 
 [node name="NightVision" type="ColorRect" parent="."]
 visible = false
@@ -92,9 +93,8 @@ anchor_bottom = 1.0
 offset_top = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
-text = "	
-[center]{text}[/center]"
 scroll_active = false
 
 [node name="HUDChecklist" parent="." instance=ExtResource("4_irael")]

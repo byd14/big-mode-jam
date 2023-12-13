@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2f78ll2e3i7w"]
+
+[ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="1_ouoa0"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_haies"]
+[ext_resource type="PackedScene" uid="uid://c1661nrh6juym" path="res://assets/models/small_crate.glb" id="3_6ra1b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vid6"]
+radius = 9.0
+
+[node name="CrateSmallProp" type="StaticBody2D"]
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ouoa0")
+offset = Vector2(0, -7)
+hframes = 11
+vframes = 2
+frame = 17
+script = ExtResource("2_haies")
+model = ExtResource("3_6ra1b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0vid6")

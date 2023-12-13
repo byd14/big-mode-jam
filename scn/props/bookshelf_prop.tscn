@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqxyurkw41075"]
+
+[ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="1_nr33p"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_m352h"]
+[ext_resource type="PackedScene" uid="uid://bfistrkmh4gto" path="res://assets/models/bookshelf.glb" id="3_yq4up"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxu32"]
+size = Vector2(28, 14)
+
+[node name="BookshelfProp" type="StaticBody2D"]
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nr33p")
+offset = Vector2(0, -26)
+hframes = 11
+frame = 4
+script = ExtResource("2_m352h")
+model = ExtResource("3_yq4up")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jxu32")

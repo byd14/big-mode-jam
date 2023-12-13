@@ -7,7 +7,7 @@ const WALK_CHASE := 0.96
 @export var velocity_component : VelocityComponent
 @export var animation : AnimatedSprite2D
 @export var hitbox : Area2D
-@export var sfx_scream : AudioStreamPlayer
+@export var sfx_scream : AudioStreamPlayer2D
 
 var state := normal_state
 var phil : Phil

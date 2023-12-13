@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://4ifxlflna8ud"]
+
+[ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="1_kk5u5"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_a35ta"]
+[ext_resource type="PackedScene" uid="uid://yat70qehyvwt" path="res://assets/models/sink.glb" id="3_eb77n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vid6"]
+radius = 9.0
+
+[node name="SinkProp" type="StaticBody2D"]
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kk5u5")
+offset = Vector2(0, -9)
+hframes = 11
+vframes = 2
+frame = 18
+script = ExtResource("2_a35ta")
+model = ExtResource("3_eb77n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0vid6")

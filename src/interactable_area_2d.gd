@@ -3,6 +3,7 @@ class_name InteractableArea2D extends Area2D
 @export var text := "yo!"
 @export var dialog := true
 @export var interaction_scene : Control
+@export var time := 120.0
 var on_interact_callback := func(): print("interaction")
 
 func _ready():
@@ -15,7 +16,7 @@ func on_interact():
 	if interaction_scene != null:
 		Observer.create_interaction(interaction_scene)
 	if dialog:
-		Observer.create_dialog(text)
+		Observer.create_dialog(text, time)
 
 func _notification(what):
 	if what == NOTIFICATION_PREDELETE and is_instance_valid(interaction_scene):

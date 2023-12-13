@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://irvn03j1ln04"]
+
+[ext_resource type="Texture2D" uid="uid://ehav33se4ilx" path="res://assets/black_door_eye.png" id="1_0pnv6"]
+[ext_resource type="Script" path="res://scn/props/black_door_eye.gd" id="1_luigl"]
+[ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="2_7gn5h"]
+
+[node name="BlackDoorEye" type="Node2D" node_paths=PackedStringArray("sprite", "blur_copy_1", "blur_copy_2")]
+script = ExtResource("1_luigl")
+sprite = NodePath("PlaneSprite2D")
+blur_copy_1 = NodePath("PlaneSprite2D/blur1")
+blur_copy_2 = NodePath("PlaneSprite2D/blur2")
+
+[node name="PlaneSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("1_0pnv6")
+offset = Vector2(0, -32)
+script = ExtResource("2_7gn5h")
+offset_3d = Vector2(0, -4)
+orientation = "UP"
+
+[node name="blur1" type="Sprite2D" parent="PlaneSprite2D"]
+texture = ExtResource("1_0pnv6")
+offset = Vector2(0, -32)
+script = ExtResource("2_7gn5h")
+offset_3d = Vector2(0, -4)
+orientation = "UP"
+
+[node name="blur2" type="Sprite2D" parent="PlaneSprite2D"]
+texture = ExtResource("1_0pnv6")
+offset = Vector2(0, -32)
+script = ExtResource("2_7gn5h")
+offset_3d = Vector2(0, -4)
+orientation = "UP"

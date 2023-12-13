@@ -26,8 +26,8 @@ var doors_opened : Array
 var completed_goals : Array
 var deleted_nodes : Array
 
-func create_dialog(text : String):
-	hud_scene.dialog_popup.modulate.a = 120
+func create_dialog(text : String, time := 120.0):
+	hud_scene.dialog_popup.modulate.a = time
 	hud_scene.dialog_label.text = "[center]" + text
 
 func create_interaction(scene : Control):

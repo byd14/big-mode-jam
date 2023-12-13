@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://nlhjc1m4yy47"]
+
+[ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="1_8x40y"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_mwy5r"]
+[ext_resource type="PackedScene" uid="uid://cggm3qlfun7gg" path="res://assets/models/trashbin.glb" id="3_kf0qa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vid6"]
+
+[node name="TrashbinProp" type="StaticBody2D"]
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8x40y")
+offset = Vector2(0, -7)
+hframes = 11
+vframes = 2
+script = ExtResource("2_mwy5r")
+model = ExtResource("3_kf0qa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0vid6")

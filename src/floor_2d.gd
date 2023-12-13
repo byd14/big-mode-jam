@@ -2,6 +2,8 @@ class_name Floor2D extends Node2D
 
 const GHOST_SCENE := preload("res://scn/chara/ghost.tscn")
 const SHY_SCENE := preload("res://scn/chara/shy.tscn")
+const EYE_SCENE := preload("res://scn/chara/eye.tscn")
+const WALL_SCENE := preload("res://scn/chara/the_wall.tscn")
 
 @export var darkness_buffer : BackBufferCopy
 @export var tilemap : TileMap
@@ -12,6 +14,7 @@ const SHY_SCENE := preload("res://scn/chara/shy.tscn")
 
 @export var ghost_count_total := 0
 @export var shy_count_total := 0
+@export var eye_count_total := 0
 
 var floor_started := false
 var ghost_count := 0
@@ -51,7 +54,6 @@ func _ready():
 		astar_grid.set_point_solid(cell)
 		empty_cells.erase(cell)
 
-
 	var floor_decals_3d := Observer.photobooth.floor_decals
 	for cell in floor_decals.get_used_cells(0):
 		floor_decals_3d.set_cell(0, cell, floor_decals.get_cell_source_id(0, cell), floor_decals.get_cell_atlas_coords(0, cell))
@@ -65,7 +67,10 @@ func _ready():
 
 	if scene_file_path == "res://flr/entry_floor.tscn":
 		if Observer.tutorial_competed:
-			phil.position.y -= 256
+			phil.position = Vector2(512, 672)
+		else:
+			phil.battery = 0
+
 
 	set_physics_process(false)
 
@@ -96,6 +101,10 @@ func start_floor(body : PhysicsBody2D):
 		spawn_ghost()
 	for shy in shy_count_total:
 		spawn_shy()
+	for eye in eye_count_total:
+		spawn_eye()
+	# for wall in wall_count_total:
+	# 	spawn_wall()
 	set_physics_process(true)
 	floor_started = true
 
@@ -114,3 +123,16 @@ func spawn_shy():
 	shy_count += 1
 	shy_spawn_timer = 60 * 48
 	print("shy")
+
+func spawn_eye():
+	var i = EYE_SCENE.instantiate()
+	i.position = get_random_empty_point()
+	y_sort.call_deferred("add_child", i)
+	print("eye")
+
+# func spawn_wall():
+# 	var i = WALL_SCENE.instantiate()
+# 	i.position = wall_points.pick_random()
+# 	wall_points.erase(i.position)
+# 	y_sort.call_deferred("add_child", i)
+# 	print("wall")

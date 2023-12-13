@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnn5lgm3s80uy"]
+
+[ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="1_favgw"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_4874h"]
+[ext_resource type="PackedScene" uid="uid://uq4ygbn0vf2e" path="res://assets/models/sofa.glb" id="3_f7ygw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l51ec"]
+size = Vector2(54, 20)
+
+[node name="SofaProp" type="StaticBody2D"]
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_favgw")
+offset = Vector2(0, -7)
+region_enabled = true
+region_rect = Rect2(160, 0, 64, 32)
+script = ExtResource("2_4874h")
+model = ExtResource("3_f7ygw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l51ec")
