@@ -110,9 +110,11 @@ shape = SubResource("RectangleShape2D_of3k0")
 
 [node name="SFXAppear" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3l68y")
+bus = &"UI"
 
 [node name="SFXDisappear" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_86d3o")
+bus = &"UI"
 
 [connection signal="mouse_entered" from="MouseTrigger" to="." method="_on_mouse_trigger_mouse_entered"]
 [connection signal="mouse_exited" from="MouseTrigger" to="." method="_on_mouse_trigger_mouse_exited"]
