@@ -414,10 +414,12 @@ script = ExtResource("16_c000h")
 stream = ExtResource("17_htd3c")
 volume_db = -40.0
 autoplay = true
+bus = &"UI"
 
 [node name="SFXStep" type="AudioStreamPlayer2D" parent="."]
 volume_db = -17.0
 attenuation = 0.00012207
+bus = &"Diegetic"
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
