@@ -3,7 +3,6 @@ extends Node
 signal vision_switched(new_vision : bool)
 signal floor_ready
 
-const GROUP_PHOTO := "photo"
 const GROUP_DANGER := "danger"
 const CAMERA_VIEW := preload("res://scn/3dworld/camera_view.tscn")
 const GAMEPLAY_HUD := preload("res://scn/ui/gameplay_hud.tscn")

@@ -98,7 +98,7 @@ amount = 6
 position = Vector2(864, 1104)
 
 [node name="Phil" parent="YSort" instance=ExtResource("8_emncj")]
-position = Vector2(512, 768)
+position = Vector2(512, 800)
 
 [node name="box" type="StaticBody2D" parent="YSort"]
 position = Vector2(1216, 640)

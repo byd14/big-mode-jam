@@ -1,6 +1,6 @@
 class_name Eye extends CharacterBody2D
 
-const WALK_NORMAL := 0.2
+const WALK_NORMAL := 0.97
 
 @export var sprite : PlaneSprite2D
 @export var velocity_component : VelocityComponent
@@ -10,7 +10,7 @@ const WALK_NORMAL := 0.2
 var state := normal_state
 var current_id_path : Array[Vector2i]
 var update_path_timer := 0
-var patrol_point : Vector2
+var follow_target : Node2D
 
 func _ready():
 	velocity_component.walk_speed = WALK_NORMAL
@@ -22,10 +22,16 @@ func _ready():
 		setup()
 
 func setup():
-	patrol_point = Observer.floor_scene.get_random_empty_point()
-	update_current_path()
+	pass
+	# follow_target = get_tree().get_nodes_in_group(Observer.GROUP_DANGER).pick_random()
+	# update_current_path()
 
 func _physics_process(_delta):
+	if !is_instance_valid(follow_target):
+		if get_tree().get_nodes_in_group(Observer.GROUP_DANGER).is_empty():
+			return
+		follow_target = get_tree().get_nodes_in_group(Observer.GROUP_DANGER).pick_random()
+		update_current_path()
 
 	state.call()
 
@@ -42,21 +48,22 @@ func on_photo():
 		velocity_component.stop()
 
 func normal_state():
-	if animation.animation == "hurt":
+	if animation.animation == "hurt" or position.distance_squared_to(follow_target.position) < pow(42, 2):
+		velocity_component.decelerate()
 		return
-	if current_id_path.is_empty():
+	if current_id_path.is_empty() or update_path_timer <= 0:
 		update_current_path()
+		update_path_timer = 10
 	else:
 		var target_position := Observer.floor_scene.tilemap.map_to_local(current_id_path.front())
 		velocity_component.accelerate(position.direction_to(target_position))
 		if position.distance_to(target_position) < 12:
-			if position.distance_to(patrol_point) < 32:
-				patrol_point = Observer.floor_scene.get_random_empty_point()
-				update_current_path()
 			current_id_path.pop_front()
 
 func update_current_path():
-	var id_path := Observer.floor_scene.get_id_path(position, patrol_point)
+	if Observer.floor_scene.astar_grid.is_point_solid(Observer.floor_scene.tilemap.local_to_map(follow_target.position)):
+		velocity_component.stop()
+	var id_path := Observer.floor_scene.get_id_path(position, follow_target.position)
 	if !id_path.is_empty():
 		current_id_path = id_path
 

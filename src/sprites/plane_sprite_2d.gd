@@ -8,8 +8,11 @@ class_name PlaneSprite2D extends Sprite2D
 var copy_3d : PlaneSprite3D
 
 func _ready():
-	await Observer.floor_ready
-	create_3d_copy()
+	if Observer.floor_is_ready:
+		create_3d_copy()
+	else:
+		await Observer.floor_ready
+		create_3d_copy()
 
 func _notification(what):
 	if what == NOTIFICATION_PREDELETE:

@@ -189,7 +189,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "light", "animation", "hitbox", "sfx_attack") groups=["danger", "photo"]]
+[node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "light", "animation", "hitbox", "sfx_attack") groups=["danger"]]
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1

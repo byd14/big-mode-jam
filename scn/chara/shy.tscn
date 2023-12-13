@@ -153,7 +153,7 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="Shy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "animation", "hitbox", "sfx_scream") groups=["danger", "photo"]]
+[node name="Shy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "animation", "hitbox", "sfx_scream") groups=["danger"]]
 collision_layer = 0
 collision_mask = 0
 motion_mode = 1

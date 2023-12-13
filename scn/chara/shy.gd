@@ -36,6 +36,8 @@ func _physics_process(_delta):
 	
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(position, phil.position, 1)
+	query.exclude.push_back(get_rid())
+	query.exclude.push_back(phil.get_rid())
 	var result = space_state.intersect_ray(query)
 	clear_sight = result.is_empty()
 
@@ -58,6 +60,11 @@ func on_photo():
 		Observer.floor_scene.shy_count -= 1
 
 func normal_state():
+	if phil.vision:
+		if phil.position.distance_squared_to(position) < pow(200, 2):
+			print("close")
+			if clear_sight:
+				print("attack")
 	if animation.animation == "scream":
 		return
 	if current_id_path.is_empty():

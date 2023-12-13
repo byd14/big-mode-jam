@@ -97,7 +97,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Eye" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "animation", "hitbox") groups=["danger", "photo"]]
+[node name="Eye" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "animation", "hitbox")]
 collision_layer = 0
 collision_mask = 0
 motion_mode = 1
@@ -109,11 +109,11 @@ hitbox = NodePath("Hitbox")
 
 [node name="PlaneSprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_8e7wk")
-scale = Vector2(0.5, 0.5)
-offset = Vector2(0, -16)
+scale = Vector2(0.25, 0.25)
+offset = Vector2(0, -32)
 script = ExtResource("2_lq8b8")
-offset_3d = Vector2(0, -32)
-pixel_size = 0.02
+offset_3d = Vector2(0, -96)
+pixel_size = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4.5)
