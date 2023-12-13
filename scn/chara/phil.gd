@@ -48,9 +48,9 @@ func gather_input():
 							switch_state(dialog_state)
 						area.on_interact()
 						break
-			if Input.is_action_just_pressed("camera_scope"):
-				switch_state(camera_state)
-				to_camera_state()
+			# if Input.is_action_just_pressed("camera_scope"):
+			# 	switch_state(camera_state)
+			# 	to_camera_state()
 		dialog_state:
 			if Input.is_action_just_pressed("interact"):
 				Observer.cancel_interaction()
@@ -167,7 +167,6 @@ func animation_state():
 				anim += "up" if input.y < 0 else "down"
 	sprite.play(anim)
 
-
 # Footstep stuff
 func _on_animated_sprite_2d_frame_changed():
 	# I'm sure there's a more concise way to do this, but it works and isn't *too* crazy
@@ -182,3 +181,8 @@ func footstep_sound():
 	sfx_step.stream = step_sounds.pick_random()
 	sfx_step.pitch_scale = randf_range(0.9, 1.1)
 	sfx_step.play()
+
+func _unhandled_input(event):
+	if state == normal_state and event.is_action_pressed("camera_scope"):
+			switch_state(camera_state)
+			to_camera_state()

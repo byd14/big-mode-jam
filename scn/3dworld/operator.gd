@@ -18,13 +18,17 @@ func _physics_process(_delta):
 	if phil.camera_hitbox.monitoring:
 		phil.camera_hitbox.monitoring = false
 	if Input.is_action_just_pressed("camera_photo"):
-		if animation_player.current_animation == "" and phil.battery > 99 and phil.film > 0:
-			phil.battery -= 100
+		if animation_player.current_animation == "" and phil.battery >= 99 and phil.film > 0:
+			phil.battery = 0
 			phil.film -= 1
 			phil.camera_hitbox.monitoring = true
 			animation_player.play("camera_flash")
 			phil.camera_hitbox.rotation = -rotation.y - PI / 2
-		else: 
+		else:
+			if phil.battery < 99:
+				Observer.hud_scene.pop_notification("out of battery")
+			if phil.film <= 0:
+				Observer.hud_scene.pop_notification("out of film")
 			sfx_error.play()
 
 	if Input.is_action_just_released("camera_scope"):

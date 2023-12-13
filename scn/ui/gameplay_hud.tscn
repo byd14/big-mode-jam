@@ -18,15 +18,15 @@ shader_parameter/aperture_grille_rate = 0.5
 shader_parameter/rf_switch_esque_blur = 0.55
 shader_parameter/white_noise_rate = 0.1
 
-[node name="GameplayHUD" type="CanvasLayer" node_paths=PackedStringArray("stamina_bar", "vision_overlay", "film_amount", "dialog_popup", "dialog_label", "checklist", "cursor")]
+[node name="GameplayHUD" type="CanvasLayer" node_paths=PackedStringArray("stamina_bar", "vision_overlay", "dialog_popup", "dialog_label", "checklist", "cursor", "hud_notification")]
 script = ExtResource("1_fcgru")
 stamina_bar = NodePath("ProgressBar")
 vision_overlay = NodePath("NightVision")
-film_amount = NodePath("FilmAmount")
 dialog_popup = NodePath("DialogPopup")
 dialog_label = NodePath("DialogPopup/DialogLabel")
 checklist = NodePath("HUDChecklist")
 cursor = NodePath("MouseCursor")
+hud_notification = NodePath("Notification")
 
 [node name="NightVision" type="ColorRect" parent="."]
 visible = false
@@ -49,22 +49,23 @@ rounded = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
-offset_left = 152.0
-offset_right = 152.0
+offset_left = 167.0
+offset_right = 167.0
 grow_horizontal = 1
 grow_vertical = 0
 
-[node name="FilmAmount" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -117.0
-offset_bottom = 65.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 24
-text = "film: 0"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Notification" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.5
+offset_top = 70.0
+offset_right = 56.5
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 33
+text = "notification"
 uppercase = true
 
 [node name="DialogPopup" type="ColorRect" parent="."]

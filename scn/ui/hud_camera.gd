@@ -1,10 +1,10 @@
 class_name HUDCamera extends Control
 
 
-@export var mode_wheel : Node2D
-@export var battery_status : Label
+@export var battery_status : Sprite2D
 @export var camera_body : Node2D
 @export var handle_sprite : Sprite2D
+@export var film_amount : Label
 @export var enter_shape : CollisionShape2D
 @export var exit_shape : CollisionShape2D
 @export var sfx_break : AudioStreamPlayer
@@ -33,8 +33,7 @@ func _ready():
 	phil = Observer.floor_scene.phil
 
 func _physics_process(_delta):
-	mode_wheel.rotation = lerpf(mode_wheel.rotation, target_rot, 0.2)
-	battery_status.text = str(int(phil.battery))
+	film_amount.text = str(phil.film)
 	
 	if !folded:
 		if handle_durability < 0:
@@ -76,6 +75,13 @@ func _physics_process(_delta):
 			sfx_break.play(0.36)
 			for toggle in toggles:
 				toggles.pick_random().button_pressed = false
+
+	if phil.battery <= 50:
+		battery_status.frame = 0 if sin(Time.get_ticks_msec() / 100.0) > 0 else 1
+	elif phil.battery <= 99:
+		battery_status.frame = 2
+	else:
+		battery_status.frame = 3
 	
 	camera_body.position.y = lerpf(camera_body.position.y, unfold_offset if !folded else 0.0, 0.1)
 	

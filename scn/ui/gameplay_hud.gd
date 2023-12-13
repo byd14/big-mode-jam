@@ -5,11 +5,11 @@ const HAND := preload("res://assets/ui/hand_cursor.png")
 
 @export var stamina_bar : ProgressBar
 @export var vision_overlay : ColorRect
-@export var film_amount : Label
 @export var dialog_popup : Control
 @export var dialog_label : Label
 @export var checklist : HUDChecklist
 @export var cursor : Sprite2D
+@export var hud_notification : Label
 
 var phil : Phil
 
@@ -22,14 +22,17 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _physics_process(_delta):
-	if phil.hud_active:
+	if phil.hud_active or !checklist.folded:
 		cursor.texture = HAND
 	else:
 		cursor.texture = CROSSHAIR
 	stamina_bar.value = phil.stamina
-	film_amount.text = "film: {film}".format({"film": phil.film})
 	cursor.position = get_viewport().get_mouse_position()
+	hud_notification.modulate.a = lerpf(hud_notification.modulate.a, 0, 0.05)
 
 func on_vision_switched(new_vision : bool):
-	# pass
 	vision_overlay.visible = new_vision
+
+func pop_notification(text : String):
+	hud_notification.text = text
+	hud_notification.modulate.a = 1

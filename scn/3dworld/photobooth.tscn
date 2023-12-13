@@ -8,7 +8,7 @@
 [sub_resource type="Environment" id="Environment_7ysfa"]
 background_mode = 1
 fog_enabled = true
-fog_light_color = Color(0, 0, 0, 1)
+fog_light_color = Color(0.0313726, 0.0588235, 0.0431373, 1)
 fog_density = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtu55"]

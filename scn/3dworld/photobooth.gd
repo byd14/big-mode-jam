@@ -20,4 +20,4 @@ func _ready():
 		on_vision_switched(true)
 
 func on_vision_switched(new_vision : bool):
-	environment.environment.background_color = Color.WEB_GRAY if new_vision else Color.BLACK
+	environment.environment.background_color = Color.WEB_GRAY if new_vision else Color.hex(0x080f0b)

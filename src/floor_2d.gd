@@ -100,7 +100,7 @@ func spawn_ghost():
 	i.position = get_random_empty_point()
 	y_sort.call_deferred("add_child", i)
 	ghost_count += 1
-	ghost_spawn_timer = 60 * 20
+	ghost_spawn_timer = 60 * 48
 	print("ghost")
 
 func spawn_shy():
@@ -108,5 +108,5 @@ func spawn_shy():
 	i.position = get_random_empty_point()
 	y_sort.call_deferred("add_child", i)
 	shy_count += 1
-	shy_spawn_timer = 60 * 20
+	shy_spawn_timer = 60 * 48
 	print("shy")
