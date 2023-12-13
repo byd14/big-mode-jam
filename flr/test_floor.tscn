@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://btvmw33ubc3y3"]
+[gd_scene load_steps=25 format=3 uid="uid://btvmw33ubc3y3"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_rxv07"]
 [ext_resource type="TileSet" uid="uid://djooxrb3jpnav" path="res://assets/void_tileset.tres" id="2_5eaog"]
@@ -21,6 +21,13 @@
 [ext_resource type="Script" path="res://src/actions/ga_switch_visibility.gd" id="17_gr5pp"]
 [ext_resource type="Script" path="res://src/actions/ga_flip_gamedata.gd" id="18_jh7fn"]
 [ext_resource type="Script" path="res://src/actions/ga_elevator_encounter.gd" id="19_a1baq"]
+[ext_resource type="Script" path="res://scn/reverb_region.gd" id="22_ud33x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3d8bd"]
+size = Vector2(160, 289)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wei18"]
+size = Vector2(414.5, 168.5)
 
 [node name="TestFloor" type="Node2D" node_paths=PackedStringArray("darkness_buffer", "tilemap", "floor_decals", "phil", "y_sort")]
 script = ExtResource("1_rxv07")
@@ -167,3 +174,66 @@ keys = Array[String](["elevator_power"])
 [node name="GAElevatorEncounter" type="Node" parent="GameActions"]
 script = ExtResource("19_a1baq")
 position = Vector2(512, 816)
+
+[node name="ReverbRegions" type="Node" parent="."]
+
+[node name="Room" type="Area2D" parent="ReverbRegions"]
+position = Vector2(513, 880)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("22_ud33x")
+reverb_size = 0.25
+reverb_damping = 0.6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReverbRegions/Room"]
+position = Vector2(15, -95.5)
+shape = SubResource("RectangleShape2D_3d8bd")
+debug_color = Color(0, 0.639216, 0.360784, 0.419608)
+
+[node name="Room2" type="Area2D" parent="ReverbRegions"]
+position = Vector2(513, 880)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("22_ud33x")
+reverb_size = 0.2
+reverb_damping = 0.4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReverbRegions/Room2"]
+position = Vector2(354, -272)
+shape = SubResource("RectangleShape2D_3d8bd")
+debug_color = Color(0, 0.639216, 0.360784, 0.419608)
+
+[node name="Corridor" type="Area2D" parent="ReverbRegions"]
+position = Vector2(513, 880)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("22_ud33x")
+reverb_wet = 0.1
+reverb_size = 0.15
+reverb_delay = 115
+reverb_damping = 0.66
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ReverbRegions/Corridor"]
+position = Vector2(298.25, -60)
+shape = SubResource("RectangleShape2D_wei18")
+debug_color = Color(0, 0.639216, 0.360784, 0.419608)
+
+[node name="Corridor2" type="Area2D" parent="ReverbRegions"]
+position = Vector2(513, 880)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("22_ud33x")
+reverb_wet = 0.1
+reverb_size = 0.07
+reverb_delay = 285
+reverb_damping = 0.89
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ReverbRegions/Corridor2"]
+position = Vector2(205, -504)
+shape = SubResource("RectangleShape2D_wei18")
+debug_color = Color(0, 0.639216, 0.360784, 0.419608)
+
+[connection signal="area_entered" from="ReverbRegions/Room" to="ReverbRegions/Room" method="_on_area_entered"]
+[connection signal="area_entered" from="ReverbRegions/Room2" to="ReverbRegions/Room2" method="_on_area_entered"]
+[connection signal="area_entered" from="ReverbRegions/Corridor" to="ReverbRegions/Corridor" method="_on_area_entered"]
+[connection signal="area_entered" from="ReverbRegions/Corridor2" to="ReverbRegions/Corridor2" method="_on_area_entered"]

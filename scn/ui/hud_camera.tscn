@@ -121,20 +121,25 @@ disabled = true
 
 [node name="SFXBreak" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_wh4s6")
+bus = &"Diegetic"
 
 [node name="SFXOn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_4hkg2")
+bus = &"UI"
 
 [node name="SFXOff" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_efqy6")
+bus = &"UI"
 
 [node name="SFXCrank" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_oneg6")
 volume_db = -6.0
 pitch_scale = 1.1
+bus = &"Diegetic"
 
 [node name="SFXAppear" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_6wt0a")
+bus = &"UI"
 
 [connection signal="mouse_entered" from="MouseTrigger" to="." method="_on_mouse_trigger_mouse_entered"]
 [connection signal="mouse_exited" from="MouseTrigger" to="." method="_on_mouse_trigger_mouse_exited"]
