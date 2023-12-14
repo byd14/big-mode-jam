@@ -45,7 +45,9 @@ y_sort = NodePath("YSort")
 start_region = NodePath("Cameras/CameraRegion")
 ghost_count_total = 1
 shy_count_total = 2
-eye_count_total = 1
+eye_count_total = 2
+wall_count_total = 1
+wall_points = Array[Vector2]([Vector2(864, 704), Vector2(864, 992), Vector2(160, 544), Vector2(224, 384), Vector2(864, 384)])
 
 [node name="FloorDecals" type="TileMap" parent="."]
 tile_set = ExtResource("2_de7eu")
@@ -98,7 +100,7 @@ amount = 6
 position = Vector2(864, 1104)
 
 [node name="Phil" parent="YSort" instance=ExtResource("8_emncj")]
-position = Vector2(512, 800)
+position = Vector2(1216, 448)
 
 [node name="box" type="StaticBody2D" parent="YSort"]
 position = Vector2(1216, 640)
@@ -147,7 +149,6 @@ shape = SubResource("RectangleShape2D_fy4jb")
 
 [node name="ColoredDoor" parent="YSort" instance=ExtResource("14_3l1h1")]
 position = Vector2(1216, 416)
-color = "GREEN"
 
 [node name="BoxAltProp" parent="YSort" instance=ExtResource("20_8xv0q")]
 position = Vector2(963, 1161)
@@ -185,8 +186,10 @@ position = Vector2(511, 555)
 [node name="Foreground" type="TileMap" parent="."]
 tile_set = ExtResource("2_de7eu")
 format = 2
+layer_0/tile_data = PackedInt32Array(655397, 0, 0, 655398, 0, 0)
 
 [node name="Cameras" type="Node2D" parent="."]
+visible = false
 
 [node name="CameraRegion" parent="Cameras" instance=ExtResource("9_h27ws")]
 position = Vector2(511, 802)

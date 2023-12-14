@@ -10,6 +10,7 @@ const BLUE_DOOR_3D := preload("res://assets/models/door_b.glb")
 @export var sprite : Sprite2D
 @export var door_collision : CollisionShape2D
 @export var door_3d : PropSprite2D
+@export var fade : Sprite2D
 @export var sfx_closed : AudioStreamPlayer2D
 @export var sfx_open : AudioStreamPlayer2D
 
@@ -21,6 +22,7 @@ func _ready():
 	if color != "RED":
 		sprite.texture = GREEN_DOOR if color == "GREEN" else BLUE_DOOR
 		door_3d.model = GREEN_DOOR_3D if color == "GREEN" else BLUE_DOOR_3D
+		fade.self_modulate.h = (120 / 360.0) if color == "GREEN" else (205 / 360.0)
 	if Observer.doors_opened.has(color):
 		open()
 	else:

@@ -26,5 +26,5 @@ func open():
 	door_collision.set_deferred("disabled", true)
 
 func on_photo():
-	if eye.focus_difference < Observer.CAMERA_FOCUS_TOLERANCE:
+	if is_instance_valid(eye) and eye.focus_difference < Observer.CAMERA_FOCUS_TOLERANCE:
 		open()

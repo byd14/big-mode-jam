@@ -1,6 +1,6 @@
 class_name Eye extends CharacterBody2D
 
-const WALK_NORMAL := 0.97
+const WALK_NORMAL := 1.3
 
 @export var sprite : PlaneSprite2D
 @export var velocity_component : VelocityComponent
@@ -8,30 +8,18 @@ const WALK_NORMAL := 0.97
 @export var hitbox : Area2D
 
 var state := normal_state
-var current_id_path : Array[Vector2i]
-var update_path_timer := 0
 var follow_target : Node2D
 
 func _ready():
 	velocity_component.walk_speed = WALK_NORMAL
 	animation.play("idle")
-	if Observer.floor_is_ready:
-		setup()
-	else:
-		await Observer.floor_ready
-		setup()
-
-func setup():
-	pass
-	# follow_target = get_tree().get_nodes_in_group(Observer.GROUP_DANGER).pick_random()
-	# update_current_path()
 
 func _physics_process(_delta):
 	if !is_instance_valid(follow_target):
 		if get_tree().get_nodes_in_group(Observer.GROUP_DANGER).is_empty():
+			velocity_component.stop()
 			return
 		follow_target = get_tree().get_nodes_in_group(Observer.GROUP_DANGER).pick_random()
-		update_current_path()
 
 	state.call()
 
@@ -42,30 +30,18 @@ func _physics_process(_delta):
 		velocity_component.process_collision(collision)
 
 func on_photo():
-	if animation.animation != "hurt":
-		Observer.hud_scene.hud_camera.break_handle()
-		animation.play("hurt")
-		velocity_component.stop()
+	Observer.hud_scene.hud_camera.break_handle()
+	animation.play("hurt")
+	velocity_component.stop()
 
 func normal_state():
-	if animation.animation == "hurt" or position.distance_squared_to(follow_target.position) < pow(42, 2):
+	var target_position := follow_target.position + follow_target.position.direction_to(Observer.phil.position) * 46
+	if animation.animation == "hurt":
 		velocity_component.decelerate()
 		return
-	if current_id_path.is_empty() or update_path_timer <= 0:
-		update_current_path()
-		update_path_timer = 10
-	else:
-		var target_position := Observer.floor_scene.tilemap.map_to_local(current_id_path.front())
-		velocity_component.accelerate(position.direction_to(target_position))
-		if position.distance_to(target_position) < 12:
-			current_id_path.pop_front()
 
-func update_current_path():
-	if Observer.floor_scene.astar_grid.is_point_solid(Observer.floor_scene.tilemap.local_to_map(follow_target.position)):
-		velocity_component.stop()
-	var id_path := Observer.floor_scene.get_id_path(position, follow_target.position)
-	if !id_path.is_empty():
-		current_id_path = id_path
+	velocity_component.move = ((target_position - position) / 100).limit_length(WALK_NORMAL)
+	
 
 func _on_animated_sprite_2d_animation_finished():
 	if animation.animation == "hurt":

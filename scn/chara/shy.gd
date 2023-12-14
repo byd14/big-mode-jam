@@ -53,31 +53,14 @@ func on_photo():
 	var distance_normalized = minf(position.distance_to(Observer.floor_scene.phil.position) / 100, 1)
 	var focus = absf(Observer.photobooth.operator.focus_slider.value / 100 - sprite.focal_length)
 	focus += pow(distance_normalized, 3) * Observer.CAMERA_FOCUS_TOLERANCE
-	# if distance_normalized > 1:
-	# 	focus += 0.2
 	if focus < Observer.CAMERA_FOCUS_TOLERANCE:
 		queue_free()
 		Observer.floor_scene.shy_count -= 1
 
 func normal_state():
-	if phil.vision:
-		if phil.position.distance_squared_to(position) < pow(200, 2):
-			print("close")
-			if clear_sight:
-				print("attack")
 	if animation.animation == "scream":
 		return
-	if current_id_path.is_empty():
-		update_current_path()
-	else:
-		var target_position := Observer.floor_scene.tilemap.map_to_local(current_id_path.front())
-		velocity_component.accelerate(position.direction_to(target_position))
-		if position.distance_to(target_position) < 12:
-			if position.distance_to(patrol_point) < 32:
-				patrol_point = Observer.floor_scene.get_random_empty_point()
-				update_current_path()
-			current_id_path.pop_front()
-	
+
 	if clear_sight:
 		if phil.vision:
 			var forward := Observer.photobooth.operator.transform.basis.z
@@ -87,6 +70,18 @@ func normal_state():
 		else:
 			if phil.position.distance_squared_to(position) < pow(16, 2):
 				to_chase_state()
+
+	if current_id_path.is_empty():
+		update_current_path()
+		return
+	
+	var target_position := Observer.floor_scene.tilemap.map_to_local(current_id_path.front())
+	velocity_component.accelerate(position.direction_to(target_position))
+	if position.distance_to(target_position) < 12:
+		if position.distance_to(patrol_point) < 32:
+			patrol_point = Observer.floor_scene.get_random_empty_point()
+			update_current_path()
+		current_id_path.pop_front()
 
 func to_chase_state():
 	if animation.animation != "scream":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b555r65cuovaq"]
+[gd_scene load_steps=14 format=3 uid="uid://b555r65cuovaq"]
 
 [ext_resource type="Script" path="res://scn/colored_door.gd" id="1_36vvg"]
 [ext_resource type="Texture2D" uid="uid://c47u0lfl3il2p" path="res://assets/doors_new.png" id="2_e0ifj"]
@@ -9,6 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://tbm0xchyrgv1" path="res://assets/models/door_frame.glb" id="7_a2mmd"]
 [ext_resource type="PackedScene" uid="uid://goarbaxdb1al" path="res://assets/models/door.glb" id="8_cnfde"]
 
+[sub_resource type="Gradient" id="Gradient_tcgeh"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wonmx"]
+gradient = SubResource("Gradient_tcgeh")
+width = 32
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ceby"]
 size = Vector2(32, 32)
 
@@ -16,16 +23,24 @@ size = Vector2(32, 32)
 size = Vector2(15, 95.75)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cql0a"]
-radius = 25.02
+radius = 32.0156
 
-[node name="ColoredDoor" type="StaticBody2D" node_paths=PackedStringArray("interactable", "sprite", "door_collision", "door_3d", "sfx_closed", "sfx_open")]
+[node name="ColoredDoor" type="StaticBody2D" node_paths=PackedStringArray("interactable", "sprite", "door_collision", "door_3d", "fade", "sfx_closed", "sfx_open")]
 script = ExtResource("1_36vvg")
 interactable = NodePath("InteractableArea2D")
 sprite = NodePath("Sprite2D")
 door_collision = NodePath("CollisionShape2D")
 door_3d = NodePath("PropSprite2D2")
+fade = NodePath("Fade")
 sfx_closed = NodePath("SFXClosed")
 sfx_open = NodePath("SFXOpen")
+
+[node name="Fade" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0.215686, 0.588235)
+position = Vector2(0, -112)
+rotation = -1.5708
+scale = Vector2(1, 64)
+texture = SubResource("GradientTexture1D_wonmx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
@@ -52,6 +67,7 @@ script = ExtResource("3_50fxa")
 text = "door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
+position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_cql0a")
 
 [node name="SFXClosed" type="AudioStreamPlayer2D" parent="."]

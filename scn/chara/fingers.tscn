@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://n6nkadtw1o6x"]
 
 [ext_resource type="Texture2D" uid="uid://bewm2qm4qs1vh" path="res://assets/hand.png" id="1_117ug"]
-[ext_resource type="Script" path="res://scn/fingers.gd" id="1_mrpll"]
+[ext_resource type="Script" path="res://scn/chara/fingers.gd" id="1_mrpll"]
 [ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="3_du6yc"]
 [ext_resource type="Script" path="res://src/photo_sensative.gd" id="4_34jey"]
 
@@ -38,8 +38,6 @@ joint_mode = 1
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_117ug")
 script = ExtResource("3_du6yc")
-billboard = false
-on_floor = true
 
 [node name="PhotoSensative" type="Area2D" parent="Sprite2D"]
 collision_layer = 2

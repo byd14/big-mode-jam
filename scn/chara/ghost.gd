@@ -75,7 +75,7 @@ func _on_animated_sprite_2d_animation_finished():
 		to_idle()
 
 func _on_animated_sprite_2d_frame_changed():
-	if animation.animation == "attack" and animation.frame > 1:
+	if animation.animation == "attack" and animation.frame > 3:
 		for body in hitbox.get_overlapping_bodies():
 			if body is Phil:
 				Observer.call_deferred("death_screen")

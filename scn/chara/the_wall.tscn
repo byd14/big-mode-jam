@@ -8,43 +8,43 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6fjrl"]
 size = Vector2(128, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6lfod"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5pe8"]
 atlas = ExtResource("2_84vbi")
-region = Rect2(0, 0, 256, 128)
+region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yq47o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3ji1"]
 atlas = ExtResource("2_84vbi")
-region = Rect2(256, 0, 256, 128)
+region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vwsjs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8fb0"]
 atlas = ExtResource("2_84vbi")
-region = Rect2(512, 0, 256, 128)
+region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3j4sk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0u17"]
 atlas = ExtResource("2_84vbi")
-region = Rect2(768, 0, 256, 128)
+region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nymk4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh34v"]
 atlas = ExtResource("2_84vbi")
-region = Rect2(1024, 0, 256, 128)
+region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tg4ox"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6lfod")
+"texture": SubResource("AtlasTexture_q5pe8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yq47o")
+"texture": SubResource("AtlasTexture_s3ji1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vwsjs")
+"texture": SubResource("AtlasTexture_i8fb0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3j4sk")
+"texture": SubResource("AtlasTexture_n0u17")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nymk4")
+"texture": SubResource("AtlasTexture_gh34v")
 }],
 "loop": true,
 "name": &"idle",
@@ -74,6 +74,7 @@ shape = SubResource("RectangleShape2D_6fjrl")
 visible = false
 sprite_frames = SubResource("SpriteFrames_tg4ox")
 animation = &"idle"
+frame_progress = 0.323068
 
 [node name="PhotoSensative" type="Area2D" parent="."]
 collision_layer = 2
@@ -83,5 +84,7 @@ script = ExtResource("4_2wxsg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoSensative"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_0o3vf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
