@@ -3,6 +3,7 @@ class_name Operator extends Camera3D
 @export var light : Light3D
 @export var animation_player : AnimationPlayer
 @export var focus_slider : HSlider
+@export var sfx_photo : AudioStream
 @export var sfx_error : AudioStreamPlayer
 
 var mouse_sensitivity : float
@@ -19,10 +20,11 @@ func _physics_process(_delta):
 		phil.camera_hitbox.monitoring = false
 	if Input.is_action_just_pressed("camera_photo"):
 		if animation_player.current_animation == "" and phil.battery >= 99 and phil.film > 0:
+			AudioManager.play(sfx_photo)
 			phil.battery = 0
 			phil.film -= 1
 			phil.camera_hitbox.monitoring = true
-			animation_player.play("camera_flash")
+			animation_player.call_deferred("play", "camera_flash")
 			phil.camera_hitbox.rotation = -rotation.y - PI / 2
 		else:
 			if phil.battery < 99:

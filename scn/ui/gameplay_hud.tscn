@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh5g4jhprh272"]
+[gd_scene load_steps=10 format=3 uid="uid://dh5g4jhprh272"]
 
 [ext_resource type="Script" path="res://scn/ui/gameplay_hud.gd" id="1_fcgru"]
 [ext_resource type="PackedScene" uid="uid://mifubuocmgcn" path="res://scn/ui/hud_camera.tscn" id="2_f1ti5"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n7u4t"]
 shader = ExtResource("2_uqojd")
+
+[sub_resource type="FontVariation" id="FontVariation_xjyly"]
+variation_embolden = -0.8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dv7p1"]
 shader = ExtResource("3_qrru0")
@@ -94,6 +97,7 @@ offset_top = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_xjyly")
 bbcode_enabled = true
 scroll_active = false
 

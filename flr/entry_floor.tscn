@@ -74,7 +74,7 @@ position = Vector2(464, 648)
 position = Vector2(512, 896)
 
 [node name="Phil" parent="YSort" instance=ExtResource("8_an061")]
-position = Vector2(504, 736)
+position = Vector2(512, 920)
 
 [node name="BoxProp" parent="YSort" instance=ExtResource("5_bq2lq")]
 position = Vector2(560, 656)

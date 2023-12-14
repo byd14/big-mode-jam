@@ -16,7 +16,7 @@ func _ready():
 			if Observer.phil.battery <= 99:
 				interactable.text = "hover bottom left corner with mouse\n grab handle and rotate to recharge battery"
 			else:
-				interactable.text = "hold RMB, then adjust focus with A/D\n and take a shot with LMB press"
+				interactable.text = "hold RMB, then adjust focus with A/D and take a shot with LMB press"
 
 func open():
 	interactable.queue_free()
@@ -28,3 +28,4 @@ func open():
 func on_photo():
 	if is_instance_valid(eye) and eye.focus_difference < Observer.CAMERA_FOCUS_TOLERANCE:
 		open()
+		Observer.create_dialog("take photos to kill ghosts and complete checklist", 100000)

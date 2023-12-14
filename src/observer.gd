@@ -26,7 +26,7 @@ var completed_goals : Array
 var deleted_nodes : Array
 
 func create_dialog(text : String, time := 120.0):
-	hud_scene.dialog_popup.modulate.a = time
+	hud_scene.dialog_label.modulate.a = time
 	hud_scene.dialog_label.text = "[center]" + text
 
 func create_interaction(scene : Control):
@@ -42,6 +42,7 @@ func checklist_goal_completed(goal : String):
 	var goal_label : Label = hud_scene.checklist.paper.get_node("VBoxContainer/" + goal)
 	goal_label.modulate.a = 1
 	completed_goals.push_back(goal)
+	get_viewport().get_texture().get_image().save_jpg("user://" + goal + ".jpg")
 
 func restart_level():
 	set_level(load(floor_scene.scene_file_path), false)

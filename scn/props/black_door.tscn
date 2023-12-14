@@ -76,7 +76,7 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_hctcq")
 text = "door"
-time = 1200.0
+time = 300000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
 shape = SubResource("CircleShape2D_cql0a")
