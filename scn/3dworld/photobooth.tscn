@@ -30,9 +30,8 @@ shadow_plane = NodePath("ShadowPlane")
 floor_decals = NodePath("SubViewport/FloorDecals")
 
 [node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2048, 2048)
+size = Vector2i(4096, 4096)
 
 [node name="FloorDecals" type="TileMap" parent="SubViewport"]
 tile_set = ExtResource("2_pvdx6")
@@ -43,18 +42,18 @@ format = 2
 environment = SubResource("Environment_7ysfa")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 32, 0, 32)
+transform = Transform3D(64, 0, 0, 0, 64, 0, 0, 0, 64, 64, 0, 64)
 material_override = SubResource("StandardMaterial3D_vtu55")
 mesh = SubResource("PlaneMesh_chd0b")
 
 [node name="ShadowPlane" type="MeshInstance3D" parent="."]
-transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 32, 0.001, 32)
+transform = Transform3D(64, 0, 0, 0, 64, 0, 0, 0, 64, 64, 0.001, 64)
 visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_chd0b")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(32, 0, 0, 0, -32, 4.83187e-06, 0, -4.83187e-06, -32, 32, 3, 32)
+transform = Transform3D(64, 0, 0, 0, -64, 9.66373e-06, 0, -9.66373e-06, -64, 64, 3, 64)
 material_override = SubResource("StandardMaterial3D_v2m0s")
 mesh = SubResource("PlaneMesh_chd0b")
 

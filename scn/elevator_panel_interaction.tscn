@@ -57,3 +57,5 @@ floor_number = 2
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "-"
+script = ExtResource("1_rbh6g")
+floor_number = 3

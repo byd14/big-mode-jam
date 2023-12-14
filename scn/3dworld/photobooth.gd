@@ -13,7 +13,8 @@ func _ready():
 	Observer.vision_switched.connect(on_vision_switched)
 	var mat : StandardMaterial3D = StandardMaterial3D.new()
 	mat.albedo_texture = shadow_viewport.get_texture()
-	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	# mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	shadow_plane.set_surface_override_material(0, mat)
 	shadow_plane.visible = true
 	if Observer.floor_scene.phil.vision:

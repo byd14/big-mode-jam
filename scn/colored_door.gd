@@ -23,20 +23,17 @@ func _ready():
 		sprite.texture = GREEN_DOOR if color == "GREEN" else BLUE_DOOR
 		door_3d.model = GREEN_DOOR_3D if color == "GREEN" else BLUE_DOOR_3D
 		fade.self_modulate.h = (120 / 360.0) if color == "GREEN" else (205 / 360.0)
-	if Observer.doors_opened.has(color):
-		open()
-	else:
-		interactable.on_interact_callback = func ():
-			if closed:
-				if Observer.keys.has(color):
-					Observer.doors_opened.push_back(color)
-					sfx_open.play()
-					# interactable.text = "a " + color_start + color + "[/color] door is opened"
-					interactable.text = ""
-					open()
-				else:
-					interactable.text = "need a " + color_start + color + "[/color] key to open"
-					sfx_closed.play()
+	interactable.on_interact_callback = func ():
+		if closed:
+			if Observer.keys.has(color):
+				Observer.doors_opened.push_back(color)
+				sfx_open.play()
+				# interactable.text = "a " + color_start + color + "[/color] door is opened"
+				interactable.text = ""
+				open()
+			else:
+				interactable.text = "need a " + color_start + color + "[/color] key to open"
+				sfx_closed.play()
 
 func open():
 	interactable.queue_free()

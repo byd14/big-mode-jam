@@ -24,6 +24,7 @@ var ghost_count := 0
 var shy_count := 0
 var ghost_spawn_timer := 0
 var shy_spawn_timer := 0
+var eye_followed : Array[Node2D]
 
 var astar_grid : AStarGrid2D
 var empty_cells : Array[Vector2i]
@@ -70,7 +71,7 @@ func _ready():
 
 	if scene_file_path == "res://flr/entry_floor.tscn":
 		if Observer.tutorial_competed:
-			phil.position = Vector2(512, 672)
+			phil.global_position = Vector2(512, 664)
 		else:
 			phil.battery = 0
 

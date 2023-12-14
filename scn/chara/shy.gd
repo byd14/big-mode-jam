@@ -25,9 +25,15 @@ func _ready():
 		await Observer.floor_ready
 		setup()
 
+func get_patrol_point() -> Vector2:
+	var new_patrol_point := Observer.floor_scene.get_random_empty_point()
+	while new_patrol_point.distance_to(phil.position) > 750:
+		new_patrol_point = Observer.floor_scene.get_random_empty_point()
+	return new_patrol_point
+
 func setup():
 	phil = Observer.floor_scene.phil
-	patrol_point = Observer.floor_scene.get_random_empty_point()
+	patrol_point = get_patrol_point()
 	update_current_path()
 
 func _physics_process(_delta):
@@ -79,7 +85,7 @@ func normal_state():
 	velocity_component.accelerate(position.direction_to(target_position))
 	if position.distance_to(target_position) < 12:
 		if position.distance_to(patrol_point) < 32:
-			patrol_point = Observer.floor_scene.get_random_empty_point()
+			patrol_point = get_patrol_point()
 			update_current_path()
 		current_id_path.pop_front()
 

@@ -20,7 +20,7 @@ var current_interaction : Control
 var floor_is_ready := false
 
 var tutorial_competed := false
-var keys : Array = ["RED"]
+var keys : Array
 var doors_opened : Array
 var completed_goals : Array
 var deleted_nodes : Array

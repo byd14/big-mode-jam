@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cluk8txkwyreg" path="res://assets/audio/checklist_ui_dissappear.wav" id="4_86d3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of3k0"]
-size = Vector2(198, 90)
+size = Vector2(232, 101)
 
 [node name="HUDChecklist" type="Control" node_paths=PackedStringArray("paper", "sfx_appear", "sfx_disappear")]
 layout_mode = 3
@@ -25,31 +25,28 @@ sfx_disappear = NodePath("SFXDisappear")
 texture = ExtResource("1_l5glr")
 offset = Vector2(0, -32)
 region_enabled = true
-region_rect = Rect2(0, 0, 192, 32)
+region_rect = Rect2(0, 0, 224, 32)
 
 [node name="ColorRect" type="ColorRect" parent="Sprite2D"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -193.0
+offset_left = -224.0
 offset_top = -16.0
-offset_right = 1.0
+offset_right = 2.0
 offset_bottom = 192.0
 grow_horizontal = 2
 color = Color(0.811765, 0.835294, 0.839216, 1)
 
 [node name="Checklist" type="Label" parent="Sprite2D"]
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -116.0
-offset_top = -12.5
-offset_right = -76.0
-offset_bottom = 10.5
+offset_left = -153.5
+offset_top = -8.0
+offset_right = -70.5
+offset_bottom = 18.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "checklist"
 horizontal_alignment = 1
@@ -57,10 +54,14 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D"]
-offset_left = -34.0
-offset_top = 33.0
-offset_right = 6.0
-offset_bottom = 73.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -212.5
+offset_top = 24.0
+offset_right = -11.5
+offset_bottom = 170.0
+grow_horizontal = 2
 
 [node name="elevator" type="Label" parent="Sprite2D/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.490196)
@@ -70,27 +71,27 @@ text = "elevator"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="box" type="Label" parent="Sprite2D/VBoxContainer"]
+[node name="murder scene" type="Label" parent="Sprite2D/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "box	"
+text = "murder scene"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="box2" type="Label" parent="Sprite2D/VBoxContainer"]
+[node name="painting" type="Label" parent="Sprite2D/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "box	"
+text = "painting that watches you"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="box3" type="Label" parent="Sprite2D/VBoxContainer"]
+[node name="boot" type="Label" parent="Sprite2D/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "box	"
+text = "holy boot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -105,7 +106,7 @@ vertical_alignment = 1
 [node name="MouseTrigger" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseTrigger"]
-position = Vector2(0, 9)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_of3k0")
 
 [node name="SFXAppear" type="AudioStreamPlayer" parent="."]

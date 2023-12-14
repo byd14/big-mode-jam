@@ -13,7 +13,7 @@ const STEP_DELAY := 40
 @export var sfx_danger : AudioStreamPlayer
 @export var sfx_step : AudioStreamPlayer2D
 @export var step_sounds : Array[AudioStream]
-@export var film := 5
+@export var film := 6
 
 var state : Callable = normal_state
 var mouse_pos : Vector2
@@ -74,7 +74,6 @@ func _physics_process(_delta):
 		velocity_component.process_collision(collision)
 
 	animation_state()
-
 
 func switch_state(new_state : Callable):
 	if new_state == dialog_state:

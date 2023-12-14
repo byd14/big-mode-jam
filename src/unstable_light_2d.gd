@@ -5,9 +5,11 @@ const RADIAL_MASK := preload("res://assets/radial_gradient_alpha.tres")
 
 @export var base_flicker := 0.989
 @export var maximum_distance := 180
+@export var present_in_3d := false
 
 var mask : Sprite2D
 var normalized_distance := 1.0
+var copy_3d : OmniLight3D
 
 func _ready():
 	visible = false
@@ -30,6 +32,9 @@ func _physics_process(_delta):
 	else:
 		normalized_distance = 1
 
+	if present_in_3d:
+		copy_3d.visible = enabled
+
 	enabled = randf() < base_flicker - (1 - normalized_distance) * 0.45
 
 func create_mask():
@@ -42,3 +47,9 @@ func create_mask():
 	mask.material = ShaderMaterial.new()
 	(mask.material as ShaderMaterial).shader = MASK_SHADER
 	Observer.floor_scene.darkness_buffer.add_child(mask)
+	if present_in_3d:
+		copy_3d = OmniLight3D.new()
+		copy_3d.position.x = global_position.x / 32
+		copy_3d.position.z = (global_position.y - position.y) / 32
+		copy_3d.position.y = 1.3
+		Observer.photobooth.add_child(copy_3d)
