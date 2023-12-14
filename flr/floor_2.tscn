@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bjsryca0oou0r" path="res://assets/finished props vol2.png" id="15_ktxxh"]
 [ext_resource type="Script" path="res://src/sprites/floor_sprite_2d.gd" id="16_qgk3v"]
 [ext_resource type="PackedScene" uid="uid://b555r65cuovaq" path="res://scn/colored_door.tscn" id="22_4nqu6"]
-[ext_resource type="PackedScene" uid="uid://b1pjqr1h6em68" path="res://scn/key_pickup.tscn" id="23_1mf86"]
+[ext_resource type="PackedScene" path="res://scn/key_pickup.tscn" id="23_1mf86"]
 [ext_resource type="PackedScene" uid="uid://dkr5pvgsjcpth" path="res://scn/camera_region.tscn" id="28_rary0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sbqnc"]

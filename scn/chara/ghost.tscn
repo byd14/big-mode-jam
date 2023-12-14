@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://41qlrkskqwrd"]
+[gd_scene load_steps=40 format=3 uid="uid://41qlrkskqwrd"]
 
 [ext_resource type="Script" path="res://scn/chara/ghost.gd" id="1_8reug"]
+[ext_resource type="AudioStream" uid="uid://c2piom7w0o7f1" path="res://assets/audio/ghost_death.wav" id="2_ce80h"]
 [ext_resource type="Shader" path="res://src/shaders/box_blur.gdshader" id="2_nhods"]
 [ext_resource type="Script" path="res://src/sprites/ghost_sprite_2d.gd" id="3_tcp1g"]
 [ext_resource type="Script" path="res://src/velocity_component.gd" id="4_yp17h"]
@@ -214,6 +215,7 @@ light = NodePath("PointLight2D")
 animation = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox")
 sfx_attack = NodePath("SFXAttack")
+sfx_death = ExtResource("2_ce80h")
 
 [node name="GhostSprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("animation")]
 material = SubResource("ShaderMaterial_xlqlj")
