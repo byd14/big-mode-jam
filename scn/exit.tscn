@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://dah8tkr36ouvi"]
+
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="1_4kl76"]
+[ext_resource type="PackedScene" uid="uid://tbm0xchyrgv1" path="res://assets/models/door_frame.glb" id="2_jga1q"]
+[ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="3_o5bj6"]
+[ext_resource type="PackedScene" uid="uid://dwgexrpg1fvwg" path="res://scn/ui/exit_interaction.tscn" id="4_kild0"]
+
+[sub_resource type="Gradient" id="Gradient_n5x6x"]
+colors = PackedColorArray(0.0313726, 0.0588235, 0.0431373, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dwj22"]
+gradient = SubResource("Gradient_n5x6x")
+width = 64
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jikk"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4piq"]
+size = Vector2(64, 26)
+
+[node name="Exit" type="Node2D"]
+
+[node name="Fade" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+rotation = -1.5708
+scale = Vector2(1, 64)
+texture = SubResource("GradientTexture1D_dwj22")
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 96)
+script = ExtResource("1_4kl76")
+model = ExtResource("2_jga1q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_2jikk")
+
+[node name="InteractableArea2D" type="Area2D" parent="." node_paths=PackedStringArray("interaction_scene")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_o5bj6")
+dialog = false
+interaction_scene = NodePath("../ExitInteraction")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_q4piq")
+
+[node name="ExitInteraction" parent="." instance=ExtResource("4_kild0")]
+visible = false

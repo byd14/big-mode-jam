@@ -142,6 +142,8 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if !folded and event.is_action_pressed("camera_photo"):
 			mouse_previous = get_viewport().get_mouse_position()
+			if handle_durability > 0:
+				get_viewport().set_input_as_handled()
 			# Removed clicking lowering durability
 #			if handle_durability > 0:
 #				get_viewport().set_input_as_handled()

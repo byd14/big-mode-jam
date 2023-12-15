@@ -54,7 +54,7 @@ func gather_input():
 		dialog_state:
 			if Input.is_action_just_pressed("interact"):
 				Observer.cancel_interaction()
-				switch_state(normal_state)
+				
 
 
 func _physics_process(_delta):
@@ -62,6 +62,8 @@ func _physics_process(_delta):
 
 	update_stamina()
 	update_battery()
+
+	Observer.hud_scene.interact_hint.visible = false
 
 	if light.normalized_distance != 1:
 		sfx_danger.volume_db = -45 + (1 - light.normalized_distance) * 50
@@ -88,6 +90,10 @@ func switch_state(new_state : Callable):
 	state = new_state
 
 func normal_state():
+	for area in interact_area.get_overlapping_areas():
+		if area is InteractableArea2D:
+			Observer.hud_scene.interact_hint.visible = true
+			break
 	if Input.is_action_pressed("sprint") and !exhausted and hud_active == 0:
 		if stamina < 1:
 			sprint = false

@@ -11,6 +11,7 @@ const HAND := preload("res://assets/ui/hand_cursor.png")
 @export var cursor : Sprite2D
 @export var hud_notification : Label
 @export var hud_camera : HUDCamera
+@export var interact_hint : Label
 
 var phil : Phil
 

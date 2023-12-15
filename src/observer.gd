@@ -37,8 +37,11 @@ func cancel_interaction():
 	if current_interaction != null:
 		hud_scene.remove_child(current_interaction)
 		current_interaction = null
+	phil.switch_state(phil.normal_state)
 
 func checklist_goal_completed(goal : String):
+	if completed_goals.has(goal):
+		return
 	var goal_label : Label = hud_scene.checklist.paper.get_node("VBoxContainer/" + goal)
 	goal_label.modulate.a = 1
 	completed_goals.push_back(goal)
@@ -51,6 +54,11 @@ func death_screen():
 	get_tree().root.remove_child(floor_scene)
 	get_tree().root.call_deferred("remove_child", hud_scene)
 	get_tree().root.add_child(load("res://scn/ui/death_screen.tscn").instantiate())
+
+func end_screen():
+	get_tree().root.remove_child(floor_scene)
+	get_tree().root.call_deferred("remove_child", hud_scene)
+	get_tree().root.add_child(load("res://scn/ui/end_screen.tscn").instantiate())
 
 func set_level(scene : PackedScene, save := true):
 	if save:

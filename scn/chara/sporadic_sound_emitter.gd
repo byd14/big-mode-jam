@@ -59,7 +59,8 @@ func _process(delta):
 		if timer > interval:
 			timer = 0.0
 			interval = randf_range(min_interval, max_interval)
-			stream = sounds.pick_random()
+			if !sounds.is_empty():
+				stream = sounds.pick_random()
 			play()
 	
 	if player:
