@@ -19,4 +19,4 @@ func on_pressed():
 		4:
 			Observer.set_level(load("res://flr/floor_3.tscn"))
 	
-	AudioManager.play(sfx)
+	AudioManager.play(sfx, 1, 1, "UI")

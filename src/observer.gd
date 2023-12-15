@@ -48,7 +48,7 @@ func checklist_goal_completed(goal : String):
 	completed_goals.push_back(goal)
 	photobooth.operator.get_viewport().get_texture().get_image().save_jpg("user://" + goal + ".jpg", 0.4)
 	hud_scene.pop_notification("CHECKLIST ENTRY COMPLETED")
-	AudioManager.play(SFX_STINGER, -12)
+	AudioManager.play(SFX_STINGER, -12, 1, "UI")
 
 func restart_level():
 	set_level(load(floor_scene.scene_file_path), false)

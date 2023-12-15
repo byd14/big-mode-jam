@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://hqbw5j3dyr33"]
+[gd_scene load_steps=23 format=3 uid="uid://hqbw5j3dyr33"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_ermai"]
 [ext_resource type="TileSet" uid="uid://c3tqtciyf2m20" path="res://assets/hotel_tileset.tres" id="2_37vqc"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cylolxtk8uais" path="res://scn/props/boiler_prop.tscn" id="11_3le6y"]
 [ext_resource type="Script" path="res://scn/reverb_region.gd" id="12_yrqok"]
 [ext_resource type="AudioStream" uid="uid://cwx6bu18we7ok" path="res://assets/audio/ambience_loop.wav" id="15_ocl7i"]
-[ext_resource type="PackedScene" uid="uid://dah8tkr36ouvi" path="res://scn/exit.tscn" id="16_mt5p7"]
+[ext_resource type="PackedScene" path="res://scn/exit.tscn" id="16_mt5p7"]
 [ext_resource type="PackedScene" uid="uid://dkr5pvgsjcpth" path="res://scn/camera_region.tscn" id="16_rtors"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mbng"]
@@ -28,6 +28,12 @@ size = Vector2(163, 262)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7t0q8"]
 size = Vector2(237, 264)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77013"]
+size = Vector2(160, 273.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oai36"]
+size = Vector2(95, 267.25)
 
 [node name="TestFloor" type="Node2D" node_paths=PackedStringArray("darkness_buffer", "tilemap", "floor_decals", "phil", "y_sort", "start_region")]
 script = ExtResource("1_ermai")
@@ -184,7 +190,38 @@ volume_db = -20.0
 autoplay = true
 bus = &"Diegetic"
 
+[node name="ReverbRegions" type="Node" parent="Audio"]
+
+[node name="Room2" type="Area2D" parent="Audio/ReverbRegions"]
+position = Vector2(518, 727)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_yrqok")
+reverb_size = 0.18
+reverb_delay = 80
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Audio/ReverbRegions/Room2"]
+position = Vector2(-3, -15.75)
+shape = SubResource("RectangleShape2D_77013")
+debug_color = Color(0, 0.639216, 0.360784, 0.419608)
+
+[node name="Corridor" type="Area2D" parent="Audio/ReverbRegions"]
+position = Vector2(516, 1030)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_yrqok")
+reverb_wet = 0.1
+reverb_size = 0.1
+reverb_damping = 0.66
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Audio/ReverbRegions/Corridor"]
+position = Vector2(-4.5, -43.375)
+shape = SubResource("RectangleShape2D_oai36")
+debug_color = Color(0, 0.639216, 0.360784, 0.419608)
+
 [connection signal="area_entered" from="ReverbRegions/Area2D" to="ReverbRegions/Area2D" method="_on_area_entered"]
 [connection signal="area_entered" from="ReverbRegions/Area2D2" to="ReverbRegions/Area2D2" method="_on_area_entered"]
 [connection signal="area_entered" from="ReverbRegions/Area2D3" to="ReverbRegions/Area2D3" method="_on_area_entered"]
 [connection signal="area_entered" from="ReverbRegions/Area2D4" to="ReverbRegions/Area2D4" method="_on_area_entered"]
+[connection signal="area_entered" from="Audio/ReverbRegions/Room2" to="Audio/ReverbRegions/Room2" method="_on_area_entered"]
+[connection signal="area_entered" from="Audio/ReverbRegions/Corridor" to="Audio/ReverbRegions/Corridor" method="_on_area_entered"]
