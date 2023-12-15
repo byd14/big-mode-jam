@@ -159,7 +159,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0313726, 0.0588235, 0.0431373, 1)
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node2D" parent="."]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("10_c8ssl")
@@ -167,7 +167,7 @@ volume_db = -20.0
 autoplay = true
 bus = &"Diegetic"
 
-[node name="ReverbRegions" type="Node" parent="Audio"]
+[node name="ReverbRegions" type="Node2D" parent="Audio"]
 
 [node name="Room2" type="Area2D" parent="Audio/ReverbRegions"]
 position = Vector2(993, 1305)

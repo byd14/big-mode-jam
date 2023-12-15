@@ -16,9 +16,9 @@ func _ready():
 		interactable.on_interact_callback = func ():
 			sfx_closed.play()
 			if Observer.phil.battery <= 99:
-				interactable.text = "hover bottom left corner with mouse\n grab handle and rotate to recharge battery"
+				interactable.text = "Hover over your camera with the mouse.\nGrab handle and crank to recharge battery."
 			else:
-				interactable.text = "hold RMB, then adjust focus with A/D and take a shot with LMB press"
+				interactable.text = "Hold RMB, then adjust focus with A/D.\nTake a shot with LMB."
 
 func open():
 	interactable.queue_free()
@@ -31,7 +31,7 @@ func on_photo():
 	if is_instance_valid(eye) and eye.focus_difference < Observer.CAMERA_FOCUS_TOLERANCE:
 		open()
 		AudioManager.play(sfx_hit)
-		Observer.create_dialog("take photos to kill ghosts and complete checklist", 300000)
+		Observer.create_dialog("Take pictures of the items on your checklist.\nThey say spirits are afraid of cameras...", 300000)
 	
 	else:
 		AudioManager.play(sfx_error, 1, 1, "UI")

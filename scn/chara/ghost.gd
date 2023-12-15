@@ -1,6 +1,6 @@
 class_name Ghost extends CharacterBody2D
 
-const STUN_TIME := 150
+const STUN_TIME := 300
 const WALK_NORMAL := 0.36
 const WALK_ATTACK := 0.1
 
