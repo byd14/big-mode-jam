@@ -98,6 +98,7 @@ shape = SubResource("RectangleShape2D_0o3vf")
 stream = ExtResource("5_f8cev")
 autoplay = true
 max_distance = 250.0
+bus = &"Diegetic"
 script = ExtResource("5_e0mw5")
 play_sporadically = false
 
@@ -112,5 +113,6 @@ debug_color = Color(0.537255, 0.564706, 0.207843, 0.0784314)
 [node name="SFXDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_mmfwn")
 volume_db = 6.0
+bus = &"Diegetic"
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

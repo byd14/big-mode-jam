@@ -34,4 +34,4 @@ func on_photo():
 		Observer.create_dialog("take photos to kill ghosts and complete checklist", 100000)
 	
 	else:
-		AudioManager.play(sfx_error)
+		AudioManager.play(sfx_error, 1, 1, "UI")

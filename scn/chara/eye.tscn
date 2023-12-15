@@ -148,7 +148,8 @@ animation = &"idle"
 
 [node name="SFXStun" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_herrc")
-volume_db = -4.0
+volume_db = -6.0
+bus = &"Diegetic"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

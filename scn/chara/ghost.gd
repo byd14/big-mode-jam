@@ -54,7 +54,7 @@ func on_photo():
 		else:
 			sfx_stun.play()
 	else:
-		AudioManager.play(sfx_error)
+		AudioManager.play(sfx_error, 1, 1, "UI")
 
 func normal_state():
 	var phil := Observer.floor_scene.phil

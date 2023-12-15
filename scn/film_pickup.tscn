@@ -25,6 +25,7 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("4_1okdu")
 sfx = Array[AudioStream]([ExtResource("5_wk5o1")])
+sfx_bus = "Diegetic"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
 shape = SubResource("CircleShape2D_68jvi")
