@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cylolxtk8uais" path="res://scn/props/boiler_prop.tscn" id="11_3le6y"]
 [ext_resource type="Script" path="res://scn/reverb_region.gd" id="12_yrqok"]
 [ext_resource type="AudioStream" uid="uid://cwx6bu18we7ok" path="res://assets/audio/ambience_loop.wav" id="15_ocl7i"]
-[ext_resource type="PackedScene" path="res://scn/exit.tscn" id="16_mt5p7"]
+[ext_resource type="PackedScene" uid="uid://dah8tkr36ouvi" path="res://scn/exit.tscn" id="16_mt5p7"]
 [ext_resource type="PackedScene" uid="uid://dkr5pvgsjcpth" path="res://scn/camera_region.tscn" id="16_rtors"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mbng"]
