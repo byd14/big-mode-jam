@@ -6,6 +6,7 @@ const WALK_NORMAL := 1.3
 @export var velocity_component : VelocityComponent
 @export var animation : AnimatedSprite2D
 @export var hitbox : Area2D
+@export var sfx_stun : AudioStreamPlayer2D
 
 var state := normal_state
 var follow_target : Node2D
@@ -33,6 +34,7 @@ func on_photo():
 	Observer.hud_scene.hud_camera.break_handle()
 	animation.play("hurt")
 	velocity_component.stop()
+	sfx_stun.play()
 
 func normal_state():
 	var target_position := follow_target.position + follow_target.position.direction_to(Observer.phil.position) * 46
