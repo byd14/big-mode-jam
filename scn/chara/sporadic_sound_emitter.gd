@@ -28,7 +28,7 @@ func _process(delta):
 			play()
 	
 	if player:
-		var attenuated_volume = remap((global_position - player.global_position).length(), 10, 400, base_volume, base_volume -36)
+		var attenuated_volume = remap((global_position - player.global_position).length(), 10, max_distance, base_volume, base_volume -36)
 		if attenuated_volume <= -45:
 			volume_db = -99
 		else:

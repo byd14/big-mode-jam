@@ -9,6 +9,7 @@ class_name HUDCamera extends Control
 @export var exit_shape : CollisionShape2D
 @export var sfx_break : AudioStreamPlayer
 @export var sfx_vision_on : AudioStreamPlayer
+@export var sfx_vision_on_dead : AudioStreamPlayer
 @export var sfx_vision_off : AudioStreamPlayer
 @export var sfx_crank : AudioStreamPlayer
 @export var sfx_beep : AudioStreamPlayer
@@ -95,7 +96,10 @@ func on_vision_change(vision : bool):
 		return
 	target_rot += PI
 	if vision:
-		sfx_vision_on.play()
+		if phil.battery <= 99:
+			sfx_vision_on.play()
+		else:
+			sfx_vision_on_dead.play()
 	else:
 		sfx_vision_off.play()
 

@@ -20,7 +20,7 @@ func _ready():
 		sprite.texture = GREEN_KEY if color == "GREEN" else BLUE_KEY
 
 	interactable.on_interact_callback = func():
-		AudioManager.play(sound, -9)
+		AudioManager.play(sound, -0)
 		Observer.keys.push_back(color)
 		interactable.text = "acquired " + color_start + color + "[/color] key"
 		queue_free()

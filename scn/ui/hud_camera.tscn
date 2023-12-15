@@ -21,7 +21,7 @@ radius = 104.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_simty"]
 size = Vector2(376, 269.5)
 
-[node name="HUDCamera" type="Control" node_paths=PackedStringArray("battery_status", "camera_body", "handle_sprite", "film_amount", "enter_shape", "exit_shape", "sfx_break", "sfx_vision_on", "sfx_vision_off", "sfx_crank", "sfx_beep", "sfx_appear", "sfx_disappear")]
+[node name="HUDCamera" type="Control" node_paths=PackedStringArray("battery_status", "camera_body", "handle_sprite", "film_amount", "enter_shape", "exit_shape", "sfx_break", "sfx_vision_on", "sfx_vision_on_dead", "sfx_vision_off", "sfx_crank", "sfx_beep", "sfx_appear", "sfx_disappear")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +37,7 @@ enter_shape = NodePath("MouseTrigger/enter")
 exit_shape = NodePath("MouseTrigger/exit")
 sfx_break = NodePath("SFXBreak")
 sfx_vision_on = NodePath("SFXOn")
+sfx_vision_on_dead = NodePath("SFXOnDead")
 sfx_vision_off = NodePath("SFXOff")
 sfx_crank = NodePath("SFXCrank")
 sfx_beep = NodePath("SFXBeep")
@@ -127,6 +128,10 @@ volume_db = -4.685
 bus = &"Diegetic"
 
 [node name="SFXOn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_d4csw")
+bus = &"UI"
+
+[node name="SFXOnDead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_d4csw")
 bus = &"UI"
 

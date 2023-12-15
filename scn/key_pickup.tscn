@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1pjqr1h6em68"]
+[gd_scene load_steps=7 format=3 uid="uid://0msy14ftepr5"]
 
 [ext_resource type="Script" path="res://scn/key_pickup.gd" id="1_ovlys"]
 [ext_resource type="Texture2D" uid="uid://cc5p4lwf24bb" path="res://assets/key_red.png" id="1_x3tue"]
 [ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="2_528dr"]
-[ext_resource type="AudioStream" uid="uid://u1grkcalne3n" path="res://assets/audio/piano_stinger_short.wav" id="2_nv0er"]
+[ext_resource type="AudioStream" uid="uid://h0gt15i75e3x" path="res://assets/audio/key_pickup.wav" id="2_cprxu"]
 [ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="4_o0isu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ysjwe"]
@@ -11,7 +11,7 @@ radius = 14.0
 
 [node name="KeyPickup" type="Node2D" node_paths=PackedStringArray("interactable", "sprite")]
 script = ExtResource("1_ovlys")
-sound = ExtResource("2_nv0er")
+sound = ExtResource("2_cprxu")
 interactable = NodePath("InteractableArea2D")
 sprite = NodePath("Sprite2D")
 

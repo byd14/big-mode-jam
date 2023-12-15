@@ -94,8 +94,10 @@ func normal_state():
 			exhausted = true
 		else:
 			sprint = true
+			sfx_step.volume_db = -4
 	else:
 		sprint = false
+		sfx_step.volume_db = -12
 
 	velocity_component.walk_speed = WALK_NORMAL
 	if sprint:
@@ -153,6 +155,7 @@ func _on_camera_hitbox_area_entered(area:Area2D):
 		area.on_photo()
 		if area.has_node("ChecklistGoal"):
 			Observer.checklist_goal_completed(area.get_node("ChecklistGoal").goal_name)
+			
 
 func animation_state():
 	var anim = "idle"

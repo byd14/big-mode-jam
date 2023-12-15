@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dh5pbml8vpunq"]
+[gd_scene load_steps=65 format=3 uid="uid://dh5pbml8vpunq"]
 
 [ext_resource type="Script" path="res://scn/chara/phil.gd" id="1_2e342"]
 [ext_resource type="AudioStream" uid="uid://0g5t67a6nrdu" path="res://assets/audio/footstep1.wav" id="2_npw2l"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://src/unstable_light_2d.gd" id="15_hdjlg"]
 [ext_resource type="Script" path="res://src/velocity_component.gd" id="16_c000h"]
 [ext_resource type="AudioStream" uid="uid://cv1htbywqipb2" path="res://assets/audio/monster_noise_loop.wav" id="17_htd3c"]
+[ext_resource type="AudioStream" uid="uid://u1grkcalne3n" path="res://assets/audio/piano_stinger_short.wav" id="18_jwqt6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8qaa3"]
 atlas = ExtResource("7_teown")
@@ -417,9 +418,12 @@ autoplay = true
 bus = &"UI"
 
 [node name="SFXStep" type="AudioStreamPlayer2D" parent="."]
-volume_db = -17.0
+volume_db = -12.0
 attenuation = 0.00012207
 bus = &"Diegetic"
+
+[node name="SFXChecklistGoal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_jwqt6")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

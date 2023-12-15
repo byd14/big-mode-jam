@@ -265,7 +265,6 @@ frame_progress = 1.0
 
 [node name="SFXAttack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_5ysw7")
-volume_db = -5.0
 bus = &"Diegetic"
 
 [node name="SFXIdle" type="AudioStreamPlayer2D" parent="."]
