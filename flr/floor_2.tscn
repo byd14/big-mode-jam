@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://btg7k2yb8oocx"]
+[gd_scene load_steps=46 format=3 uid="uid://btg7k2yb8oocx"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_0u8ky"]
 [ext_resource type="TileSet" uid="uid://c3tqtciyf2m20" path="res://assets/hotel_tileset.tres" id="2_ukslg"]
@@ -29,7 +29,12 @@
 [ext_resource type="PackedScene" uid="uid://b2f78ll2e3i7w" path="res://scn/props/crate_small_prop.tscn" id="25_gv2a2"]
 [ext_resource type="PackedScene" uid="uid://b5q0vi7rvl0oy" path="res://scn/props/dresser_prop.tscn" id="26_qeboa"]
 [ext_resource type="PackedScene" uid="uid://dokouwhh3o53n" path="res://scn/props/fridge_prop.tscn" id="27_18ih3"]
+[ext_resource type="PackedScene" uid="uid://vrycsgfw8s1d" path="res://scn/props/lamp_prop.tscn" id="28_8utam"]
 [ext_resource type="PackedScene" uid="uid://dkr5pvgsjcpth" path="res://scn/camera_region.tscn" id="28_rary0"]
+[ext_resource type="PackedScene" uid="uid://bnn5lgm3s80uy" path="res://scn/props/sofa_prop.tscn" id="29_plut1"]
+[ext_resource type="PackedScene" uid="uid://17wwit04lsfb" path="res://scn/props/stacked_paper_prop.tscn" id="30_fenyb"]
+[ext_resource type="PackedScene" uid="uid://gnfhy8a7a8xt" path="res://scn/props/table_prop.tscn" id="31_xase3"]
+[ext_resource type="PackedScene" uid="uid://nlhjc1m4yy47" path="res://scn/props/trashbin_prop.tscn" id="32_w8dmx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sbqnc"]
 
@@ -205,7 +210,7 @@ position = Vector2(296, 640)
 position = Vector2(1128, 488)
 
 [node name="BookshelfProp4" parent="YSort" instance=ExtResource("18_5w5qs")]
-position = Vector2(1592, 80)
+position = Vector2(1592, 72)
 
 [node name="BookshelfProp5" parent="YSort" instance=ExtResource("18_5w5qs")]
 position = Vector2(1088, 1160)
@@ -250,7 +255,7 @@ position = Vector2(568, 616)
 position = Vector2(648, 616)
 
 [node name="ChairProp3" parent="YSort" instance=ExtResource("22_pw0jv")]
-position = Vector2(1624, 80)
+position = Vector2(1624, 72)
 
 [node name="CoolerProp" parent="YSort" instance=ExtResource("23_n2uxs")]
 position = Vector2(600, 520)
@@ -283,7 +288,124 @@ position = Vector2(688, 520)
 position = Vector2(1280, 40)
 
 [node name="FridgeProp" parent="YSort" instance=ExtResource("27_18ih3")]
-position = Vector2(568, 520)
+position = Vector2(568, 528)
+
+[node name="LampProp" parent="YSort" instance=ExtResource("28_8utam")]
+position = Vector2(752, 720)
+
+[node name="LampProp2" parent="YSort" instance=ExtResource("28_8utam")]
+position = Vector2(1136, 1072)
+
+[node name="LampProp3" parent="YSort" instance=ExtResource("28_8utam")]
+position = Vector2(1648, 72)
+
+[node name="LampProp4" parent="YSort" instance=ExtResource("28_8utam")]
+position = Vector2(1704, 904)
+
+[node name="SofaProp" parent="YSort" instance=ExtResource("29_plut1")]
+position = Vector2(736, 528)
+
+[node name="SofaProp2" parent="YSort" instance=ExtResource("29_plut1")]
+position = Vector2(1328, 48)
+
+[node name="SofaProp3" parent="YSort" instance=ExtResource("29_plut1")]
+position = Vector2(1192, 1072)
+
+[node name="StackedProp" parent="YSort" instance=ExtResource("30_fenyb")]
+position = Vector2(784, 1168)
+
+[node name="StackedProp2" parent="YSort" instance=ExtResource("30_fenyb")]
+position = Vector2(752, 1032)
+
+[node name="StackedProp3" parent="YSort" instance=ExtResource("30_fenyb")]
+position = Vector2(1032, 1072)
+
+[node name="TableProp" parent="YSort" instance=ExtResource("31_xase3")]
+position = Vector2(608, 616)
+
+[node name="TrashbinProp" parent="YSort" instance=ExtResource("32_w8dmx")]
+position = Vector2(496, 232)
+
+[node name="TrashbinProp2" parent="YSort" instance=ExtResource("32_w8dmx")]
+position = Vector2(464, 520)
+
+[node name="TrashbinProp3" parent="YSort" instance=ExtResource("32_w8dmx")]
+position = Vector2(1360, 1200)
+
+[node name="TrashbinProp4" parent="YSort" instance=ExtResource("32_w8dmx")]
+position = Vector2(1456, 336)
+
+[node name="PlaneSprite2D" type="Sprite2D" parent="YSort"]
+position = Vector2(88, 1208)
+texture = ExtResource("15_ktxxh")
+offset = Vector2(0, -16)
+hframes = 11
+vframes = 3
+frame = 6
+script = ExtResource("12_ijepa")
+
+[node name="PlaneSprite2D2" type="Sprite2D" parent="YSort"]
+position = Vector2(600, 848)
+texture = ExtResource("15_ktxxh")
+offset = Vector2(0, -16)
+hframes = 11
+vframes = 3
+frame = 6
+script = ExtResource("12_ijepa")
+
+[node name="PlaneSprite2D3" type="Sprite2D" parent="YSort"]
+position = Vector2(1096, 240)
+texture = ExtResource("15_ktxxh")
+offset = Vector2(0, -16)
+hframes = 11
+vframes = 3
+frame = 6
+script = ExtResource("12_ijepa")
+
+[node name="PlaneSprite2D4" type="Sprite2D" parent="YSort"]
+position = Vector2(1232, 848)
+texture = ExtResource("15_ktxxh")
+offset = Vector2(0, -16)
+hframes = 11
+vframes = 3
+frame = 6
+script = ExtResource("12_ijepa")
+
+[node name="FloorSprite2D2" type="Sprite2D" parent="YSort"]
+position = Vector2(776, 992)
+texture = ExtResource("15_ktxxh")
+offset = Vector2(0, 16)
+hframes = 11
+vframes = 3
+frame = 7
+script = ExtResource("16_qgk3v")
+
+[node name="FloorSprite2D3" type="Sprite2D" parent="YSort"]
+position = Vector2(752, 1120)
+texture = ExtResource("15_ktxxh")
+offset = Vector2(0, 16)
+hframes = 11
+vframes = 3
+frame = 7
+script = ExtResource("16_qgk3v")
+
+[node name="FloorSprite2D4" type="Sprite2D" parent="YSort"]
+position = Vector2(840, 1056)
+texture = ExtResource("15_ktxxh")
+offset = Vector2(0, 16)
+hframes = 11
+vframes = 3
+frame = 7
+script = ExtResource("16_qgk3v")
+
+[node name="FloorSprite2D5" type="Sprite2D" parent="YSort"]
+position = Vector2(792, 1048)
+texture = ExtResource("15_ktxxh")
+offset = Vector2(0, 16)
+hframes = 11
+vframes = 3
+frame = 7
+script = ExtResource("16_qgk3v")
 
 [node name="Foreground" type="TileMap" parent="."]
 tile_set = ExtResource("2_ukslg")
@@ -291,6 +413,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(1507369, 0, 0, 1507370, 0, 0, 1507347, 0, 0, 1507348, 0, 0, 524316, 0, 0, 524317, 0, 0, 786473, 0, 0, 786474, 0, 0)
 
 [node name="Cameras" type="Node2D" parent="."]
+visible = false
 
 [node name="CameraRegion" parent="Cameras" instance=ExtResource("28_rary0")]
 position = Vector2(992, 832)
