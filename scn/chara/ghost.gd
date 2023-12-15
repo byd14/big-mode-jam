@@ -11,6 +11,7 @@ const WALK_ATTACK := 0.1
 @export var hitbox : Area2D
 @export var sfx_attack : AudioStreamPlayer2D
 @export var sfx_death : AudioStream
+@export var sfx_hit : AudioStream
 
 var state := normal_state
 var hp := 2
@@ -43,6 +44,7 @@ func on_photo():
 		state = stun_state
 		animation.play("hit")
 		velocity_component.stop()
+		AudioManager.play(sfx_hit)
 		if hp <= 0:
 			queue_free()
 			Observer.floor_scene.ghost_count -= 1

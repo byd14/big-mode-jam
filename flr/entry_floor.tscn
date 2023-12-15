@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://hqbw5j3dyr33"]
+[gd_scene load_steps=19 format=3 uid="uid://hqbw5j3dyr33"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_ermai"]
 [ext_resource type="TileSet" uid="uid://c3tqtciyf2m20" path="res://assets/hotel_tileset.tres" id="2_37vqc"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://co85woqnvtmtd" path="res://scn/props/black_door.tscn" id="10_j34b2"]
 [ext_resource type="PackedScene" uid="uid://cylolxtk8uais" path="res://scn/props/boiler_prop.tscn" id="11_3le6y"]
 [ext_resource type="Script" path="res://scn/reverb_region.gd" id="12_yrqok"]
-[ext_resource type="PackedScene" uid="uid://41qlrkskqwrd" path="res://scn/chara/ghost.tscn" id="15_3bh22"]
 [ext_resource type="PackedScene" uid="uid://dkr5pvgsjcpth" path="res://scn/camera_region.tscn" id="16_rtors"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mbng"]
@@ -171,9 +170,6 @@ reverb_delay = 125
 position = Vector2(-16.5, 24)
 shape = SubResource("RectangleShape2D_7t0q8")
 debug_color = Color(0.0980392, 0.647059, 0.152941, 0.419608)
-
-[node name="Ghost" parent="." instance=ExtResource("15_3bh22")]
-position = Vector2(496, 777)
 
 [connection signal="area_entered" from="ReverbRegions/Area2D" to="ReverbRegions/Area2D" method="_on_area_entered"]
 [connection signal="area_entered" from="ReverbRegions/Area2D2" to="ReverbRegions/Area2D2" method="_on_area_entered"]

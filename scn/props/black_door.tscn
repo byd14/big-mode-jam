@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://co85woqnvtmtd"]
+[gd_scene load_steps=15 format=3 uid="uid://co85woqnvtmtd"]
 
 [ext_resource type="Script" path="res://scn/props/black_door.gd" id="1_d3u2n"]
+[ext_resource type="AudioStream" uid="uid://c4du42udw21ox" path="res://assets/audio/photo_hit_layer.wav" id="2_7qg3n"]
 [ext_resource type="Texture2D" uid="uid://buwjqnhilwt0b" path="res://assets/black_door.png" id="2_qms1c"]
 [ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="3_hctcq"]
 [ext_resource type="PackedScene" uid="uid://irvn03j1ln04" path="res://scn/props/black_door_eye.tscn" id="3_lvebc"]
@@ -29,6 +30,7 @@ sprite = NodePath("Sprite2D")
 door_collision = NodePath("CollisionShape2D")
 door_3d = NodePath("DoorModel")
 sfx_closed = NodePath("SFXClosed")
+sfx_hit = ExtResource("2_7qg3n")
 eye = NodePath("BlackDoorEye")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

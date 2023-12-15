@@ -36,6 +36,6 @@ func _process(delta):
 			volume_db = attenuated_volume
 	
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(area): # THIS IS PROBABLY NOT AN ACCEPTABLE SOLUTION, I'M JUST A DUMBASS LMAO. FEEL FREE TO FIX
 	if area.is_in_group("interact_area"):
 		player = area

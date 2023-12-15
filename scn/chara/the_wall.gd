@@ -4,6 +4,7 @@ const LIFETIME = 60 * 40
 
 @export var sprite : PlaneSprite2D
 @export var animation : AnimatedSprite2D
+@export var sfx_hit : AudioStream
 
 var timer := LIFETIME
 
@@ -26,6 +27,7 @@ func _physics_process(_delta):
 
 func on_photo():
 	timer = 0
+	AudioManager.play(sfx_hit)
 
 func move():
 	var old := position

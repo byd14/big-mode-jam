@@ -5,6 +5,7 @@ class_name BlackDoor extends StaticBody2D
 @export var door_collision : CollisionShape2D
 @export var door_3d : PropSprite2D
 @export var sfx_closed : AudioStreamPlayer2D
+@export var sfx_hit : AudioStream
 @export var eye : BlackDoorEye
 
 func _ready():
@@ -28,4 +29,5 @@ func open():
 func on_photo():
 	if is_instance_valid(eye) and eye.focus_difference < Observer.CAMERA_FOCUS_TOLERANCE:
 		open()
+		AudioManager.play(sfx_hit)
 		Observer.create_dialog("take photos to kill ghosts and complete checklist", 100000)
