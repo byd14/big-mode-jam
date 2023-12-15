@@ -182,7 +182,7 @@ position = Vector2(-16.5, 24)
 shape = SubResource("RectangleShape2D_7t0q8")
 debug_color = Color(0.0980392, 0.647059, 0.152941, 0.419608)
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node2D" parent="."]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("15_ocl7i")
@@ -190,7 +190,7 @@ volume_db = -20.0
 autoplay = true
 bus = &"Diegetic"
 
-[node name="ReverbRegions" type="Node" parent="Audio"]
+[node name="ReverbRegions" type="Node2D" parent="Audio"]
 
 [node name="Room2" type="Area2D" parent="Audio/ReverbRegions"]
 position = Vector2(518, 727)

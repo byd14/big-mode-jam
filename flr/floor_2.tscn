@@ -32,8 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://vrycsgfw8s1d" path="res://scn/props/lamp_prop.tscn" id="28_8utam"]
 [ext_resource type="PackedScene" uid="uid://dkr5pvgsjcpth" path="res://scn/camera_region.tscn" id="28_rary0"]
 [ext_resource type="PackedScene" uid="uid://bnn5lgm3s80uy" path="res://scn/props/sofa_prop.tscn" id="29_plut1"]
-[ext_resource type="PackedScene" uid="uid://17wwit04lsfb" path="res://scn/props/stacked_paper_prop.tscn" id="30_fenyb"]
-[ext_resource type="PackedScene" uid="uid://gnfhy8a7a8xt" path="res://scn/props/table_prop.tscn" id="31_xase3"]
+[ext_resource type="PackedScene" path="res://scn/props/stacked_paper_prop.tscn" id="30_fenyb"]
+[ext_resource type="PackedScene" path="res://scn/props/table_prop.tscn" id="31_xase3"]
 [ext_resource type="PackedScene" uid="uid://nlhjc1m4yy47" path="res://scn/props/trashbin_prop.tscn" id="32_w8dmx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sbqnc"]
@@ -488,7 +488,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0313726, 0.0588235, 0.0431373, 1)
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node2D" parent="."]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("18_ph0u1")
@@ -496,7 +496,7 @@ volume_db = -20.0
 autoplay = true
 bus = &"Diegetic"
 
-[node name="ReverbRegions" type="Node" parent="Audio"]
+[node name="ReverbRegions" type="Node2D" parent="Audio"]
 
 [node name="Room2" type="Area2D" parent="Audio/ReverbRegions"]
 visible = false
