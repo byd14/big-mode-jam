@@ -46,7 +46,8 @@ func checklist_goal_completed(goal : String):
 	var goal_label : Label = hud_scene.checklist.paper.get_node("VBoxContainer/" + goal)
 	goal_label.modulate.a = 1
 	completed_goals.push_back(goal)
-	get_viewport().get_texture().get_image().save_jpg("user://" + goal + ".jpg")
+	photobooth.operator.get_viewport().get_texture().get_image().save_jpg("user://" + goal + ".jpg", 0.4)
+	hud_scene.pop_notification("CHECKLIST ENTRY COMPLETED")
 	AudioManager.play(SFX_STINGER, -12)
 
 func restart_level():

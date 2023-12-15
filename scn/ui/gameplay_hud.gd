@@ -38,4 +38,4 @@ func on_vision_switched(new_vision : bool):
 
 func pop_notification(text : String):
 	hud_notification.text = text
-	hud_notification.modulate.a = 1
+	hud_notification.modulate.a = 100

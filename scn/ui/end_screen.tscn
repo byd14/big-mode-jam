@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i7yss"]
 shader = ExtResource("2_oklvb")
 shader_parameter/crt_curve = 0.02
-shader_parameter/crt_scan_line_color = 0.01
+shader_parameter/crt_scan_line_color = 0.07
 shader_parameter/aperture_grille_rate = 0.5
 shader_parameter/rf_switch_esque_blur = 0.55
 shader_parameter/white_noise_rate = 0.1
