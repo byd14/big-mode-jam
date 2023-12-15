@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://db51ca4oh5i54" path="res://scn/props/crate_prop.tscn" id="22_g1w32"]
 [ext_resource type="PackedScene" uid="uid://cutwlxbs1l7q8" path="res://scn/props/box_small_prop.tscn" id="22_mrm6c"]
 [ext_resource type="PackedScene" uid="uid://b2f78ll2e3i7w" path="res://scn/props/crate_small_prop.tscn" id="23_2t5vb"]
-[ext_resource type="PackedScene" uid="uid://b1pjqr1h6em68" path="res://scn/key_pickup.tscn" id="23_tf683"]
+[ext_resource type="PackedScene" uid="uid://0msy14ftepr5" path="res://scn/key_pickup.tscn" id="23_tf683"]
 [ext_resource type="PackedScene" uid="uid://nlhjc1m4yy47" path="res://scn/props/trashbin_prop.tscn" id="24_qb0dn"]
 [ext_resource type="PackedScene" uid="uid://djghnryxh5h73" path="res://scn/props/bed_prop.tscn" id="26_a0xlf"]
 [ext_resource type="PackedScene" uid="uid://cylolxtk8uais" path="res://scn/props/boiler_prop.tscn" id="27_nxppk"]
@@ -98,7 +98,7 @@ script = ExtResource("6_u5gr6")
 y_sort_enabled = true
 
 [node name="Phil" parent="YSort" instance=ExtResource("8_emncj")]
-position = Vector2(512, 768)
+position = Vector2(512, 747)
 
 [node name="KeyPickup" parent="YSort" instance=ExtResource("23_tf683")]
 position = Vector2(736, 480)

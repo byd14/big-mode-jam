@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0cw1gamt4b76"]
+[gd_scene load_steps=10 format=3 uid="uid://cm4twubwf253k"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_70rbb"]
 [ext_resource type="TileSet" uid="uid://c3tqtciyf2m20" path="res://assets/hotel_tileset.tres" id="2_qy443"]
@@ -56,7 +56,7 @@ script = ExtResource("6_tkics")
 y_sort_enabled = true
 
 [node name="Phil" parent="YSort" instance=ExtResource("7_r18vt")]
-position = Vector2(992, 1296)
+position = Vector2(992, 1268)
 
 [node name="ColoredDoor" parent="YSort" instance=ExtResource("8_i685o")]
 position = Vector2(992, 992)
