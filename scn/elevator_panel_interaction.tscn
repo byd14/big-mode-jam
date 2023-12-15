@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl7xeddtglyst"]
+[gd_scene load_steps=4 format=3 uid="uid://bl7xeddtglyst"]
 
+[ext_resource type="Texture2D" uid="uid://bkfwova2db3sf" path="res://assets/ElevatorPanel.png" id="1_quvfv"]
 [ext_resource type="Script" path="res://src/elevator_button.gd" id="1_rbh6g"]
 [ext_resource type="AudioStream" uid="uid://kgheao0vxdwp" path="res://assets/audio/elevator_button.wav" id="2_n5ipl"]
 
@@ -13,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -27,46 +29,63 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -146.0
+offset_top = -146.0
+offset_right = 146.0
+offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_quvfv")
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+offset_left = 460.0
+offset_top = 469.0
+offset_right = 500.0
+offset_bottom = 509.0
 text = "-"
 script = ExtResource("1_rbh6g")
 sfx = ExtResource("2_n5ipl")
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
+[node name="Button2" type="Button" parent="."]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+offset_left = 498.0
+offset_top = 416.0
+offset_right = 538.0
+offset_bottom = 456.0
 text = "-"
 script = ExtResource("1_rbh6g")
 floor_number = 2
 sfx = ExtResource("2_n5ipl")
 
-[node name="Button3" type="Button" parent="HBoxContainer"]
+[node name="Button3" type="Button" parent="."]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+offset_left = 459.0
+offset_top = 316.0
+offset_right = 499.0
+offset_bottom = 356.0
 text = "-"
 script = ExtResource("1_rbh6g")
 floor_number = 3
 sfx = ExtResource("2_n5ipl")
 
-[node name="Button4" type="Button" parent="HBoxContainer"]
+[node name="Button4" type="Button" parent="."]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+offset_left = 499.0
+offset_top = 264.0
+offset_right = 539.0
+offset_bottom = 304.0
 text = "-"
 script = ExtResource("1_rbh6g")
 floor_number = 4
