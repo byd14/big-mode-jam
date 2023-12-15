@@ -31,7 +31,7 @@ func on_photo():
 	if is_instance_valid(eye) and eye.focus_difference < Observer.CAMERA_FOCUS_TOLERANCE:
 		open()
 		AudioManager.play(sfx_hit)
-		Observer.create_dialog("take photos to kill ghosts and complete checklist", 100000)
+		Observer.create_dialog("take photos to kill ghosts and complete checklist", 300000)
 	
 	else:
 		AudioManager.play(sfx_error, 1, 1, "UI")

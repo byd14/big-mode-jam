@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://gnfhy8a7a8xt"]
+
+[ext_resource type="Texture2D" uid="uid://bjsryca0oou0r" path="res://assets/finished props vol2.png" id="1_cmqvv"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_3oscp"]
+[ext_resource type="PackedScene" uid="uid://jxysdbll4oqp" path="res://assets/models/table.glb" id="3_pwpou"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra11s"]
+size = Vector2(42, 18)
+
+[node name="TableProp" type="StaticBody2D"]
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cmqvv")
+offset = Vector2(0, -7)
+region_enabled = true
+region_rect = Rect2(128, 0, 64, 32)
+script = ExtResource("2_3oscp")
+model = ExtResource("3_pwpou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_ra11s")

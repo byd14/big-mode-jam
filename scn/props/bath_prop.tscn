@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://3oj6use5ix6f"]
+
+[ext_resource type="Texture2D" uid="uid://bjsryca0oou0r" path="res://assets/finished props vol2.png" id="1_bytwb"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_vbcwr"]
+[ext_resource type="PackedScene" uid="uid://b7jgjlgsdodcr" path="res://assets/models/bath.glb" id="3_kya72"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4t3ku"]
+size = Vector2(46, 16)
+
+[node name="BathProp" type="StaticBody2D"]
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bytwb")
+offset = Vector2(0, -7)
+region_enabled = true
+region_rect = Rect2(32, 0, 64, 32)
+script = ExtResource("2_vbcwr")
+model = ExtResource("3_kya72")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4t3ku")
