@@ -27,13 +27,14 @@ size = Vector2(163, 262)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7t0q8"]
 size = Vector2(237, 264)
 
-[node name="TestFloor" type="Node2D" node_paths=PackedStringArray("darkness_buffer", "tilemap", "floor_decals", "phil", "y_sort")]
+[node name="TestFloor" type="Node2D" node_paths=PackedStringArray("darkness_buffer", "tilemap", "floor_decals", "phil", "y_sort", "start_region")]
 script = ExtResource("1_ermai")
 darkness_buffer = NodePath("BackBufferCopy")
 tilemap = NodePath("TileMap")
 floor_decals = NodePath("FloorDecals")
 phil = NodePath("YSort/Phil")
 y_sort = NodePath("YSort")
+start_region = NodePath("Cameras/CameraRegion2")
 
 [node name="FloorDecals" type="TileMap" parent="."]
 tile_set = ExtResource("2_37vqc")
@@ -74,7 +75,7 @@ position = Vector2(464, 648)
 position = Vector2(512, 896)
 
 [node name="Phil" parent="YSort" instance=ExtResource("8_an061")]
-position = Vector2(512, 976)
+position = Vector2(512, 696)
 
 [node name="BoxProp" parent="YSort" instance=ExtResource("5_bq2lq")]
 position = Vector2(560, 656)

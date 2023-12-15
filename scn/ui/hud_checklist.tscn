@@ -95,11 +95,11 @@ text = "holy boot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="box4" type="Label" parent="Sprite2D/VBoxContainer"]
+[node name="duck" type="Label" parent="Sprite2D/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "box	"
+text = "yellow sea monster"
 horizontal_alignment = 1
 vertical_alignment = 1
 

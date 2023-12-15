@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bjsryca0oou0r" path="res://assets/finished props vol2.png" id="15_ktxxh"]
 [ext_resource type="Script" path="res://src/sprites/floor_sprite_2d.gd" id="16_qgk3v"]
 [ext_resource type="PackedScene" uid="uid://b555r65cuovaq" path="res://scn/colored_door.tscn" id="22_4nqu6"]
-[ext_resource type="PackedScene" path="res://scn/key_pickup.tscn" id="23_1mf86"]
+[ext_resource type="PackedScene" uid="uid://b1pjqr1h6em68" path="res://scn/key_pickup.tscn" id="23_1mf86"]
 [ext_resource type="PackedScene" uid="uid://dkr5pvgsjcpth" path="res://scn/camera_region.tscn" id="28_rary0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sbqnc"]
@@ -69,7 +69,7 @@ script = ExtResource("6_bjgix")
 y_sort_enabled = true
 
 [node name="Phil" parent="YSort" instance=ExtResource("12_3lq35")]
-position = Vector2(992, 800)
+position = Vector2(928, 872)
 
 [node name="ColoredDoor" parent="YSort" instance=ExtResource("22_4nqu6")]
 position = Vector2(1344, 832)
@@ -130,23 +130,29 @@ goal_name = "boot"
 
 [node name="FilmPickup" parent="YSort" instance=ExtResource("12_rokqu")]
 position = Vector2(992, 136)
-amount = 7
+amount = 5
 
 [node name="FilmPickup2" parent="YSort" instance=ExtResource("12_rokqu")]
 position = Vector2(1216, 1152)
-amount = 5
 
 [node name="FilmPickup3" parent="YSort" instance=ExtResource("12_rokqu")]
 position = Vector2(1776, 928)
 amount = 1
 
+[node name="KeyPickup2" parent="YSort" instance=ExtResource("23_1mf86")]
+position = Vector2(1696, 160)
+color = "BLUE"
+
+[node name="FilmPickup4" parent="YSort" instance=ExtResource("12_rokqu")]
+position = Vector2(192, 768)
+amount = 4
+
 [node name="Foreground" type="TileMap" parent="."]
 tile_set = ExtResource("2_ukslg")
 format = 2
-layer_0/tile_data = PackedInt32Array(1507369, 0, 0, 1507370, 0, 0, 1507347, 0, 0, 1507348, 0, 0, 524316, 0, 0, 524317, 0, 0)
+layer_0/tile_data = PackedInt32Array(1507369, 0, 0, 1507370, 0, 0, 1507347, 0, 0, 1507348, 0, 0, 524316, 0, 0, 524317, 0, 0, 786473, 0, 0, 786474, 0, 0)
 
 [node name="Cameras" type="Node2D" parent="."]
-visible = false
 
 [node name="CameraRegion" parent="Cameras" instance=ExtResource("28_rary0")]
 position = Vector2(992, 832)

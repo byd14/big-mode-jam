@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://db51ca4oh5i54" path="res://scn/props/crate_prop.tscn" id="22_g1w32"]
 [ext_resource type="PackedScene" uid="uid://cutwlxbs1l7q8" path="res://scn/props/box_small_prop.tscn" id="22_mrm6c"]
 [ext_resource type="PackedScene" uid="uid://b2f78ll2e3i7w" path="res://scn/props/crate_small_prop.tscn" id="23_2t5vb"]
-[ext_resource type="PackedScene" path="res://scn/key_pickup.tscn" id="23_tf683"]
+[ext_resource type="PackedScene" uid="uid://b1pjqr1h6em68" path="res://scn/key_pickup.tscn" id="23_tf683"]
 [ext_resource type="PackedScene" uid="uid://nlhjc1m4yy47" path="res://scn/props/trashbin_prop.tscn" id="24_qb0dn"]
 [ext_resource type="PackedScene" uid="uid://djghnryxh5h73" path="res://scn/props/bed_prop.tscn" id="26_a0xlf"]
 [ext_resource type="PackedScene" uid="uid://cylolxtk8uais" path="res://scn/props/boiler_prop.tscn" id="27_nxppk"]
@@ -100,6 +100,21 @@ y_sort_enabled = true
 [node name="Phil" parent="YSort" instance=ExtResource("8_emncj")]
 position = Vector2(512, 768)
 
+[node name="KeyPickup" parent="YSort" instance=ExtResource("23_tf683")]
+position = Vector2(736, 480)
+color = "GREEN"
+
+[node name="FilmPickup" parent="YSort" instance=ExtResource("5_o6uno")]
+position = Vector2(1600, 672)
+amount = 5
+
+[node name="FilmPickup2" parent="YSort" instance=ExtResource("5_o6uno")]
+position = Vector2(864, 1104)
+
+[node name="FilmPickup3" parent="YSort" instance=ExtResource("5_o6uno")]
+position = Vector2(656, 104)
+amount = 5
+
 [node name="LampProp" parent="YSort" instance=ExtResource("7_qgj6p")]
 position = Vector2(971, 1010)
 
@@ -111,14 +126,6 @@ position = Vector2(928, 1011)
 
 [node name="CoolerProp" parent="YSort" instance=ExtResource("16_udgxs")]
 position = Vector2(584, 808)
-
-[node name="FilmPickup2" parent="YSort" instance=ExtResource("5_o6uno")]
-position = Vector2(736, 480)
-amount = 6
-
-[node name="FilmPickup" parent="YSort" instance=ExtResource("5_o6uno")]
-position = Vector2(1600, 672)
-amount = 5
 
 [node name="BedProp" parent="YSort" instance=ExtResource("26_a0xlf")]
 position = Vector2(781, 1009)
@@ -163,17 +170,12 @@ position = Vector2(864, 256)
 position = Vector2(224, 384)
 color = "GREEN"
 
-[node name="KeyPickup" parent="YSort" instance=ExtResource("23_tf683")]
-position = Vector2(656, 104)
-color = "GREEN"
-
 [node name="Foreground" type="TileMap" parent="."]
 tile_set = ExtResource("2_de7eu")
 format = 2
 layer_0/tile_data = PackedInt32Array(589830, 0, 0, 589831, 0, 0, 327706, 0, 0, 327707, 0, 0)
 
 [node name="Cameras" type="Node2D" parent="."]
-visible = false
 
 [node name="CameraRegion" parent="Cameras" instance=ExtResource("9_h27ws")]
 position = Vector2(512, 800)

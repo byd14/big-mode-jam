@@ -39,7 +39,7 @@ sfx_open = NodePath("SFXOpen")
 self_modulate = Color(1, 0, 0.215686, 0.588235)
 position = Vector2(0, -112)
 rotation = -1.5708
-scale = Vector2(1, 64)
+scale = Vector2(1, 34)
 texture = SubResource("GradientTexture1D_wonmx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

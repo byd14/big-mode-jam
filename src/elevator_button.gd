@@ -15,3 +15,5 @@ func on_pressed():
 			Observer.set_level(load("res://flr/floor_1.tscn"))
 		3:
 			Observer.set_level(load("res://flr/floor_2.tscn"))
+		4:
+			Observer.set_level(load("res://flr/floor_3.tscn"))
