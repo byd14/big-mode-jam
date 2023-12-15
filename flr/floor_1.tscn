@@ -240,7 +240,7 @@ color = Color(0.0313726, 0.0588235, 0.0431373, 1)
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="Ambience" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("29_bxdxc")
 volume_db = -20.0
 autoplay = true

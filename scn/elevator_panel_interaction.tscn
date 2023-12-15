@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl7xeddtglyst"]
+[gd_scene load_steps=3 format=3 uid="uid://bl7xeddtglyst"]
 
 [ext_resource type="Script" path="res://src/elevator_button.gd" id="1_rbh6g"]
+[ext_resource type="AudioStream" uid="uid://kgheao0vxdwp" path="res://assets/audio/elevator_button.wav" id="2_n5ipl"]
 
 [node name="ElevatorPanelInteraction" type="Control"]
 z_index = -1
@@ -45,6 +46,7 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "-"
 script = ExtResource("1_rbh6g")
+sfx = ExtResource("2_n5ipl")
 
 [node name="Button2" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
@@ -52,6 +54,7 @@ layout_mode = 2
 text = "-"
 script = ExtResource("1_rbh6g")
 floor_number = 2
+sfx = ExtResource("2_n5ipl")
 
 [node name="Button3" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
@@ -59,3 +62,4 @@ layout_mode = 2
 text = "-"
 script = ExtResource("1_rbh6g")
 floor_number = 3
+sfx = ExtResource("2_n5ipl")

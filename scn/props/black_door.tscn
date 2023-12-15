@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://buwjqnhilwt0b" path="res://assets/black_door.png" id="2_qms1c"]
 [ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="3_hctcq"]
 [ext_resource type="PackedScene" uid="uid://irvn03j1ln04" path="res://scn/props/black_door_eye.tscn" id="3_lvebc"]
-[ext_resource type="AudioStream" uid="uid://wkj8q6lsj2d3" path="res://assets/audio/door_close.wav" id="4_u50bk"]
 [ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="6_t7agf"]
 [ext_resource type="PackedScene" uid="uid://tbm0xchyrgv1" path="res://assets/models/door_frame.glb" id="7_cda1j"]
 [ext_resource type="PackedScene" uid="uid://c7uwg7vhdn3d3" path="res://assets/models/black_door.glb" id="8_ieb8e"]
 [ext_resource type="Script" path="res://src/photo_sensative.gd" id="9_yi4ko"]
+[ext_resource type="AudioStream" uid="uid://srqx2b54pow5" path="res://assets/audio/door_rattle.wav" id="10_s5ra4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ceby"]
 size = Vector2(32, 48)
@@ -84,6 +84,6 @@ time = 300000.0
 shape = SubResource("CircleShape2D_cql0a")
 
 [node name="SFXClosed" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_u50bk")
-volume_db = -9.0
+stream = ExtResource("10_s5ra4")
+volume_db = -4.0
 bus = &"Diegetic"

@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://de4df25j0upi0"]
+[gd_scene load_steps=11 format=3 uid="uid://de4df25j0upi0"]
 
 [ext_resource type="Script" path="res://scn/3dworld/operator.gd" id="1_wsnd1"]
 [ext_resource type="AudioStream" uid="uid://ewfaap3qvq3k" path="res://assets/audio/photograph.wav" id="2_wvsts"]
+[ext_resource type="AudioStream" uid="uid://bk4v76mdgmlmh" path="res://assets/audio/photo_fail1.wav" id="3_atwru"]
 [ext_resource type="AudioStream" uid="uid://d0eohce5yjcy1" path="res://assets/audio/ui_accept_fucked.wav" id="3_ujjg8"]
+[ext_resource type="AudioStream" uid="uid://ctj68ramxrjtb" path="res://assets/audio/photo_fail2.wav" id="4_jo20n"]
+[ext_resource type="AudioStream" uid="uid://d0ppbnlxa3lvb" path="res://assets/audio/photo_fail3.wav" id="5_h3n5k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q2ksi"]
 
@@ -76,6 +79,7 @@ animation_player = NodePath("AnimationPlayer")
 focus_slider = NodePath("CanvasLayer/FocusSlider")
 sfx_photo = ExtResource("2_wvsts")
 sfx_error = NodePath("SFXError")
+sfx_error_sounds = Array[AudioStream]([ExtResource("3_atwru"), ExtResource("4_jo20n"), ExtResource("5_h3n5k")])
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 spot_range = 3.0
