@@ -32,10 +32,10 @@
 [ext_resource type="PackedScene" uid="uid://bqxyurkw41075" path="res://scn/props/bookshelf_prop.tscn" id="28_3lncn"]
 [ext_resource type="AudioStream" uid="uid://cwx6bu18we7ok" path="res://assets/audio/ambience_loop.wav" id="29_bxdxc"]
 [ext_resource type="Script" path="res://scn/reverb_region.gd" id="30_h0edf"]
-[ext_resource type="PackedScene" path="res://scn/props/bath_prop.tscn" id="31_yno7g"]
+[ext_resource type="PackedScene" uid="uid://3oj6use5ix6f" path="res://scn/props/bath_prop.tscn" id="31_yno7g"]
 [ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="32_0gtk1"]
-[ext_resource type="PackedScene" path="res://scn/props/toilet_prop.tscn" id="32_nrjip"]
-[ext_resource type="PackedScene" path="res://scn/props/stacked_paper_prop.tscn" id="33_f8evb"]
+[ext_resource type="PackedScene" uid="uid://dmfs4q4ei4sqi" path="res://scn/props/toilet_prop.tscn" id="32_nrjip"]
+[ext_resource type="PackedScene" uid="uid://17wwit04lsfb" path="res://scn/props/stacked_paper_prop.tscn" id="33_f8evb"]
 [ext_resource type="PackedScene" uid="uid://4ifxlflna8ud" path="res://scn/props/sink_prop.tscn" id="33_qjsmt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8b8ac"]
@@ -505,7 +505,6 @@ format = 2
 layer_0/tile_data = PackedInt32Array(589830, 0, 0, 589831, 0, 0, 327706, 0, 0, 327707, 0, 0)
 
 [node name="Cameras" type="Node2D" parent="."]
-visible = false
 
 [node name="CameraRegion" parent="Cameras" instance=ExtResource("9_h27ws")]
 position = Vector2(512, 800)

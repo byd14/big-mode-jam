@@ -32,8 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://vrycsgfw8s1d" path="res://scn/props/lamp_prop.tscn" id="28_8utam"]
 [ext_resource type="PackedScene" uid="uid://dkr5pvgsjcpth" path="res://scn/camera_region.tscn" id="28_rary0"]
 [ext_resource type="PackedScene" uid="uid://bnn5lgm3s80uy" path="res://scn/props/sofa_prop.tscn" id="29_plut1"]
-[ext_resource type="PackedScene" path="res://scn/props/stacked_paper_prop.tscn" id="30_fenyb"]
-[ext_resource type="PackedScene" path="res://scn/props/table_prop.tscn" id="31_xase3"]
+[ext_resource type="PackedScene" uid="uid://17wwit04lsfb" path="res://scn/props/stacked_paper_prop.tscn" id="30_fenyb"]
+[ext_resource type="PackedScene" uid="uid://gnfhy8a7a8xt" path="res://scn/props/table_prop.tscn" id="31_xase3"]
 [ext_resource type="PackedScene" uid="uid://nlhjc1m4yy47" path="res://scn/props/trashbin_prop.tscn" id="32_w8dmx"]
 [ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="33_61r4w"]
 
@@ -734,7 +734,6 @@ bus = &"Diegetic"
 [node name="ReverbRegions" type="Node2D" parent="Audio"]
 
 [node name="Room2" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(987, 883)
 collision_layer = 0
 collision_mask = 2
@@ -748,7 +747,6 @@ shape = SubResource("RectangleShape2D_1qkf2")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Room7" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(449, 410)
 collision_layer = 0
 collision_mask = 2
@@ -762,7 +760,6 @@ shape = SubResource("RectangleShape2D_1qkf2")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Room8" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(1621, 271)
 collision_layer = 0
 collision_mask = 2
@@ -776,7 +773,6 @@ shape = SubResource("RectangleShape2D_1qkf2")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Room9" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(1001, 170)
 collision_layer = 0
 collision_mask = 2
@@ -790,7 +786,6 @@ shape = SubResource("RectangleShape2D_bbk3e")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Room6" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(1346, 900)
 collision_layer = 0
 collision_mask = 2
@@ -806,7 +801,6 @@ shape = SubResource("RectangleShape2D_1qkf2")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Room5" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(1246, 1140)
 collision_layer = 0
 collision_mask = 2
@@ -820,7 +814,6 @@ shape = SubResource("RectangleShape2D_g3t6q")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Room3" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(210, 1093)
 collision_layer = 0
 collision_mask = 2
@@ -836,7 +829,6 @@ shape = SubResource("RectangleShape2D_wtlis")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Room11" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(561, 635)
 collision_layer = 0
 collision_mask = 2
@@ -852,7 +844,6 @@ shape = SubResource("RectangleShape2D_wtlis")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Room10" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(1346, 200)
 collision_layer = 0
 collision_mask = 2
@@ -868,7 +859,6 @@ shape = SubResource("RectangleShape2D_744ci")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Room4" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(100, 780)
 collision_layer = 0
 collision_mask = 2
@@ -884,7 +874,6 @@ shape = SubResource("RectangleShape2D_wtlis")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Corridor" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(516, 1030)
 collision_layer = 0
 collision_mask = 2
@@ -899,7 +888,6 @@ shape = SubResource("RectangleShape2D_myuyp")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Corridor4" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(1239, 661)
 collision_layer = 0
 collision_mask = 2
@@ -914,7 +902,6 @@ shape = SubResource("RectangleShape2D_myuyp")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Corridor5" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(709, 506)
 collision_layer = 0
 collision_mask = 2
@@ -929,7 +916,6 @@ shape = SubResource("RectangleShape2D_myuyp")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Corridor3" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(1133, 1046)
 collision_layer = 0
 collision_mask = 2
@@ -944,7 +930,6 @@ shape = SubResource("RectangleShape2D_b6j6p")
 debug_color = Color(0, 0.639216, 0.360784, 0.419608)
 
 [node name="Corridor2" type="Area2D" parent="Audio/ReverbRegions"]
-visible = false
 position = Vector2(600, 1089)
 collision_layer = 0
 collision_mask = 2
