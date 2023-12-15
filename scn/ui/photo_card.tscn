@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://dynab7gftaln7"]
+
+[ext_resource type="Script" path="res://scn/ui/photo_card.gd" id="1_vxdcx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b1kb"]
+size = Vector2(160, 186)
+
+[node name="PhotoCard" type="Control" node_paths=PackedStringArray("photo_image", "photo_label", "root")]
+custom_minimum_size = Vector2(180, 170)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -85.0
+offset_right = 95.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vxdcx")
+photo_image = NodePath("root/VBoxContainer/TextureRect")
+photo_label = NodePath("root/VBoxContainer/Label")
+root = NodePath("root")
+
+[node name="root" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -85.0
+offset_right = 74.5
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(74, 85)
+
+[node name="ColorRect" type="ColorRect" parent="root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94902, 0.909804, 0.866667, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -20.0
+offset_right = 22.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="root/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="root/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "photo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MouseTrigger" type="Area2D" parent="root"]
+position = Vector2(76.5, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="root/MouseTrigger"]
+position = Vector2(-1, -4)
+shape = SubResource("RectangleShape2D_3b1kb")
+
+[connection signal="mouse_entered" from="root/MouseTrigger" to="." method="_on_mouse_trigger_mouse_entered"]
+[connection signal="mouse_exited" from="root/MouseTrigger" to="." method="_on_mouse_trigger_mouse_exited"]

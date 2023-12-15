@@ -48,9 +48,11 @@ grow_vertical = 2
 alignment = 1
 
 [node name="MouseCursor" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("3_ky748")
 
 [node name="CRT" type="ColorRect" parent="."]
+z_index = 2
 material = SubResource("ShaderMaterial_i7yss")
 layout_mode = 1
 anchors_preset = 15

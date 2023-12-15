@@ -23,7 +23,7 @@ var floor_is_ready := false
 var tutorial_competed := false
 var keys : Array
 var doors_opened : Array
-var completed_goals : Array
+var completed_goals : Array = ["elevator"]
 var deleted_nodes : Array
 
 func create_dialog(text : String, time := 120.0):
