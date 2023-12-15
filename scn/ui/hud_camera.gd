@@ -96,7 +96,7 @@ func on_vision_change(vision : bool):
 		return
 	target_rot += PI
 	if vision:
-		if phil.battery <= 99:
+		if phil.battery >= 99:
 			sfx_vision_on.play()
 		else:
 			sfx_vision_on_dead.play()

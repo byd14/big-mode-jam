@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://mifubuocmgcn"]
+[gd_scene load_steps=18 format=3 uid="uid://mifubuocmgcn"]
 
 [ext_resource type="Script" path="res://scn/ui/hud_camera.gd" id="1_pgm6k"]
 [ext_resource type="Texture2D" uid="uid://dfwg84llnanc3" path="res://assets/ui/camera-bodyI.png" id="2_j4ulj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://ddrbhgvy6r5sy" path="res://assets/ui_theme.tres" id="8_y21id"]
 [ext_resource type="AudioStream" uid="uid://b8oc10cvbbps5" path="res://assets/audio/crank_break.wav" id="9_s01y3"]
 [ext_resource type="AudioStream" uid="uid://cj6b6wmxb4ryq" path="res://assets/audio/camera_equip.wav" id="10_d4csw"]
+[ext_resource type="AudioStream" uid="uid://cpbp532bj3ofv" path="res://assets/audio/camera_equip_dead.wav" id="11_3pky3"]
 [ext_resource type="AudioStream" uid="uid://c50qc677435hj" path="res://assets/audio/camera_unequip.wav" id="11_hrs23"]
 [ext_resource type="AudioStream" uid="uid://cjg8kk0y6565f" path="res://assets/audio/crank_tick.wav" id="11_oneg6"]
 [ext_resource type="AudioStream" uid="uid://cot3fbh2mrpjs" path="res://assets/audio/crank_ui_appear.wav" id="12_6wt0a"]
@@ -132,7 +133,8 @@ stream = ExtResource("10_d4csw")
 bus = &"UI"
 
 [node name="SFXOnDead" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_d4csw")
+stream = ExtResource("11_3pky3")
+volume_db = -2.811
 bus = &"UI"
 
 [node name="SFXOff" type="AudioStreamPlayer" parent="."]
