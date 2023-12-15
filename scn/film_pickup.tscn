@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxsc08fvqpop0"]
+[gd_scene load_steps=7 format=3 uid="uid://cxsc08fvqpop0"]
 
 [ext_resource type="Script" path="res://scn/film_pickup.gd" id="1_gixix"]
 [ext_resource type="Texture2D" uid="uid://dsxkododqyxhm" path="res://assets/film.png" id="2_a3jfr"]
 [ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="3_3yhl2"]
 [ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="4_1okdu"]
+[ext_resource type="AudioStream" uid="uid://dns0v4l3oysiy" path="res://assets/audio/film_pickup.wav" id="5_wk5o1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_68jvi"]
 radius = 14.0
@@ -23,6 +24,7 @@ offset_3d = Vector2(0, -12)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("4_1okdu")
+sfx = Array[AudioStream]([ExtResource("5_wk5o1")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
 shape = SubResource("CircleShape2D_68jvi")
