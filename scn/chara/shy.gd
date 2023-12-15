@@ -8,6 +8,7 @@ const WALK_CHASE := 0.96
 @export var animation : AnimatedSprite2D
 @export var hitbox : Area2D
 @export var sfx_scream : AudioStreamPlayer2D
+@export var sfx_death : AudioStream
 
 var state := normal_state
 var phil : Phil
@@ -62,6 +63,7 @@ func on_photo():
 	if focus < Observer.CAMERA_FOCUS_TOLERANCE:
 		queue_free()
 		Observer.floor_scene.shy_count -= 1
+		AudioManager.play_2d(sfx_death, global_position, 1, 1)
 
 func normal_state():
 	if animation.animation == "scream":

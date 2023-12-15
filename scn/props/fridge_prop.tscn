@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dokouwhh3o53n"]
+[gd_scene load_steps=8 format=3 uid="uid://dokouwhh3o53n"]
 
 [ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="1_t04ck"]
 [ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_7iheo"]
 [ext_resource type="PackedScene" uid="uid://c4jc2w7qvxina" path="res://assets/models/lamp.glb" id="3_63rqx"]
+[ext_resource type="AudioStream" uid="uid://c53pxjefrrkt7" path="res://assets/audio/refridgerator_loop.wav" id="4_73xij"]
+[ext_resource type="Script" path="res://scn/chara/sporadic_sound_emitter.gd" id="5_gd31l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0vid6"]
 radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onjmi"]
+radius = 200.0
 
 [node name="FridgeProp" type="StaticBody2D"]
 
@@ -19,3 +24,21 @@ model = ExtResource("3_63rqx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0vid6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_73xij")
+volume_db = -10.0
+autoplay = true
+max_distance = 400.0
+bus = &"Diegetic"
+script = ExtResource("5_gd31l")
+play_sporadically = false
+
+[node name="Area2D" type="Area2D" parent="AudioStreamPlayer2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AudioStreamPlayer2D/Area2D"]
+shape = SubResource("CircleShape2D_onjmi")
+
+[connection signal="area_entered" from="AudioStreamPlayer2D/Area2D" to="AudioStreamPlayer2D" method="_on_area_2d_area_entered"]

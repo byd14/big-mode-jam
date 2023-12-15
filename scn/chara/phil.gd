@@ -63,7 +63,10 @@ func _physics_process(_delta):
 	update_stamina()
 	update_battery()
 
-	sfx_danger.volume_db = -45 + (1 - light.normalized_distance) * 50
+	if light.normalized_distance != 1:
+		sfx_danger.volume_db = -45 + (1 - light.normalized_distance) * 50
+	else:
+		sfx_danger.volume_db = -99
 	
 	state.call()
 

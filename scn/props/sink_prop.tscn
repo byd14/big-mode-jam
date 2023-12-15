@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://4ifxlflna8ud"]
+[gd_scene load_steps=8 format=3 uid="uid://4ifxlflna8ud"]
 
 [ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="1_kk5u5"]
 [ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_a35ta"]
 [ext_resource type="PackedScene" uid="uid://yat70qehyvwt" path="res://assets/models/sink.glb" id="3_eb77n"]
+[ext_resource type="Script" path="res://scn/chara/sporadic_sound_emitter.gd" id="4_wvasp"]
+[ext_resource type="AudioStream" uid="uid://cdcwyqlmhhmo" path="res://assets/audio/water_drip.wav" id="5_y73hf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0vid6"]
 radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i7pe8"]
+radius = 200.0
 
 [node name="SinkProp" type="StaticBody2D"]
 
@@ -20,3 +25,20 @@ model = ExtResource("3_eb77n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0vid6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_distance = 600.0
+bus = &"Diegetic"
+script = ExtResource("4_wvasp")
+min_interval = 4.5
+max_interval = 5.5
+sounds = Array[AudioStream]([ExtResource("5_y73hf")])
+
+[node name="Area2D" type="Area2D" parent="AudioStreamPlayer2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AudioStreamPlayer2D/Area2D"]
+shape = SubResource("CircleShape2D_i7pe8")
+
+[connection signal="area_entered" from="AudioStreamPlayer2D/Area2D" to="AudioStreamPlayer2D" method="_on_area_2d_area_entered"]

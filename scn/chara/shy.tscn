@@ -1,6 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://g24vxn1myffg"]
+[gd_scene load_steps=32 format=3 uid="uid://g24vxn1myffg"]
 
 [ext_resource type="Script" path="res://scn/chara/shy.gd" id="1_ksytj"]
+[ext_resource type="AudioStream" uid="uid://0dbssrqaqs8m" path="res://assets/audio/shy_death.wav" id="2_fvcyx"]
 [ext_resource type="Shader" path="res://src/shaders/box_blur.gdshader" id="2_hb054"]
 [ext_resource type="Script" path="res://src/sprites/ghost_sprite_2d.gd" id="3_oonrr"]
 [ext_resource type="Script" path="res://src/velocity_component.gd" id="4_bt16t"]
@@ -163,6 +164,7 @@ velocity_component = NodePath("VelocityComponent")
 animation = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox")
 sfx_scream = NodePath("SFXScream")
+sfx_death = ExtResource("2_fvcyx")
 
 [node name="GhostSprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("animation")]
 material = SubResource("ShaderMaterial_xlqlj")
@@ -202,6 +204,7 @@ bus = &"Diegetic"
 
 [node name="SFXIdle" type="AudioStreamPlayer2D" parent="."]
 volume_db = -8.0
+max_distance = 200.0
 bus = &"Diegetic"
 script = ExtResource("7_8tp22")
 sounds = Array[AudioStream]([ExtResource("8_mv1a0"), ExtResource("9_63lva")])
