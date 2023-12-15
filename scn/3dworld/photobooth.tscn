@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scn/3dworld/photobooth.gd" id="1_rlufd"]
 [ext_resource type="PackedScene" uid="uid://de4df25j0upi0" path="res://scn/3dworld/operator.tscn" id="2_biqlj"]
+[ext_resource type="TileSet" uid="uid://b88gxq3x3pnef" path="res://assets/master_tileset.tres" id="2_ckk85"]
 [ext_resource type="MeshLibrary" uid="uid://dlo2y6xd47o8e" path="res://assets/hotel_meshlib.tres" id="2_guseo"]
-[ext_resource type="TileSet" uid="uid://c3tqtciyf2m20" path="res://assets/hotel_tileset.tres" id="2_pvdx6"]
 
 [sub_resource type="Environment" id="Environment_7ysfa"]
 background_mode = 1
@@ -34,7 +34,7 @@ handle_input_locally = false
 size = Vector2i(4096, 4096)
 
 [node name="FloorDecals" type="TileMap" parent="SubViewport"]
-tile_set = ExtResource("2_pvdx6")
+tile_set = ExtResource("2_ckk85")
 cell_quadrant_size = 32
 format = 2
 

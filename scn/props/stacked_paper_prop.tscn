@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://17wwit04lsfb"]
+
+[ext_resource type="Texture2D" uid="uid://bjsryca0oou0r" path="res://assets/finished props vol2.png" id="1_5xvj1"]
+[ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="2_o3dnu"]
+[ext_resource type="PackedScene" uid="uid://cx1adl0qha5th" path="res://assets/models/stacked_paper.glb" id="3_ei7tk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ici0e"]
+radius = 11.0
+
+[node name="StackedProp" type="StaticBody2D"]
+
+[node name="PropSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5xvj1")
+offset = Vector2(0, -7)
+hframes = 11
+vframes = 3
+frame = 10
+region_rect = Rect2(32, 0, 64, 32)
+script = ExtResource("2_o3dnu")
+model = ExtResource("3_ei7tk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_ici0e")

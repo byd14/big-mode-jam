@@ -27,7 +27,11 @@ func create_3d_copy():
 	copy_3d.offset -= offset + offset_3d
 	copy_3d.shaded = true
 	copy_3d.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-	# copy_3d.no_depth_test = true
+	copy_3d.hframes = hframes
+	copy_3d.vframes = vframes
+	copy_3d.frame = frame
+	copy_3d.region_enabled = region_enabled
+	copy_3d.region_rect = region_rect
 	match orientation:
 		"BILLBOARD":
 			copy_3d.billboard_plane = true

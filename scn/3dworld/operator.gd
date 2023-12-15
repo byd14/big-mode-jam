@@ -77,3 +77,5 @@ func to_normal_state():
 	phil.switch_state(phil.normal_state)
 	phil.switch_vision(false)
 	phil.camera_hitbox.monitoring = false
+	sfx_focus_down.stop()
+	sfx_focus_up.stop()
