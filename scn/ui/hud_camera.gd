@@ -88,7 +88,7 @@ func _physics_process(_delta):
 			break_handle()
 
 	if phil.battery <= 50:
-		battery_status.frame = 0 if sin(Time.get_ticks_msec() / 100.0) > 0 else 1
+		battery_status.frame = 0 if sin(Time.get_ticks_msec() / 90.0) > 0 else 1
 	elif phil.battery <= 99:
 		battery_status.frame = 2
 	else:
