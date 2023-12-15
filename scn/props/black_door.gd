@@ -7,6 +7,7 @@ class_name BlackDoor extends StaticBody2D
 @export var sfx_closed : AudioStreamPlayer2D
 @export var sfx_hit : AudioStream
 @export var eye : BlackDoorEye
+@export var sfx_error : AudioStream
 
 func _ready():
 	if Observer.tutorial_competed:
@@ -31,3 +32,6 @@ func on_photo():
 		open()
 		AudioManager.play(sfx_hit)
 		Observer.create_dialog("take photos to kill ghosts and complete checklist", 100000)
+	
+	else:
+		AudioManager.play(sfx_error)

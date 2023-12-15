@@ -6,6 +6,8 @@ class_name Operator extends Camera3D
 @export var sfx_photo : AudioStream
 @export var sfx_error : AudioStreamPlayer
 @export var sfx_error_sounds : Array[AudioStream]
+@export var sfx_focus_up : AudioStreamPlayer
+@export var sfx_focus_down : AudioStreamPlayer
 
 var mouse_sensitivity : float
 var phil : Phil
@@ -38,12 +40,27 @@ func _physics_process(_delta):
 	if Input.is_action_just_released("camera_scope"):
 		to_normal_state()
 
+	if Input.is_action_just_released("focus_left") or Input.is_action_just_released("focus_right"):
+		sfx_focus_down.stop()
+		sfx_focus_up.stop()
+		input_active = false
+
 	if Input.is_action_just_pressed("focus_left") or Input.is_action_just_pressed("focus_right"):
 		input_active = true
-
+		
+	
 	if input_active:
 		var focus_input := Input.get_axis("focus_left", "focus_right")
 		focus_slider.value += focus_input / 0.9
+		
+		if focus_input > 0:
+			if not sfx_focus_up.playing:
+				sfx_focus_up.play()
+				sfx_focus_down.stop()
+		elif not sfx_focus_down.playing:
+			sfx_focus_down.play()
+			sfx_focus_up.stop()
+		
 
 func _input(event):
 	if event is InputEventMouseMotion:

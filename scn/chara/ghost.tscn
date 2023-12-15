@@ -1,10 +1,12 @@
-[gd_scene load_steps=41 format=3 uid="uid://41qlrkskqwrd"]
+[gd_scene load_steps=43 format=3 uid="uid://41qlrkskqwrd"]
 
 [ext_resource type="Script" path="res://scn/chara/ghost.gd" id="1_8reug"]
 [ext_resource type="AudioStream" uid="uid://c2piom7w0o7f1" path="res://assets/audio/ghost_death.wav" id="2_ce80h"]
 [ext_resource type="Shader" path="res://src/shaders/box_blur.gdshader" id="2_nhods"]
 [ext_resource type="AudioStream" uid="uid://c4du42udw21ox" path="res://assets/audio/photo_hit_layer.wav" id="3_g7ykh"]
+[ext_resource type="AudioStream" uid="uid://cg2jmeydq3a4n" path="res://assets/audio/ghost_stun.wav" id="3_jg8lu"]
 [ext_resource type="Script" path="res://src/sprites/ghost_sprite_2d.gd" id="3_tcp1g"]
+[ext_resource type="AudioStream" uid="uid://wy8a3m6gcm7d" path="res://assets/audio/camera_focus_warning.wav" id="4_w5fuh"]
 [ext_resource type="Script" path="res://src/velocity_component.gd" id="4_yp17h"]
 [ext_resource type="Texture2D" uid="uid://c84ojdyg00qn" path="res://assets/radial_gradient.tres" id="5_ua8fr"]
 [ext_resource type="Script" path="res://src/photo_sensative.gd" id="6_q1b2v"]
@@ -205,7 +207,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "light", "animation", "hitbox", "sfx_attack") groups=["danger"]]
+[node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "velocity_component", "light", "animation", "hitbox", "sfx_attack", "sfx_stun") groups=["danger"]]
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1
@@ -217,7 +219,9 @@ animation = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox")
 sfx_attack = NodePath("SFXAttack")
 sfx_death = ExtResource("2_ce80h")
+sfx_stun = NodePath("SFXStun")
 sfx_hit = ExtResource("3_g7ykh")
+sfx_error = ExtResource("4_w5fuh")
 
 [node name="GhostSprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("animation")]
 material = SubResource("ShaderMaterial_xlqlj")
@@ -265,6 +269,12 @@ frame_progress = 1.0
 
 [node name="SFXAttack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_5ysw7")
+volume_db = 3.0
+bus = &"Diegetic"
+
+[node name="SFXStun" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jg8lu")
+volume_db = -3.0
 bus = &"Diegetic"
 
 [node name="SFXIdle" type="AudioStreamPlayer2D" parent="."]

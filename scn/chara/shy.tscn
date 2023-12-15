@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://g24vxn1myffg"]
+[gd_scene load_steps=34 format=3 uid="uid://g24vxn1myffg"]
 
 [ext_resource type="Script" path="res://scn/chara/shy.gd" id="1_ksytj"]
 [ext_resource type="AudioStream" uid="uid://0dbssrqaqs8m" path="res://assets/audio/shy_death.wav" id="2_fvcyx"]
 [ext_resource type="Shader" path="res://src/shaders/box_blur.gdshader" id="2_hb054"]
 [ext_resource type="Script" path="res://src/sprites/ghost_sprite_2d.gd" id="3_oonrr"]
 [ext_resource type="AudioStream" uid="uid://c4du42udw21ox" path="res://assets/audio/photo_hit_layer.wav" id="3_qk1sh"]
+[ext_resource type="AudioStream" uid="uid://wy8a3m6gcm7d" path="res://assets/audio/camera_focus_warning.wav" id="4_5vohi"]
 [ext_resource type="Script" path="res://src/velocity_component.gd" id="4_bt16t"]
 [ext_resource type="Script" path="res://src/photo_sensative.gd" id="5_0ciw8"]
 [ext_resource type="AudioStream" uid="uid://dvl1u706k86jd" path="res://assets/audio/shy_scream2.wav" id="6_hoebi"]
@@ -167,6 +168,7 @@ hitbox = NodePath("Hitbox")
 sfx_scream = NodePath("SFXScream")
 sfx_death = ExtResource("2_fvcyx")
 sfx_hit = ExtResource("3_qk1sh")
+sfx_error = ExtResource("4_5vohi")
 
 [node name="GhostSprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("animation")]
 material = SubResource("ShaderMaterial_xlqlj")
