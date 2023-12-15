@@ -12,9 +12,11 @@ class_name HUDCamera extends Control
 @export var sfx_vision_on_dead : AudioStreamPlayer
 @export var sfx_vision_off : AudioStreamPlayer
 @export var sfx_crank : AudioStreamPlayer
+@export var sfx_ready : AudioStreamPlayer
 @export var sfx_beep : AudioStreamPlayer
 @export var sfx_appear : AudioStreamPlayer
 @export var sfx_disappear : AudioStreamPlayer
+
 
 @export var unfold_offset : float
 
@@ -27,6 +29,7 @@ var toggles : Array[CheckButton]
 var phil : Phil
 var sfx_crank_delay := 0.1
 var sfx_beep_played := true
+var sfx_ready_played := true
 
 func _ready():
 	Observer.vision_switched.connect(on_vision_change)
@@ -46,6 +49,9 @@ func _physics_process(_delta):
 					count += 1
 			if count == toggles.size():
 				handle_durability = 100
+				if not sfx_ready_played:
+					sfx_ready.play()
+					sfx_ready_played = true
 		if Input.is_action_pressed("camera_photo"):
 			if handle_durability > 1:
 				var mouse_position := get_viewport().get_mouse_position()
@@ -106,6 +112,7 @@ func on_vision_change(vision : bool):
 func break_handle():
 	handle_durability = -1
 	sfx_break.play()
+	sfx_ready_played = false
 	for toggle in toggles:
 		toggles.pick_random().button_pressed = false
 
@@ -135,6 +142,8 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if !folded and event.is_action_pressed("camera_photo"):
 			mouse_previous = get_viewport().get_mouse_position()
-			if handle_durability > 0:
-				get_viewport().set_input_as_handled()
-				handle_durability = maxf(0, handle_durability - 10)
+			# Removed clicking lowering durability
+#			if handle_durability > 0:
+#				get_viewport().set_input_as_handled()
+#				handle_durability = maxf(0, handle_durability - 10)
+
