@@ -8,6 +8,7 @@ const CAMERA_VIEW := preload("res://scn/3dworld/camera_view.tscn")
 const GAMEPLAY_HUD := preload("res://scn/ui/gameplay_hud.tscn")
 const MOUSE_SENS_3D := 0.003
 const CAMERA_FOCUS_TOLERANCE := 0.12
+const SFX_STINGER := preload("res://assets/audio/piano_stinger.wav")
 
 var floor_scene : Floor2D
 var camera_scene : SubViewportContainer
@@ -46,6 +47,7 @@ func checklist_goal_completed(goal : String):
 	goal_label.modulate.a = 1
 	completed_goals.push_back(goal)
 	get_viewport().get_texture().get_image().save_jpg("user://" + goal + ".jpg")
+	AudioManager.play(SFX_STINGER, -12)
 
 func restart_level():
 	set_level(load(floor_scene.scene_file_path), false)
