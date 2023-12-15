@@ -4,6 +4,7 @@ class_name InteractableArea2D extends Area2D
 @export var dialog := true
 @export var interaction_scene : Control
 @export var time := 120.0
+@export var sfx : Array[AudioStream]
 var on_interact_callback := func(): print("interaction")
 
 func _ready():
@@ -17,6 +18,9 @@ func on_interact():
 		Observer.create_interaction(interaction_scene)
 	if dialog:
 		Observer.create_dialog(text, time)
+		
+	if not sfx.is_empty():
+			AudioManager.play(sfx.pick_random())
 
 func _notification(what):
 	if what == NOTIFICATION_PREDELETE and is_instance_valid(interaction_scene):

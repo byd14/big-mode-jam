@@ -6,9 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://cluk8txkwyreg" path="res://assets/audio/checklist_ui_dissappear.wav" id="4_86d3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of3k0"]
-size = Vector2(232, 101)
+size = Vector2(232, 232)
 
-[node name="HUDChecklist" type="Control" node_paths=PackedStringArray("paper", "sfx_appear", "sfx_disappear")]
+[node name="HUDChecklist" type="Control" node_paths=PackedStringArray("paper", "mouse_trigger", "sfx_appear", "sfx_disappear")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ll8gs")
 paper = NodePath("Sprite2D")
+mouse_trigger = NodePath("MouseTrigger")
 unfold_offset = 160
 sfx_appear = NodePath("SFXAppear")
 sfx_disappear = NodePath("SFXDisappear")
@@ -106,7 +107,7 @@ vertical_alignment = 1
 [node name="MouseTrigger" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseTrigger"]
-position = Vector2(0, 3.5)
+position = Vector2(0, 78)
 shape = SubResource("RectangleShape2D_of3k0")
 
 [node name="SFXAppear" type="AudioStreamPlayer" parent="."]

@@ -101,7 +101,7 @@ func on_vision_change(vision : bool):
 
 func break_handle():
 	handle_durability = -1
-	sfx_break.play(0.36)
+	sfx_break.play()
 	for toggle in toggles:
 		toggles.pick_random().button_pressed = false
 

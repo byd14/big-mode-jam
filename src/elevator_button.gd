@@ -1,6 +1,7 @@
 class_name ElevatorButton extends Button
 
 @export var floor_number := 1
+@export var sfx : AudioStream
 
 func _ready():
 	text = str(floor_number)
@@ -17,3 +18,5 @@ func on_pressed():
 			Observer.set_level(load("res://flr/floor_2.tscn"))
 		4:
 			Observer.set_level(load("res://flr/floor_3.tscn"))
+	
+	AudioManager.play(sfx)

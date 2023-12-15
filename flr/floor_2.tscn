@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://btg7k2yb8oocx"]
+[gd_scene load_steps=21 format=3 uid="uid://btg7k2yb8oocx"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_0u8ky"]
 [ext_resource type="TileSet" uid="uid://c3tqtciyf2m20" path="res://assets/hotel_tileset.tres" id="2_ukslg"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://src/checklist_goal.gd" id="14_ldshy"]
 [ext_resource type="Texture2D" uid="uid://bjsryca0oou0r" path="res://assets/finished props vol2.png" id="15_ktxxh"]
 [ext_resource type="Script" path="res://src/sprites/floor_sprite_2d.gd" id="16_qgk3v"]
+[ext_resource type="AudioStream" uid="uid://cwx6bu18we7ok" path="res://assets/audio/ambience_loop.wav" id="18_ph0u1"]
 [ext_resource type="PackedScene" uid="uid://b555r65cuovaq" path="res://scn/colored_door.tscn" id="22_4nqu6"]
 [ext_resource type="PackedScene" uid="uid://b1pjqr1h6em68" path="res://scn/key_pickup.tscn" id="23_1mf86"]
 [ext_resource type="PackedScene" uid="uid://dkr5pvgsjcpth" path="res://scn/camera_region.tscn" id="28_rary0"]
@@ -226,3 +227,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0313726, 0.0588235, 0.0431373, 1)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("18_ph0u1")
+volume_db = -20.0
+autoplay = true
+bus = &"Diegetic"

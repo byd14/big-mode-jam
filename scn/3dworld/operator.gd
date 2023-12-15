@@ -5,6 +5,7 @@ class_name Operator extends Camera3D
 @export var focus_slider : HSlider
 @export var sfx_photo : AudioStream
 @export var sfx_error : AudioStreamPlayer
+@export var sfx_error_sounds : Array[AudioStream]
 
 var mouse_sensitivity : float
 var phil : Phil
@@ -31,6 +32,7 @@ func _physics_process(_delta):
 				Observer.hud_scene.pop_notification("out of battery")
 			if phil.film <= 0:
 				Observer.hud_scene.pop_notification("out of film")
+			sfx_error.stream = sfx_error_sounds.pick_random()
 			sfx_error.play()
 
 	if Input.is_action_just_released("camera_scope"):
