@@ -28,7 +28,7 @@ func create_3d_copy():
 	copy_3d.autoplay = autoplay
 	copy_3d.stream = stream
 	copy_3d.bus = bus
-	copy_3d.max_distance = max_distance
+	copy_3d.max_distance = max_distance + 150
 	copy_3d.volume_db = volume_db
 	copy_3d.pitch_scale = pitch_scale
 	Observer.photobooth.add_child(copy_3d)

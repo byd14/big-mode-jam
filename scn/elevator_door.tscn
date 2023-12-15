@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/photo_sensative.gd" id="5_twdxb"]
 [ext_resource type="PackedScene" uid="uid://bl7xeddtglyst" path="res://scn/elevator_panel_interaction.tscn" id="6_wy227"]
 [ext_resource type="AudioStream" uid="uid://bca4d38dywucn" path="res://assets/audio/elevator_music.mp3" id="8_1lw67"]
-[ext_resource type="Script" path="res://src/audio_stream_player_multidimentional.gd" id="9_6lgsh"]
+[ext_resource type="Script" path="res://scn/chara/sporadic_sound_emitter.gd" id="9_u7bjs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2yvr"]
 size = Vector2(64, 32)
@@ -68,4 +68,4 @@ volume_db = -10.0
 autoplay = true
 max_distance = 200.0
 bus = &"Diegetic"
-script = ExtResource("9_6lgsh")
+script = ExtResource("9_u7bjs")
