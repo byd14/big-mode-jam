@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scn/colored_door.gd" id="1_36vvg"]
 [ext_resource type="Texture2D" uid="uid://c47u0lfl3il2p" path="res://assets/doors_new.png" id="2_e0ifj"]
 [ext_resource type="Script" path="res://src/interactable_area_2d.gd" id="3_50fxa"]
-[ext_resource type="AudioStream" uid="uid://wkj8q6lsj2d3" path="res://assets/audio/door_close.wav" id="4_mf47b"]
-[ext_resource type="AudioStream" uid="uid://biptn2y73kmlh" path="res://assets/audio/door_open.wav" id="5_j256w"]
+[ext_resource type="AudioStream" uid="uid://srqx2b54pow5" path="res://assets/audio/door_rattle.wav" id="4_8ear5"]
+[ext_resource type="AudioStream" uid="uid://bhby4uohhs4wh" path="res://assets/audio/door_unlock.wav" id="5_3i24h"]
 [ext_resource type="Script" path="res://src/sprites/prop_sprite_2d.gd" id="6_nsd08"]
 [ext_resource type="PackedScene" uid="uid://tbm0xchyrgv1" path="res://assets/models/door_frame.glb" id="7_a2mmd"]
 [ext_resource type="PackedScene" uid="uid://goarbaxdb1al" path="res://assets/models/door.glb" id="8_cnfde"]
@@ -71,12 +71,12 @@ position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_cql0a")
 
 [node name="SFXClosed" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_mf47b")
-volume_db = -9.0
+stream = ExtResource("4_8ear5")
+volume_db = -3.0
 bus = &"Diegetic"
 
 [node name="SFXOpen" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_j256w")
+stream = ExtResource("5_3i24h")
 volume_db = -3.0
 bus = &"Diegetic"
 
