@@ -79,3 +79,4 @@ func to_normal_state():
 	phil.camera_hitbox.monitoring = false
 	sfx_focus_down.stop()
 	sfx_focus_up.stop()
+	phil.get_viewport().warp_mouse(Observer.mouse_position_2d)

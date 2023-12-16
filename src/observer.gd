@@ -21,6 +21,7 @@ var current_region : CameraRegion
 var current_interaction : Control
 var floor_is_ready := false
 var elevator_music_playhead := 0.0
+var mouse_position_2d : Vector2
 
 var tutorial_competed := false
 var keys : Array

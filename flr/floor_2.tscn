@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://btg7k2yb8oocx"]
+[gd_scene load_steps=48 format=3 uid="uid://btg7k2yb8oocx"]
 
 [ext_resource type="Script" path="res://src/floor_2d.gd" id="1_0u8ky"]
 [ext_resource type="TileSet" uid="uid://c3tqtciyf2m20" path="res://assets/hotel_tileset.tres" id="2_ukslg"]
@@ -36,8 +36,10 @@
 [ext_resource type="PackedScene" uid="uid://gnfhy8a7a8xt" path="res://scn/props/table_prop.tscn" id="31_xase3"]
 [ext_resource type="PackedScene" uid="uid://nlhjc1m4yy47" path="res://scn/props/trashbin_prop.tscn" id="32_w8dmx"]
 [ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="33_61r4w"]
+[ext_resource type="Texture2D" uid="uid://c5pio1j6p0rrn" path="res://assets/floor-9.png" id="34_t8ik3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sbqnc"]
+radius = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mewtf"]
 radius = 24.0
@@ -266,6 +268,7 @@ offset_3d = Vector2(0, -32)
 orientation = "DOWN"
 
 [node name="PhotoSensative" type="Area2D" parent="YSort/ScaryPainting"]
+position = Vector2(1, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("13_dagor")
@@ -275,7 +278,7 @@ shape = SubResource("CircleShape2D_sbqnc")
 
 [node name="ChecklistGoal" type="Node" parent="YSort/ScaryPainting/PhotoSensative"]
 script = ExtResource("14_ldshy")
-goal_name = "painting"
+goal_name = "painting that watches you"
 
 [node name="FloorSprite2D" type="Sprite2D" parent="YSort"]
 position = Vector2(768, 1072)
@@ -297,7 +300,7 @@ shape = SubResource("CircleShape2D_mewtf")
 
 [node name="ChecklistGoal" type="Node" parent="YSort/FloorSprite2D/PhotoSensative"]
 script = ExtResource("14_ldshy")
-goal_name = "boot"
+goal_name = "occult boot"
 
 [node name="FilmPickup" parent="YSort" instance=ExtResource("12_rokqu")]
 position = Vector2(992, 136)
@@ -310,13 +313,13 @@ position = Vector2(1216, 1152)
 position = Vector2(1776, 928)
 amount = 1
 
-[node name="KeyPickup2" parent="YSort" instance=ExtResource("23_1mf86")]
-position = Vector2(1696, 160)
-color = "BLUE"
-
 [node name="FilmPickup4" parent="YSort" instance=ExtResource("12_rokqu")]
 position = Vector2(192, 768)
 amount = 4
+
+[node name="KeyPickup2" parent="YSort" instance=ExtResource("23_1mf86")]
+position = Vector2(1696, 160)
+color = "BLUE"
 
 [node name="BoilerProp" parent="YSort" instance=ExtResource("17_vim78")]
 position = Vector2(912, 840)
@@ -510,13 +513,23 @@ orientation = "UP"
 
 [node name="PlaneSprite2D6" type="Sprite2D" parent="YSort"]
 visible = false
-position = Vector2(1024, 896)
+position = Vector2(1056, 832)
 texture = ExtResource("15_ktxxh")
 offset = Vector2(0, -32)
 hframes = 11
 vframes = 3
 frame = 18
 script = ExtResource("12_ijepa")
+offset_3d = Vector2(0, -8)
+orientation = "RIGHT"
+
+[node name="PlaneSprite2D19" type="Sprite2D" parent="YSort"]
+visible = false
+position = Vector2(1024, 896)
+texture = ExtResource("34_t8ik3")
+offset = Vector2(0, -32)
+script = ExtResource("12_ijepa")
+offset_3d = Vector2(0, -8)
 orientation = "DOWN"
 
 [node name="PlaneSprite2D7" type="Sprite2D" parent="YSort"]

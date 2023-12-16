@@ -80,7 +80,7 @@ text = "murder scene"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="painting" type="Label" parent="Sprite2D/VBoxContainer"]
+[node name="painting that watches you" type="Label" parent="Sprite2D/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -88,7 +88,7 @@ text = "painting that watches you"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="boot" type="Label" parent="Sprite2D/VBoxContainer"]
+[node name="occult boot" type="Label" parent="Sprite2D/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -96,7 +96,7 @@ text = "occult boot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="duck" type="Label" parent="Sprite2D/VBoxContainer"]
+[node name="yellow sea monster" type="Label" parent="Sprite2D/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
