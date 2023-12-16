@@ -176,6 +176,7 @@ scale = Vector2(0.25, 0.25)
 offset = Vector2(0, -64)
 script = ExtResource("3_oonrr")
 animation = NodePath("../AnimatedSprite2D")
+pixel_size = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4.5)

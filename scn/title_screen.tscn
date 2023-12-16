@@ -403,6 +403,7 @@ grow_vertical = 2
 
 [node name="OcculTV" type="Sprite2D" parent="Control"]
 modulate = Color(1, 1, 1, 0)
+position = Vector2(25, 0)
 scale = Vector2(3.75, 3.75)
 texture = ExtResource("3_hnldi")
 

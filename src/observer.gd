@@ -57,6 +57,8 @@ func restart_level():
 	set_level(load(floor_scene.scene_file_path), false)
 
 func death_screen():
+	if photobooth.is_inside_tree():
+		photobooth.operator.to_normal_state()
 	get_tree().root.remove_child(floor_scene)
 	get_tree().root.call_deferred("remove_child", hud_scene)
 	get_tree().root.add_child(load("res://scn/ui/death_screen.tscn").instantiate())
