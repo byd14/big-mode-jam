@@ -1,15 +1,15 @@
 [gd_scene load_steps=17 format=3 uid="uid://b3i33y5rjj48h"]
 
 [ext_resource type="Script" path="res://scn/chara/the_wall.gd" id="1_6ialk"]
-[ext_resource type="Script" path="res://src/sprites/plane_sprite_2d.gd" id="1_t2jne"]
 [ext_resource type="Texture2D" uid="uid://citus30c54rf5" path="res://assets/wall.png" id="2_84vbi"]
+[ext_resource type="Script" path="res://src/sprites/ghost_sprite_2d.gd" id="2_ppi2r"]
 [ext_resource type="Script" path="res://src/photo_sensative.gd" id="4_2wxsg"]
 [ext_resource type="Script" path="res://scn/chara/sporadic_sound_emitter.gd" id="5_e0mw5"]
 [ext_resource type="AudioStream" uid="uid://b3ypl60ulp3u4" path="res://assets/audio/wall_enemy_breathing_loop.wav" id="5_f8cev"]
 [ext_resource type="AudioStream" uid="uid://tnufjxyhvkld" path="res://assets/audio/wall_enemy_death.wav" id="7_mmfwn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6fjrl"]
-size = Vector2(128, 16)
+size = Vector2(64, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q5pe8"]
 atlas = ExtResource("2_84vbi")
@@ -55,23 +55,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0o3vf"]
-size = Vector2(144, 32)
+size = Vector2(64, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_voy1v"]
 radius = 250.0
 
-[node name="TheWall" type="StaticBody2D" node_paths=PackedStringArray("sprite", "animation", "sfx_death")]
+[node name="TheWall" type="StaticBody2D" node_paths=PackedStringArray("sprite", "sfx_death") groups=["danger"]]
 script = ExtResource("1_6ialk")
-sprite = NodePath("PlaneSprite2D")
-animation = NodePath("AnimatedSprite2D")
+sprite = NodePath("GhostSprite2D")
 sfx_death = NodePath("SFXDeath")
 
-[node name="PlaneSprite2D" type="Sprite2D" parent="."]
+[node name="GhostSprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("animation")]
+visible = false
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_84vbi")
 offset = Vector2(0, -64)
-script = ExtResource("1_t2jne")
-pixel_size = 0.02
-orientation = "UP"
+script = ExtResource("2_ppi2r")
+animation = NodePath("../AnimatedSprite2D")
+billboard = false
+pixel_size = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -91,8 +93,6 @@ script = ExtResource("4_2wxsg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoSensative"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_0o3vf")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="SFXIdle" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_f8cev")
@@ -114,5 +114,3 @@ debug_color = Color(0.537255, 0.564706, 0.207843, 0.0784314)
 stream = ExtResource("7_mmfwn")
 volume_db = 6.0
 bus = &"Diegetic"
-
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

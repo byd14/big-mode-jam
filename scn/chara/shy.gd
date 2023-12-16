@@ -67,8 +67,6 @@ func on_photo():
 		Observer.floor_scene.shy_count -= 1
 		AudioManager.play_2d(sfx_death, global_position, 1, 1)
 		AudioManager.play(sfx_hit, 1, 1, "UI")
-	else:
-		AudioManager.play(sfx_error, 1, 1, "UI")
 
 func normal_state():
 	if animation.animation == "scream":

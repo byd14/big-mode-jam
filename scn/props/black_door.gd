@@ -32,6 +32,3 @@ func on_photo():
 		open()
 		AudioManager.play(sfx_hit)
 		Observer.create_dialog("Take pictures of the items on your checklist.\nThey say spirits are afraid of cameras...", 300000)
-	
-	else:
-		AudioManager.play(sfx_error, 1, 1, "UI")

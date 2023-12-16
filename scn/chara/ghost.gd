@@ -38,8 +38,6 @@ func on_photo():
 	var distance_normalized = minf(position.distance_to(Observer.floor_scene.phil.position) / 100, 1)
 	var focus = absf(Observer.photobooth.operator.focus_slider.value / 100 - sprite.focal_length)
 	focus += pow(distance_normalized, 3) * Observer.CAMERA_FOCUS_TOLERANCE
-	# if distance_normalized > 1:
-	# 	focus += 0.2
 	if focus < Observer.CAMERA_FOCUS_TOLERANCE:
 		light.energy = 1
 		hp -= 1
@@ -53,8 +51,6 @@ func on_photo():
 			AudioManager.play_2d(sfx_death, global_position, 3, 1)
 		else:
 			sfx_stun.play()
-	else:
-		AudioManager.play(sfx_error, 1, 1, "UI")
 
 func normal_state():
 	var phil := Observer.floor_scene.phil

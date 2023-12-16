@@ -8,7 +8,6 @@ const BLUR_OFFSET := 5
 
 var original_sprite : GhostSprite2D
 var focal_length : float
-
 var focus_difference : float
 
 func _ready():

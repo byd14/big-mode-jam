@@ -16,6 +16,7 @@ class_name HUDCamera extends Control
 @export var sfx_beep : AudioStreamPlayer
 @export var sfx_appear : AudioStreamPlayer
 @export var sfx_disappear : AudioStreamPlayer
+@export var sfx_low_battery : AudioStreamPlayer
 
 
 @export var unfold_offset : float
@@ -86,6 +87,10 @@ func _physics_process(_delta):
 
 		if handle_durability <= 1 and handle_durability >= 0:
 			break_handle()
+
+	# if phil.battery <= 99:
+	# 	if sin(Time.get_ticks_msec() / 90.0) > 0.9 and !sfx_low_battery.playing:
+	# 		sfx_low_battery.play()
 
 	if phil.battery <= 50:
 		battery_status.frame = 0 if sin(Time.get_ticks_msec() / 90.0) > 0 else 1
