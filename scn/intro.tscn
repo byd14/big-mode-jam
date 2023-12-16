@@ -1,9 +1,15 @@
-[gd_scene load_steps=33 format=3 uid="uid://blpuxjtgvwten"]
+[gd_scene load_steps=45 format=3 uid="uid://blpuxjtgvwten"]
 
 [ext_resource type="Script" path="res://scn/intro_sequence.gd" id="1_0ldpl"]
 [ext_resource type="Texture2D" uid="uid://cmx0fxxopysg7" path="res://assets/intro_1.png" id="1_qkhwd"]
 [ext_resource type="Shader" path="res://src/shaders/crt.gdshader" id="2_g67of"]
 [ext_resource type="Texture2D" uid="uid://bonrhf6dixddn" path="res://assets/intro_2.png" id="2_iwckw"]
+[ext_resource type="AudioStream" uid="uid://da74am7ux7xhq" path="res://assets/audio/boss_talk1.wav" id="2_pd52g"]
+[ext_resource type="AudioStream" uid="uid://b6dafenau3iqu" path="res://assets/audio/boss_talk2.wav" id="3_r1sil"]
+[ext_resource type="AudioStream" uid="uid://qj65n20mv6qk" path="res://assets/audio/boss_talk3.wav" id="4_lnjg1"]
+[ext_resource type="AudioStream" uid="uid://b1p03o06s472x" path="res://assets/audio/boss_talk4.wav" id="5_8va7i"]
+[ext_resource type="AudioStream" uid="uid://cmsusmxe7yrd2" path="res://assets/audio/cutscene_highway_loop.wav" id="9_4or7g"]
+[ext_resource type="AudioStream" uid="uid://dnkbn84q4f6yk" path="res://assets/audio/cutscene_van_interior_loop.wav" id="10_y6h0w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lttfd"]
 atlas = ExtResource("1_qkhwd")
@@ -101,6 +107,30 @@ region = Rect2(4096, 0, 256, 192)
 atlas = ExtResource("2_iwckw")
 region = Rect2(4352, 0, 256, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkfw6"]
+atlas = ExtResource("2_iwckw")
+region = Rect2(5632, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp50q"]
+atlas = ExtResource("2_iwckw")
+region = Rect2(5888, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omguf"]
+atlas = ExtResource("2_iwckw")
+region = Rect2(4608, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfh7u"]
+atlas = ExtResource("2_iwckw")
+region = Rect2(4864, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl4ca"]
+atlas = ExtResource("2_iwckw")
+region = Rect2(5120, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfl0r"]
+atlas = ExtResource("2_iwckw")
+region = Rect2(5376, 0, 256, 192)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6jrc"]
 atlas = ExtResource("2_iwckw")
 region = Rect2(2048, 0, 256, 192)
@@ -138,7 +168,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"frame1",
-"speed": 7.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -165,9 +195,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vkvca")
 }],
-"loop": true,
+"loop": false,
 "name": &"frame2a",
-"speed": 7.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -194,8 +224,36 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ackxa")
 }],
-"loop": true,
+"loop": false,
 "name": &"frame2b",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkfw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp50q")
+}],
+"loop": true,
+"name": &"frame2c",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omguf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfh7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl4ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfl0r")
+}],
+"loop": false,
+"name": &"frame2papers",
 "speed": 7.0
 }, {
 "frames": [{
@@ -218,7 +276,7 @@ shader_parameter/aperture_grille_rate = 0.5
 shader_parameter/rf_switch_esque_blur = 0.55
 shader_parameter/white_noise_rate = 0.1
 
-[node name="IntroSequence" type="Control" node_paths=PackedStringArray("intro_animation")]
+[node name="IntroSequence" type="Control" node_paths=PackedStringArray("intro_animation", "dialog_text", "sfx_outside", "sfx_inside")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -227,6 +285,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ldpl")
 intro_animation = NodePath("IntroFrames")
+dialog_text = NodePath("DialogText")
+boss_sounds = Array[AudioStream]([ExtResource("2_pd52g"), ExtResource("3_r1sil"), ExtResource("4_lnjg1"), ExtResource("5_8va7i")])
+sfx_outside = NodePath("SFXOutside")
+sfx_inside = NodePath("SFXInside")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -242,8 +304,38 @@ position = Vector2(480, 384)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_m82ha")
 animation = &"frame2b"
-frame = 4
-frame_progress = 0.439243
+
+[node name="DialogText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.5
+offset_top = -144.0
+offset_right = 117.5
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "“One particularly dark night…”"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.45098)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.5
+offset_top = -56.0
+offset_right = 84.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "[press E to switch slide]"
 
 [node name="CRT" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_8oq28")
@@ -255,5 +347,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="SFXOutside" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_4or7g")
+volume_db = -10.0
+autoplay = true
+
+[node name="SFXInside" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_y6h0w")
+volume_db = -10.0
+
 [connection signal="animation_finished" from="IntroFrames" to="." method="_on_intro_frames_animation_finished"]
-[connection signal="animation_looped" from="IntroFrames" to="." method="_on_intro_frames_animation_looped"]

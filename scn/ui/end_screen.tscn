@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://v858suvyvrgg"]
+[gd_scene load_steps=6 format=3 uid="uid://v858suvyvrgg"]
 
 [ext_resource type="Script" path="res://scn/ui/end_screen.gd" id="1_ttmki"]
 [ext_resource type="Shader" path="res://src/shaders/crt.gdshader" id="2_oklvb"]
 [ext_resource type="Texture2D" uid="uid://dgh0soeb22oms" path="res://assets/ui/hand_cursor.png" id="3_ky748"]
+[ext_resource type="AudioStream" uid="uid://bx756rqkkaq5w" path="res://assets/audio/clean_white_boy_bossa.mp3" id="4_2ypxn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i7yss"]
 shader = ExtResource("2_oklvb")
@@ -12,7 +13,7 @@ shader_parameter/aperture_grille_rate = 0.5
 shader_parameter/rf_switch_esque_blur = 0.55
 shader_parameter/white_noise_rate = 0.1
 
-[node name="EndScreen" type="Control" node_paths=PackedStringArray("photos_container", "cursor")]
+[node name="EndScreen" type="Control" node_paths=PackedStringArray("photos_container", "cursor", "end_result")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +23,7 @@ grow_vertical = 2
 script = ExtResource("1_ttmki")
 photos_container = NodePath("PhotosContainer")
 cursor = NodePath("MouseCursor")
+end_result = NodePath("EndResult")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -31,6 +33,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+
+[node name="EndResult" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -392.0
+offset_top = 94.0
+offset_right = 392.0
+offset_bottom = 194.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 42
+text = "yo"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="PhotosContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -61,3 +79,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2ypxn")
+volume_db = -10.0
+autoplay = true

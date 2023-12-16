@@ -4,6 +4,7 @@ const PHOTO_CARD_SCENE = preload("res://scn/ui/photo_card.tscn")
 
 @export var photos_container : HBoxContainer
 @export var cursor : Sprite2D
+@export var end_result : Label
 
 func _ready():
 	for goal in Observer.completed_goals:
@@ -15,6 +16,20 @@ func _ready():
 		i.photo_image.texture = photo_texture
 		i.photo_label.text = goal
 		photos_container.add_child(i)
+
+	var ending : String
+
+	match Observer.completed_goals.size():
+		0:
+			ending = "Nothing?! Find your own ride home, pal."
+		1, 2:
+			ending = "That’s it? Don’t bother calling us back!"
+		3, 4:
+			ending = "Not bad! You’ve earned this $5."
+		5:
+			ending = "WOW!! This special is going to be a HIT. Maybe you are OcculTV material after all! MUAHAHAHAHA"
+
+	end_result.text = ending
 
 func _physics_process(_delta):
 	cursor.position = get_viewport().get_mouse_position()
