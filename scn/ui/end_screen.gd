@@ -27,9 +27,17 @@ func _ready():
 		3, 4:
 			ending = "Not bad! You’ve earned this $5."
 		5:
-			ending = "WOW!! This special is going to be a HIT. Maybe you are OcculTV material after all! MUAHAHAHAHA"
+			ending = "WOW!! This special is going to be a HIT. Maybe you are OcculTV material after all!"
 
 	end_result.text = ending
 
+	if Input.is_action_just_pressed("ui_cancel"):
+		print("adddd")
+		get_tree().quit()
+
 func _physics_process(_delta):
 	cursor.position = get_viewport().get_mouse_position()
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()

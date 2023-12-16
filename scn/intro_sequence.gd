@@ -12,7 +12,7 @@ var loop_counter := 0
 var boss_speech_delay := 24
 var boss_speech_timer := 60 * 7
 var boss_talking := false
-var boss_speech := "Hey man, thanks again for accepting the job. Ever since our last guy vanished our ratings have tanked.\nJust like the email said, get shots of as much stuff from this list as you can and we’ll pay you for what you get!\nJust get what you can and get out"
+var boss_speech := "Hey man, thanks again for accepting the job.\nJust like the email said, get shots of as much stuff from this list as you can and we’ll pay you for what you get!\nTake what you can and get out"
 
 func _ready():
 	intro_animation.play("frame1")

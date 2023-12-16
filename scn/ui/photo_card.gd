@@ -3,6 +3,7 @@ class_name PhotoCard extends Control
 @export var photo_image : TextureRect
 @export var photo_label : Label
 @export var root : Control
+@export var sfx_hover : AudioStreamPlayer
 
 var ogriginal_size : Vector2
 var expand := false
@@ -21,4 +22,5 @@ func _on_mouse_trigger_mouse_exited():
 	expand = false
 
 func _on_mouse_trigger_mouse_entered():
+	sfx_hover.play()
 	expand = true

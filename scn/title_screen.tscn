@@ -1,11 +1,13 @@
-[gd_scene load_steps=39 format=3 uid="uid://babiy7l3863xg"]
+[gd_scene load_steps=41 format=3 uid="uid://babiy7l3863xg"]
 
 [ext_resource type="Shader" path="res://src/shaders/crt.gdshader" id="1_cgbjg"]
+[ext_resource type="Script" path="res://scn/title_screen.gd" id="1_eu2pm"]
 [ext_resource type="Texture2D" uid="uid://f5j3e5eebre4" path="res://assets/intro_3a.png" id="1_fi8wy"]
 [ext_resource type="Texture2D" uid="uid://bfhat35bxgv3i" path="res://assets/intro_Dark.png" id="2_32ii0"]
 [ext_resource type="Texture2D" uid="uid://csgu744tahhb8" path="res://assets/intro_TitleOn.png" id="2_eywfv"]
 [ext_resource type="Texture2D" uid="uid://vkoiteufogw0" path="res://assets/OcculTV.png" id="3_hnldi"]
 [ext_resource type="AudioStream" uid="uid://bq4jalkk8fcv1" path="res://assets/audio/the_haunted_heights_special_with_wind.mp3" id="5_d6b3v"]
+[ext_resource type="FontFile" uid="uid://dydguxhsv707x" path="res://assets/ui/fear_11_basic_v1/Fear 11 Basic.ttf" id="6_w83pp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eikws"]
 atlas = ExtResource("2_eywfv")
@@ -274,6 +276,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(480, 1198)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_3t2tr"]
 resource_name = "in"
@@ -324,6 +338,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [&"off", &"on"]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(15.3, 16.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbdrm"]
 _data = {
@@ -331,13 +357,16 @@ _data = {
 "in": SubResource("Animation_3t2tr")
 }
 
-[node name="TitleScreen" type="Control"]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("building", "to_start")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_eu2pm")
+building = NodePath("Image")
+to_start = NodePath("Label")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(960, 768)
@@ -377,6 +406,22 @@ modulate = Color(1, 1, 1, 0)
 scale = Vector2(3.75, 3.75)
 texture = ExtResource("3_hnldi")
 
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -168.0
+offset_top = 24.0
+offset_right = 168.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_w83pp")
+theme_override_font_sizes/font_size = 36
+text = "[press E to start]"
+horizontal_alignment = 1
+
 [node name="CRT" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_m4qrh")
 layout_mode = 1
@@ -397,3 +442,5 @@ next/in = &"RESET"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer"]
 stream = ExtResource("5_d6b3v")
 autoplay = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

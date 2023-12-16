@@ -1,11 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dynab7gftaln7"]
+[gd_scene load_steps=4 format=3 uid="uid://dynab7gftaln7"]
 
 [ext_resource type="Script" path="res://scn/ui/photo_card.gd" id="1_vxdcx"]
+[ext_resource type="AudioStream" uid="uid://bss8g2gn7kk4" path="res://assets/audio/end_photo_hover.wav" id="2_kirus"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3b1kb"]
 size = Vector2(160, 186)
 
-[node name="PhotoCard" type="Control" node_paths=PackedStringArray("photo_image", "photo_label", "root")]
+[node name="PhotoCard" type="Control" node_paths=PackedStringArray("photo_image", "photo_label", "root", "sfx_hover")]
 custom_minimum_size = Vector2(180, 170)
 layout_mode = 3
 anchors_preset = 8
@@ -23,6 +24,7 @@ script = ExtResource("1_vxdcx")
 photo_image = NodePath("root/VBoxContainer/TextureRect")
 photo_label = NodePath("root/VBoxContainer/Label")
 root = NodePath("root")
+sfx_hover = NodePath("AudioStreamPlayer")
 
 [node name="root" type="Control" parent="."]
 layout_mode = 1
@@ -74,6 +76,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "photo"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="MouseTrigger" type="Area2D" parent="root"]
 position = Vector2(76.5, 90)
@@ -81,6 +84,9 @@ position = Vector2(76.5, 90)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="root/MouseTrigger"]
 position = Vector2(-1, -4)
 shape = SubResource("RectangleShape2D_3b1kb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kirus")
 
 [connection signal="mouse_entered" from="root/MouseTrigger" to="." method="_on_mouse_trigger_mouse_entered"]
 [connection signal="mouse_exited" from="root/MouseTrigger" to="." method="_on_mouse_trigger_mouse_exited"]

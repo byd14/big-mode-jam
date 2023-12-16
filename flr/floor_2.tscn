@@ -38,10 +38,10 @@
 [ext_resource type="Texture2D" uid="uid://cful5l0elak2v" path="res://assets/finished props.png" id="33_61r4w"]
 [ext_resource type="Texture2D" uid="uid://c5pio1j6p0rrn" path="res://assets/floor-9.png" id="34_t8ik3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sbqnc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mewtf"]
 radius = 24.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mewtf"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_sbqnc"]
 radius = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qkf2"]
@@ -214,6 +214,26 @@ vframes = 2
 frame = 7
 script = ExtResource("16_qgk3v")
 
+[node name="FloorSprite2D" type="Sprite2D" parent="."]
+position = Vector2(768, 1088)
+texture = ExtResource("15_ktxxh")
+hframes = 11
+vframes = 3
+frame = 16
+script = ExtResource("16_qgk3v")
+
+[node name="PhotoSensative" type="Area2D" parent="FloorSprite2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("13_dagor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorSprite2D/PhotoSensative"]
+shape = SubResource("CircleShape2D_mewtf")
+
+[node name="ChecklistGoal" type="Node" parent="FloorSprite2D/PhotoSensative"]
+script = ExtResource("14_ldshy")
+goal_name = "occult boot"
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("3_3iown")
 cell_quadrant_size = 32
@@ -279,28 +299,6 @@ shape = SubResource("CircleShape2D_sbqnc")
 [node name="ChecklistGoal" type="Node" parent="YSort/ScaryPainting/PhotoSensative"]
 script = ExtResource("14_ldshy")
 goal_name = "painting that watches you"
-
-[node name="FloorSprite2D" type="Sprite2D" parent="YSort"]
-position = Vector2(768, 1072)
-texture = ExtResource("15_ktxxh")
-offset = Vector2(0, 16)
-hframes = 11
-vframes = 3
-frame = 16
-script = ExtResource("16_qgk3v")
-
-[node name="PhotoSensative" type="Area2D" parent="YSort/FloorSprite2D"]
-position = Vector2(0, 16)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("13_dagor")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/FloorSprite2D/PhotoSensative"]
-shape = SubResource("CircleShape2D_mewtf")
-
-[node name="ChecklistGoal" type="Node" parent="YSort/FloorSprite2D/PhotoSensative"]
-script = ExtResource("14_ldshy")
-goal_name = "occult boot"
 
 [node name="FilmPickup" parent="YSort" instance=ExtResource("12_rokqu")]
 position = Vector2(992, 136)

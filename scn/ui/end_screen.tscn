@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://v858suvyvrgg"]
+[gd_scene load_steps=7 format=3 uid="uid://v858suvyvrgg"]
 
 [ext_resource type="Script" path="res://scn/ui/end_screen.gd" id="1_ttmki"]
+[ext_resource type="FontFile" uid="uid://dydguxhsv707x" path="res://assets/ui/fear_11_basic_v1/Fear 11 Basic.ttf" id="2_mle3u"]
 [ext_resource type="Shader" path="res://src/shaders/crt.gdshader" id="2_oklvb"]
 [ext_resource type="Texture2D" uid="uid://dgh0soeb22oms" path="res://assets/ui/hand_cursor.png" id="3_ky748"]
 [ext_resource type="AudioStream" uid="uid://bx756rqkkaq5w" path="res://assets/audio/clean_white_boy_bossa.mp3" id="4_2ypxn"]
@@ -44,6 +45,7 @@ offset_top = 94.0
 offset_right = 392.0
 offset_bottom = 194.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_mle3u")
 theme_override_font_sizes/font_size = 42
 text = "yo"
 horizontal_alignment = 1
@@ -58,9 +60,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -20.0
+offset_top = 10.0
 offset_right = 20.0
-offset_bottom = 20.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -84,3 +86,18 @@ mouse_filter = 2
 stream = ExtResource("4_2ypxn")
 volume_db = -10.0
 autoplay = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.5
+offset_top = -57.0
+offset_right = 63.5
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "[press ESC to exit]"
