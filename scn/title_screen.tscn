@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://babiy7l3863xg"]
+[gd_scene load_steps=11 format=3 uid="uid://babiy7l3863xg"]
 
 [ext_resource type="Shader" path="res://src/shaders/crt.gdshader" id="1_cgbjg"]
 [ext_resource type="Texture2D" uid="uid://f5j3e5eebre4" path="res://assets/intro_3a.png" id="1_fi8wy"]
+[ext_resource type="Texture2D" uid="uid://bfhat35bxgv3i" path="res://assets/intro_Dark.png" id="2_32ii0"]
 [ext_resource type="Texture2D" uid="uid://dapjucgkfek08" path="res://assets/intro_4.png" id="2_lurum"]
 [ext_resource type="Texture2D" uid="uid://vkoiteufogw0" path="res://assets/OcculTV.png" id="3_hnldi"]
 [ext_resource type="AudioStream" uid="uid://bq4jalkk8fcv1" path="res://assets/audio/the_haunted_heights_special_with_wind.mp3" id="5_d6b3v"]
@@ -39,6 +40,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Image:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_32ii0")]
+}
 
 [sub_resource type="Animation" id="Animation_3t2tr"]
 resource_name = "in"
@@ -51,8 +64,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-454, -0.25, 0, 2.425, 2.43716, 1191, -2.2541, -0.80481, 0.25, 0),
-"times": PackedFloat32Array(1.8, 15.4)
+"points": PackedFloat32Array(-454, -0.25, 0, 2.425, 2.43716, 1198, -1.7404, 0.00012207, 0.25, 0),
+"times": PackedFloat32Array(1.7, 15.3)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -61,9 +74,9 @@ tracks/1/path = NodePath("Background:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-260, -0.25, 0, 2.4, 2.43716, 1080, -2.2541, 1.70215, 0.25, 0),
-"times": PackedFloat32Array(1.8, 15.4)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-260, -0.25, 0, 2.4, 2.43716, 475.542, -1.9, -203.859, 2.3, 246.495, 1080, -1.7404, 1.09375, 0.25, 0),
+"times": PackedFloat32Array(1.7, 9.3, 15.3)
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -72,10 +85,22 @@ tracks/2/path = NodePath("Control/OcculTV:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(7, 8.4, 10.7, 12),
+"times": PackedFloat32Array(6, 8.6, 11.3, 13.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Image:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(15.2, 15.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_32ii0"), ExtResource("2_lurum")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbdrm"]
@@ -105,9 +130,9 @@ scale = Vector2(3.75, 3.75)
 texture = ExtResource("1_fi8wy")
 
 [node name="Image" type="Sprite2D" parent="."]
-position = Vector2(480, 1191)
+position = Vector2(480, 1198)
 scale = Vector2(3.75, 3.75)
-texture = ExtResource("2_lurum")
+texture = ExtResource("2_32ii0")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
