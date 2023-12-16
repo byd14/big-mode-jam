@@ -1,0 +1,159 @@
+[gd_scene load_steps=16 format=3 uid="uid://q0lntwkf8ibj"]
+
+[ext_resource type="Shader" path="res://src/shaders/crt.gdshader" id="1_ib66i"]
+[ext_resource type="Script" path="res://scn/elevator_transition.gd" id="1_oew3v"]
+[ext_resource type="Texture2D" uid="uid://drrdo0iyx7uvp" path="res://assets/elevator_loadscreen.png" id="2_ls7xb"]
+[ext_resource type="AudioStream" uid="uid://bca4d38dywucn" path="res://assets/audio/elevator_music.mp3" id="4_ie4kv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il5oo"]
+atlas = ExtResource("2_ls7xb")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjeaa"]
+atlas = ExtResource("2_ls7xb")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wib7k"]
+atlas = ExtResource("2_ls7xb")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rodb"]
+atlas = ExtResource("2_ls7xb")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j64kj"]
+atlas = ExtResource("2_ls7xb")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arxyg"]
+atlas = ExtResource("2_ls7xb")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_403k8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il5oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjeaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wib7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rodb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j64kj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arxyg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4w2mg"]
+shader = ExtResource("1_ib66i")
+shader_parameter/crt_curve = 0.02
+shader_parameter/crt_scan_line_color = 0.07
+shader_parameter/aperture_grille_rate = 0.5
+shader_parameter/rf_switch_esque_blur = 0.55
+shader_parameter/white_noise_rate = 0.1
+
+[sub_resource type="Animation" id="Animation_36rw4"]
+resource_name = "out"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l27h1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_12nfx"]
+_data = {
+"RESET": SubResource("Animation_l27h1"),
+"out": SubResource("Animation_36rw4")
+}
+
+[node name="ElevatorTransition" type="Control" node_paths=PackedStringArray("sprite", "music")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oew3v")
+sprite = NodePath("AnimatedSprite2D")
+music = NodePath("ElevatorMusic")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(480, 384)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_403k8")
+frame_progress = 0.536341
+
+[node name="CRT" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_4w2mg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ElevatorMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ie4kv")
+volume_db = -10.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "out"
+libraries = {
+"": SubResource("AnimationLibrary_12nfx")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

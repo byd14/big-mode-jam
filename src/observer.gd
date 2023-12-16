@@ -9,6 +9,7 @@ const GAMEPLAY_HUD := preload("res://scn/ui/gameplay_hud.tscn")
 const MOUSE_SENS_3D := 0.003
 const CAMERA_FOCUS_TOLERANCE := 0.12
 const SFX_STINGER := preload("res://assets/audio/piano_stinger.wav")
+const ELEVATOR_SCREEN_SCENE := preload("res://scn/elevator_transition.tscn")
 
 var floor_scene : Floor2D
 var camera_scene : SubViewportContainer
@@ -19,6 +20,7 @@ var phil : Phil
 var current_region : CameraRegion
 var current_interaction : Control
 var floor_is_ready := false
+var elevator_music_playhead := 0.0
 
 var tutorial_competed := false
 var keys : Array
@@ -62,6 +64,13 @@ func end_screen():
 	get_tree().root.remove_child(floor_scene)
 	get_tree().root.call_deferred("remove_child", hud_scene)
 	get_tree().root.add_child(load("res://scn/ui/end_screen.tscn").instantiate())
+
+func elevator_screen(next_level : PackedScene):
+	get_tree().root.remove_child(floor_scene)
+	get_tree().root.call_deferred("remove_child", hud_scene)
+	var i : ElevatorTransition = ELEVATOR_SCREEN_SCENE.instantiate()
+	i.next_level = next_level
+	get_tree().root.add_child(i)
 
 func set_level(scene : PackedScene, save := true):
 	if save:

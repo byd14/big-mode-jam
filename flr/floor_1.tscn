@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://dmfs4q4ei4sqi" path="res://scn/props/toilet_prop.tscn" id="32_nrjip"]
 [ext_resource type="PackedScene" uid="uid://17wwit04lsfb" path="res://scn/props/stacked_paper_prop.tscn" id="33_f8evb"]
 [ext_resource type="PackedScene" uid="uid://4ifxlflna8ud" path="res://scn/props/sink_prop.tscn" id="33_qjsmt"]
-[ext_resource type="PackedScene" uid="uid://b3i33y5rjj48h" path="res://scn/chara/the_wall.tscn" id="35_aq07q"]
+[ext_resource type="Texture2D" uid="uid://b8oajm3s2htfi" path="res://assets/floor-4.png" id="35_1thj7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8b8ac"]
 radius = 16.0
@@ -185,7 +185,7 @@ script = ExtResource("6_u5gr6")
 y_sort_enabled = true
 
 [node name="Phil" parent="YSort" instance=ExtResource("8_emncj")]
-position = Vector2(160, 840)
+position = Vector2(512, 768)
 
 [node name="KeyPickup" parent="YSort" instance=ExtResource("23_tf683")]
 position = Vector2(736, 480)
@@ -491,8 +491,14 @@ position = Vector2(231, 809)
 [node name="CrateSmallProp3" parent="YSort" instance=ExtResource("23_2t5vb")]
 position = Vector2(1010, 279)
 
+[node name="CrateSmallProp4" parent="YSort" instance=ExtResource("23_2t5vb")]
+position = Vector2(552, 744)
+
 [node name="TrashbinProp2" parent="YSort" instance=ExtResource("24_qb0dn")]
 position = Vector2(399, 173)
+
+[node name="TrashbinProp4" parent="YSort" instance=ExtResource("24_qb0dn")]
+position = Vector2(464, 752)
 
 [node name="StackedProp" parent="YSort" instance=ExtResource("33_f8evb")]
 position = Vector2(1644, 84)
@@ -500,8 +506,12 @@ position = Vector2(1644, 84)
 [node name="StackedProp2" parent="YSort" instance=ExtResource("33_f8evb")]
 position = Vector2(1287, 79)
 
-[node name="TheWall" parent="YSort" instance=ExtResource("35_aq07q")]
-position = Vector2(160, 800)
+[node name="PlaneSprite2D17" type="Sprite2D" parent="YSort"]
+position = Vector2(616, 800)
+texture = ExtResource("35_1thj7")
+offset = Vector2(0, -32)
+script = ExtResource("32_0gtk1")
+orientation = "UP"
 
 [node name="Foreground" type="TileMap" parent="."]
 tile_set = ExtResource("2_de7eu")
