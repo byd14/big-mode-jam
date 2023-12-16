@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0h37vk6iog2l"]
+[gd_scene load_steps=9 format=3 uid="uid://babiy7l3863xg"]
 
 [ext_resource type="Shader" path="res://src/shaders/crt.gdshader" id="1_cgbjg"]
-[ext_resource type="Texture2D" uid="uid://dxwkmlomh6iw3" path="res://assets/intro_3b.png" id="1_dilwy"]
+[ext_resource type="Texture2D" uid="uid://buvly4l1jmkx5" path="res://assets/intro_3b.png" id="1_dilwy"]
 [ext_resource type="Texture2D" uid="uid://f5j3e5eebre4" path="res://assets/intro_3a.png" id="1_fi8wy"]
+[ext_resource type="AudioStream" uid="uid://dgavmkdjgad7p" path="res://assets/audio/cutscene_wind_shorter_2.wav" id="4_3iwia"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m4qrh"]
 shader = ExtResource("1_cgbjg")
@@ -12,58 +13,44 @@ shader_parameter/aperture_grille_rate = 0.5
 shader_parameter/rf_switch_esque_blur = 0.55
 shader_parameter/white_noise_rate = 0.1
 
-[sub_resource type="Animation" id="Animation_3t2tr"]
-resource_name = "in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(480, -96), Vector2(480, 1128)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Image:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(480, -96), Vector2(480, 1216)]
-}
-
 [sub_resource type="Animation" id="Animation_l6blx"]
 length = 0.001
-tracks/0/type = "value"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background:position")
+tracks/0/path = NodePath("Background:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(480, -96)]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1080, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
-tracks/1/type = "value"
+
+[sub_resource type="Animation" id="Animation_3t2tr"]
+resource_name = "in"
+length = 16.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-312, -0.25, 0, 2.425, 2.43716, 1428, -2.2541, -0.80481, 0.25, 0),
+"times": PackedFloat32Array(3, 14)
+}
+tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Image:position")
+tracks/1/path = NodePath("Background:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(480, -96)]
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-260, -0.25, 0, 2.4, 2.43716, 1080, -2.2541, 1.70215, 0.25, 0),
+"times": PackedFloat32Array(3, 14)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbdrm"]
@@ -88,13 +75,13 @@ offset_bottom = 768.0
 color = Color(0.0117647, 0.0117647, 0.0117647, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(480, -96)
-scale = Vector2(4, 4)
+position = Vector2(480, 1080)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("1_fi8wy")
 
 [node name="Image" type="Sprite2D" parent="."]
-position = Vector2(480, -96)
-scale = Vector2(3, 3)
+position = Vector2(480, 1428)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("1_dilwy")
 
 [node name="CRT" type="ColorRect" parent="."]
@@ -108,7 +95,11 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-speed_scale = 0.3
+autoplay = "in"
 libraries = {
 "": SubResource("AnimationLibrary_qbdrm")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer"]
+stream = ExtResource("4_3iwia")
+autoplay = true
