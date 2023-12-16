@@ -12,6 +12,7 @@ const HAND := preload("res://assets/ui/hand_cursor.png")
 @export var hud_notification : Label
 @export var hud_camera : HUDCamera
 @export var interact_hint : Label
+@export var portrait : AnimatedSprite2D
 
 var phil : Phil
 
@@ -28,6 +29,9 @@ func _physics_process(_delta):
 		cursor.texture = HAND
 	else:
 		cursor.texture = CROSSHAIR
+	portrait.play("default")
+	if phil.sprint:
+		portrait.play("run")
 	stamina_bar.value = phil.stamina
 	cursor.position = get_viewport().get_mouse_position().clamp(Vector2.ZERO, vision_overlay.size)
 	hud_notification.modulate.a = lerpf(hud_notification.modulate.a, 0, 0.05)

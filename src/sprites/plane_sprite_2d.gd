@@ -20,6 +20,8 @@ func _notification(what):
 			copy_3d.queue_free()
 
 func create_3d_copy():
+	if orientation != "BILLBOARD" and orientation != "UP":
+		visible = false
 	copy_3d = PlaneSprite3D.new()
 	copy_3d.pixel_size = pixel_size
 	copy_3d.texture = texture

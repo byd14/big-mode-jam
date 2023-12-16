@@ -127,6 +127,7 @@ func camera_state():
 	pass
 
 func to_camera_state():
+	Observer.mouse_position_2d = get_viewport().get_mouse_position()
 	switch_vision(true)
 	var rot = (get_global_mouse_position() - position).angle()
 	Observer.current_region.camera.enabled = false
@@ -162,7 +163,6 @@ func _on_camera_hitbox_area_entered(area:Area2D):
 		if area.has_node("ChecklistGoal"):
 			Observer.checklist_goal_completed(area.get_node("ChecklistGoal").goal_name)
 			
-
 func animation_state():
 	var anim = "idle"
 	if state == normal_state:
